@@ -10,14 +10,14 @@ router.post('/', (req, res) => {
 
 // @route       PUT  api/users/:id
 // @desc        Edit a user
-// @access      public
+// @access      private
 router.put('/:id', (req, res) => {
   res.send('Edit a user');
 });
 
 // @route       DELETE  api/users/:id
 // @desc        Delete a user
-// @access      public
+// @access      private
 router.delete('/:id', (req, res) => {
   res.send('Delete a user');
 });
