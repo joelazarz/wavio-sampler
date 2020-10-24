@@ -55,9 +55,8 @@ async (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    res.send(500).send('');
+    res.send(500).send('Server Error');
   }
-
 });
 
 // @route       PUT  api/users/:id
