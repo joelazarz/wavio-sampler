@@ -4,6 +4,7 @@ const auth = require('../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const Kit = require('../models/Kit');
+const Region = require('../models/Region');
 
 // @route       POST  api/kits
 // @desc        Create kit
@@ -116,6 +117,7 @@ router.delete('/:id', auth, async (req, res) => {
     };
 
     await Kit.findByIdAndRemove(req.params.id);
+    await Region.deleteMany({ kit: req.params.id })
 
     res.json({ msg: 'Kit removed' });
   } catch (err) {
