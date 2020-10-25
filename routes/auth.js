@@ -15,8 +15,9 @@ router.get('/', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user.id)
     .select('-password')
-    .populate('kits')
-    .populate('regions');
+    .populate({path: 'kits'})
+    .populate({path: 'regions'})
+    .exec();
 
     res.json(user);
   } catch (err) {
