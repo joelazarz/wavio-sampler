@@ -55,7 +55,10 @@ router.get('/', auth, async (req, res) => {
 // @access      private
 router.get('/:id', auth, async (req, res) => {
   try {
-    const kit = await Kit.findById(req.params.id);
+    const kit = await Kit.findById(req.params.id)
+    .populate({path: 'regions'})
+    .exec();
+
     res.json(kit);
   } catch (err) {
     console.error(err.message);
