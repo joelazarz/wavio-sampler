@@ -1,11 +1,17 @@
 const express = require('express');
 const router = express.Router();
 
+const Kit = require('../models/Kit');
+
 // @route       POST  api/kits
 // @desc        Create kit
 // @access      private
 router.post('/', (req, res) => {
   res.send('Create kit');
+
+  kit = new Kit({
+
+  });
 });
 
 // @route       GET  api/kits
