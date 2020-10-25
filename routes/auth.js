@@ -17,6 +17,7 @@ router.get('/', auth, async (req, res) => {
     .select('-password')
     .populate('kits')
     .populate('regions');
+
     res.json(user);
   } catch (err) {
     console.error(err.message);
