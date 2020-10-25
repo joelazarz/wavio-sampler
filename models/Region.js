@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const RegionSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'user'
   },
   name: {
     type: String,
@@ -11,7 +11,7 @@ const RegionSchema = mongoose.Schema({
   },
   kit: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Kit'
+    ref: 'kit'
   },
   start: {
     type: mongoose.Schema.Types.Decimal128,
@@ -27,4 +27,6 @@ const RegionSchema = mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Region', RegionSchema)
+const Region = mongoose.model('region', RegionSchema);
+
+module.exports = Region;

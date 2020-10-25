@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const KitSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'user'
   },
   name: {
     type: String,
@@ -14,14 +14,21 @@ const KitSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  regions: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Region'
-  }],
   date: {
     type: Date,
     default: Date.now
   }
 });
 
-module.exports = mongoose.model('Kit', KitSchema)
+KitSchema.virtual('regions', {
+  ref: 'region',
+  localField: '_id',
+  foreignField: 'kit'
+});
+
+KitSchema.set('toObject', { virtuals: true });
+KitSchema.set('toJSON', { virtuals: true });
+
+const Kit = mongoose.model('kit', KitSchema);
+
+module.exports = Kit;

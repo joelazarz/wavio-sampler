@@ -14,18 +14,27 @@ const UserSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  kits: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Kit'
-  }],
-  regions: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Region'
-  }],
   date: {
     type: Date,
     default: Date.now
   }
 });
 
-module.exports = mongoose.model('User', UserSchema)
+UserSchema.virtual('kits', {
+  ref: 'kit',
+  localField: '_id',
+  foreignField: 'user'
+});
+
+UserSchema.virtual('regions', {
+  ref: 'region',
+  localField: '_id',
+  foreignField: 'user'
+});
+
+UserSchema.set('toObject', { virtuals: true });
+UserSchema.set('toJSON', { virtuals: true });
+
+const User = mongoose.model('user', UserSchema);
+
+module.exports = User;

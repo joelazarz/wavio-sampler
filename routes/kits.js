@@ -40,29 +40,85 @@ async (req, res) => {
 // @route       GET  api/kits
 // @desc        Get all kits
 // @access      private
-router.get('/', (req, res) => {
-  res.send('Get all kits');
+router.get('/', auth, async (req, res) => {
+  try {
+    const kits = await Kit.find();
+    res.json(kits);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  };
 });
 
 // @route       GET  api/kits/:id
 // @desc        Get selected kit
 // @access      private
-router.get('/:id', (req, res) => {
-  res.send('Get selected kit');
+router.get('/:id', auth, async (req, res) => {
+  try {
+    const kit = await Kit.findById(req.params.id);
+    res.json(kit);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  };
 });
 
 // @route       PUT  api/kits/:id
 // @desc        Edit kit
 // @access      private
-router.put('/:id', (req, res) => {
-  res.send('Edit kit');
+router.put('/:id', auth, async (req, res) => {
+  const { name, sample } = req.body;
+
+  // Build kit object
+  const kitFields = {};
+  if(name) kitFields.name = name;
+  if(sample) kitFields.sample = sample;
+
+  try {
+    // Look for kit
+    let kit = await Kit.findById(req.params.id);
+
+    if(!kit) return res.status(404).json({ msg: 'Kit not found' });
+
+    // Check to see if kit belongs to user
+    if(kit.user.toString() !== req.user.id){
+      return res.status(401).json({ msg: 'Not authorized' });
+    };
+
+    kit = await Kit.findByIdAndUpdate(req.params.id, 
+      { $set: kitFields },   
+      { new: true }
+    );
+
+    res.json(kit);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  };
 });
 
 // @route       DELETE  api/kits/:id
 // @desc        Delete kit
 // @access      private
-router.delete('/:id', (req, res) => {
-  res.send('Delete kit');
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    // Look for kit
+    let kit = await Kit.findById(req.params.id);
+
+    if(!kit) return res.status(404).json({ msg: 'Kit not found' });
+
+    // Check to see if kit belongs to user
+    if(kit.user.toString() !== req.user.id){
+      return res.status(401).json({ msg: 'Not authorized' });
+    };
+
+    await Kit.findByIdAndRemove(req.params.id);
+
+    res.json({ msg: 'Kit removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  };
 });
 
 module.exports = router;
