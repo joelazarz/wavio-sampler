@@ -38,35 +38,6 @@ async (req, res) => {
   };
 });
 
-// @route       GET  api/kits
-// @desc        Get all kits
-// @access      private
-router.get('/', auth, async (req, res) => {
-  try {
-    const kits = await Kit.find();
-    res.json(kits);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
-  };
-});
-
-// @route       GET  api/kits/:id
-// @desc        Get selected kit
-// @access      private
-router.get('/:id', auth, async (req, res) => {
-  try {
-    const kit = await Kit.findById(req.params.id)
-    .populate({path: 'regions'})
-    .exec();
-
-    res.json(kit);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
-  };
-});
-
 // @route       PUT  api/kits/:id
 // @desc        Edit kit
 // @access      private
@@ -120,6 +91,35 @@ router.delete('/:id', auth, async (req, res) => {
     await Region.deleteMany({ kit: req.params.id })
 
     res.json({ msg: 'Kit removed' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  };
+});
+
+// @route       GET  api/kits
+// @desc        Get all kits
+// @access      private
+router.get('/', auth, async (req, res) => {
+  try {
+    const kits = await Kit.find();
+    res.json(kits);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  };
+});
+
+// @route       GET  api/kits/:id
+// @desc        Get selected kit
+// @access      private
+router.get('/:id', auth, async (req, res) => {
+  try {
+    const kit = await Kit.findById(req.params.id)
+    .populate({path: 'regions'})
+    .exec();
+
+    res.json(kit);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
