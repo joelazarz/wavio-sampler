@@ -50,7 +50,7 @@ router.delete('/:id', auth, async (req, res) => {
 
     if(!region) return res.status(404).json({ msg: 'Region not found' });
 
-    // Check to see if kit belongs to user
+    // Check to see if region belongs to user
     if(region.user.toString() !== req.user.id){
       return res.status(401).json({ msg: 'Not authorized' });
     };
