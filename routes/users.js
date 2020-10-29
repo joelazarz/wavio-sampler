@@ -90,7 +90,7 @@ async(req, res) => {
 
     if(!user) return res.status(404).json({ msg: 'User not found' });
 
-    // Check to see if kit belongs to user
+    // Check to see if the record belongs to user
     if(user._id.toString() !== req.user.id){
       return res.status(401).json({ msg: 'Not authorized' });
     };
