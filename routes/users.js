@@ -66,7 +66,7 @@ async (req, res) => {
 // @route       PUT  api/users/:id
 // @desc        Edit a user
 // @access      private
-router.put('/:id',[auth, [
+router.put('/:id', [auth, [
   check('username', 'Username must be at least 3 characters').isLength({ min: 3 }),
   check('email', 'Please include a valid email').isEmail()
 ]], 
