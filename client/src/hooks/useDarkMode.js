@@ -14,7 +14,7 @@ export const useDarkMode = () => {
       setMode('dark')
     } else {
       setMode('light')
-    }
+    };
   };
 
   useEffect(() => {
@@ -22,10 +22,10 @@ export const useDarkMode = () => {
     window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !localTheme ?
       setMode('dark') :
       localTheme ?
-        setTheme(localTheme) :
-        setMode('light');
-    setComponentMounted(true);
+      setTheme(localTheme) :
+      setMode('light');
+      setComponentMounted(true);
   }, []);
 
-  return [theme, toggleTheme, componentMounted]
+  return [theme, toggleTheme, componentMounted];
 };

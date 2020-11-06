@@ -7,7 +7,7 @@ import { GlobalStyles } from './css/global';
 import { Navbar } from './components/layout/Navbar';
 
 function App() {
-  const [values, handleChange] = useForm({ username: "", email: "" })
+  const [values, handleChange] = useForm({ username: "", email: "" });
 
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
@@ -27,16 +27,19 @@ function App() {
             name="username"
             value={values.username}
             onChange={handleChange}
-          />
+            placeholder="Username"
+            />
           <input
             name="email"
             value={values.email}
             onChange={handleChange}
+            placeholder="Email"
           />
         </div>
+
       </>
     </ThemeProvider>
   );
-}
+};
 
 export default App;
