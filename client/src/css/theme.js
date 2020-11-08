@@ -1,11 +1,11 @@
 export const lightTheme = {
-  nav: '#c4c9d4',
-  body: '#E2E2E2',
-  text: '#363537',
+  nav: 'hsl(230deg, 5%, 70%)',
+  body: 'hsl(230deg, 5%, 90%)',
+  text: 'hsl(230deg, 5%, 20%)',
 }
 
 export const darkTheme = {
-  nav: '#313c46',
-  body: '#363537',
-  text: '#FAFAFA',
+  nav: 'hsl(230deg, 25%, 16%)',
+  body: 'hsl(230deg, 20%, 11%)',
+  text: 'hsl(230deg, 10%, 80%)',
 }
