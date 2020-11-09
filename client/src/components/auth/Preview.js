@@ -5,11 +5,12 @@ grid-row-start: 2;
 grid-row-end: 4;
 /* height: 30vh; */
 font-size: 3em;
-grid-column-start: 5;
-grid-column-end: 8;
+grid-column-start: 9;
+grid-column-end: 15;
 margin: 1rem;
 display: flex;
 justify-content: center;
+place-items: center;
 `
 
 const Preview = () => {
