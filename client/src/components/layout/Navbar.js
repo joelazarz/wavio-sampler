@@ -7,6 +7,7 @@ font-size: 12px;
 font-weight: 600;
 position: fixed; 
 top: 0; 
+max-height: 2.5rem;
 width: 100%;
 display: flex;
 justify-content: space-between;
@@ -16,7 +17,6 @@ padding: 0.5em;
 const ToggleButton = styled.button`
 background: transparent;
 color: ${({ theme }) => theme.text};
-background-color: rgba(255, 255, 255, 0.16);
 border-radius: 0.25rem;
 border-width: 0;
 display: inline-flex;
@@ -35,8 +35,11 @@ outline: none;
 height: 1.5rem;
 min-width: 1.5rem;
 font-size: 11px;
-background-color: rgba(255, 255, 255, 0.08);
+background-color: rgba(255, 255, 255, 0.2);
 padding: 0px;
+&:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
 `
 
 export const Navbar = ({ toggleTheme }) => {
