@@ -1,9 +1,14 @@
+import SampleStation from './SampleStation';
+import SampleControls from './SampleControls';
+import SampleTweak from './SampleTweak';
 
 const Kit = () => {
   return (
-    <div>
-      Kit
-    </div>
+    <>
+    <SampleControls />
+    <SampleStation />
+    <SampleTweak/>
+    </>
   )
 }
 

@@ -27,8 +27,8 @@ function App() {
   padding: 2.5rem 0rem 0rem 0rem;
 
   display: grid;
-  grid-template-columns: repeat(16, minmax(10px, 1fr));
-  grid-template-rows: repeat(16, minmax(10px, 1fr));
+  grid-template-columns: repeat(16, minmax(10px, auto));
+  grid-template-rows: repeat(16, minmax(10px, auto));
   gap: 0px 0px;
   `
 
