@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import {ReactComponent as PlayIcon} from '../../css/icons/play.svg'
+import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg'
+import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
 
 const LoopPlaybackCotrols = styled.div`
   grid-row-start: 4;
@@ -9,12 +12,20 @@ const LoopPlaybackCotrols = styled.div`
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 0.25em;
   margin: 1rem;
+  display: flex;
+  place-items: center;
+  padding: 0rem 1rem;
+  & > svg {
+    margin: 0rem 0.5rem;
+  }
 `
 
 const LoopPlayback = () => {
   return (
     <LoopPlaybackCotrols>
-
+      <PlayIcon style={{height:'0.8rem', width: '0.8rem', fill: 'lightgreen'}}/>
+      <PauseIcon style={{height:'0.8rem', width: '0.8rem', fill: 'lightblue'}}/>
+      <StopIcon style={{height:'0.8rem', width: '0.8rem', fill: 'red'}}/>
     </LoopPlaybackCotrols>
   )
 }

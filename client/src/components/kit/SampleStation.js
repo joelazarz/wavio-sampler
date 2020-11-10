@@ -1,3 +1,6 @@
+import SamplePlayback from './SamplePlayback';
+import SampleControl from './SampleControl';
+
 import WaveSurfer from 'wavesurfer.js';
 import RegionPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.regions.min.js';
 import { useEffect, useRef } from 'react';
@@ -14,11 +17,11 @@ const SampleContainer = styled.div`
 `
 
 const SampleStation = () => {
-
   const sampleformRef = useRef();
+  const sampleWave = useRef();
 
   useEffect(() => {
-    const sampleWave = WaveSurfer.create({
+    sampleWave.current = WaveSurfer.create({
       container: sampleformRef.current,
       waveColor: 'white',
       progressColor: '#B8D6DA',
@@ -36,11 +39,26 @@ const SampleStation = () => {
       ]
     });
 
-    sampleWave.load('https://ia802805.us.archive.org/18/items/cd_studio-one-showcase-vol.-1_various-artists-alton-ellis-cornel-campbel/disc1/10.%20Johnny%20Osbourne%20-%20All%20I%20Have%20Is%20Love_sample.mp3')
+    sampleWave.current.load('https://ia802805.us.archive.org/18/items/cd_studio-one-showcase-vol.-1_various-artists-alton-ellis-cornel-campbel/disc1/10.%20Johnny%20Osbourne%20-%20All%20I%20Have%20Is%20Love_sample.mp3');
   }, []);
 
+  const playSample = () => {
+    sampleWave.current.play();
+  };
+
+  const stopSample = () => {
+    sampleWave.current.stop();
+  };
+
   return (
+    <>
+    <SamplePlayback 
+    playSample={playSample}
+    stopSample={stopSample}
+    />
     <SampleContainer ref={sampleformRef}></SampleContainer>
+    <SampleControl />
+    </>
   );
 };
 
