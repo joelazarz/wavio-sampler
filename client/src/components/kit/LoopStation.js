@@ -1,6 +1,6 @@
 import WaveSurfer from 'wavesurfer.js';
 import RegionPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.regions.min.js';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 const LoopContainer = styled.div`
@@ -14,10 +14,12 @@ const LoopContainer = styled.div`
 
 const LoopStation = () => {
 
+  const loopformRef = useRef();
+
   useEffect(() => {
     const loopWave = WaveSurfer.create({
-      container: '#loop-wave',
-      waveColor: 'rgb(193, 193, 193)',
+      container: loopformRef.current,
+      waveColor: 'white',
       progressColor: '#B8D6DA',
       height: 180,
       cursorColor: 'orange',
@@ -31,13 +33,13 @@ const LoopStation = () => {
           regions: []
         })
       ]
-    }, []);
+    });
 
     loopWave.load('https://ia802805.us.archive.org/18/items/cd_studio-one-showcase-vol.-1_various-artists-alton-ellis-cornel-campbel/disc1/10.%20Johnny%20Osbourne%20-%20All%20I%20Have%20Is%20Love_sample.mp3')
-  });
+  }, []);
 
   return (
-    <LoopContainer id="loop-wave"></LoopContainer>
+    <LoopContainer ref={loopformRef}></LoopContainer>
   );
 };
 

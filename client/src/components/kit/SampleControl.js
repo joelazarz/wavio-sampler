@@ -7,7 +7,7 @@ const SampleControlContainer = styled.div`
   grid-column-end: 17;
   margin-top: 1rem;
   border-radius: 6px;
-  background-color: lightblue;
+  background-color: ${({ theme }) => theme.paneBackground};
 `
 
 const SampleControl = () => {
