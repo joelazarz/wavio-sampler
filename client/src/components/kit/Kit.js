@@ -1,13 +1,21 @@
+import Dock from './Dock';
+import SamplePlayback from './SamplePlayback';
 import SampleStation from './SampleStation';
-import SampleControls from './SampleControls';
-import SampleTweak from './SampleTweak';
+import SampleControl from './SampleControl';
+import LoopPlayback from './LoopPlayback';
+import LoopStation from './LoopStation';
+import LoopControl from './LoopControl';
 
 const Kit = () => {
   return (
     <>
-    <SampleControls />
+    <Dock />
+    <SamplePlayback />
     <SampleStation />
-    <SampleTweak/>
+    <SampleControl/>
+    <LoopPlayback />
+    <LoopStation />
+    <LoopControl />
     </>
   )
 }
