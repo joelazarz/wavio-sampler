@@ -6,9 +6,10 @@ import styled from 'styled-components';
 const SampleContainer = styled.div`
   grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 2;
-  grid-column-end: 16;
+  grid-column-start: 4;
+  grid-column-end: 14;
   padding-right: 2rem;
+  padding-left: 2rem;
 `
 
 const SampleStation = () => {
@@ -33,11 +34,11 @@ const SampleStation = () => {
     }, []);
 
     sampleWave.load('https://ia802805.us.archive.org/18/items/cd_studio-one-showcase-vol.-1_various-artists-alton-ellis-cornel-campbel/disc1/10.%20Johnny%20Osbourne%20-%20All%20I%20Have%20Is%20Love_sample.mp3')
-  })
+  });
 
   return (
     <SampleContainer id="sample-wave"></SampleContainer>
-  )
+  );
 };
 
 export default SampleStation;
