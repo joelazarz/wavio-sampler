@@ -8,8 +8,8 @@ const Container = styled.div`
   margin: 0rem 1rem 1rem 1rem;
   padding: 2.5rem 0rem 0rem 0rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10px, auto));
-  grid-template-rows: repeat(16, minmax(10px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(12px, auto));
+  grid-template-rows: repeat(16, minmax(12px, auto));
   gap: 0px 0px;
 `
 

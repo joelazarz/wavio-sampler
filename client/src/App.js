@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { ThemeProvider } from 'styled-components';
-import { useDarkMode } from './hooks/useDarkMode';
+// styling
 import { lightTheme, darkTheme } from './css/theme';
 import { GlobalStyles } from './css/global';
 import Container from './css/container'
@@ -9,6 +8,10 @@ import { Navbar } from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Kit from './components/kit/Kit';
+// context & hooks
+import { ThemeProvider } from 'styled-components';
+import { useDarkMode } from './hooks/useDarkMode';
+import AuthState from './context/auth/AuthState';
 
 const App = () => {
 
@@ -20,21 +23,23 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={themeMode}>
-      <Router>
-        <>
-        <GlobalStyles />
-          <Navbar toggleTheme={toggleTheme} />
-          <Container>
-            <Switch>
-              <Route exact path='/' component={Kit} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/register' component={Register} />
-            </Switch>
-          </Container>
-        </>
-      </Router>
-    </ThemeProvider>
+    <AuthState>
+      <ThemeProvider theme={themeMode}>
+        <Router>
+          <>
+          <GlobalStyles />
+            <Navbar toggleTheme={toggleTheme} />
+            <Container>
+              <Switch>
+                <Route exact path='/' component={Kit} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/register' component={Register} />
+              </Switch>
+            </Container>
+          </>
+        </Router>
+      </ThemeProvider>
+    </AuthState>
   );
 };
 

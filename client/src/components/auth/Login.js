@@ -1,3 +1,4 @@
+import { useForm } from '../../hooks/useForm';
 import { AuthForm,
   AuthFormInput, 
   AuthFormLabel, 
@@ -6,14 +7,28 @@ import { AuthForm,
 import Preview from './Preview';
 
 const Login = () => {
+  const [values, handleChange] = useForm({email: '', password: ''})
+
   return (
     <>
     <AuthForm>
       <AuthFormTitle>Login</AuthFormTitle>
       <AuthFormLabel htmlFor='email'>Email Address</AuthFormLabel>
-      <AuthFormInput type="email" required></AuthFormInput>
+      <AuthFormInput
+      name="email" 
+      type="email" 
+      value={values.email}
+      onChange={handleChange}
+      required
+      />
       <AuthFormLabel htmlFor='email'>Password</AuthFormLabel>
-      <AuthFormInput type="password" required></AuthFormInput>
+      <AuthFormInput
+      name="password"
+      type="password" 
+      value={values.password}
+      onChange={handleChange}
+      required
+      />
       <AuthFormButton type="submit" value='Login'></AuthFormButton>
     </AuthForm>
     <Preview />

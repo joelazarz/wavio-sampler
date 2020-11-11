@@ -4,9 +4,10 @@ export const AuthForm = styled.form`
 grid-row-start: 2;
 grid-row-end: 6;
 /* height: 30vh; */
+min-width: 12rem;
 grid-column-start: 2;
-grid-column-end: 8;
-margin: 1rem 1rem;
+grid-column-end: 6;
+margin: 1rem 5rem;
 display: flex;
 flex-direction: column;
 /* justify-content: center; */
