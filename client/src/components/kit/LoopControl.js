@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TitleContainer } from '../../css/TitleContainer';
 
 const LoopControlContainer = styled.div`
   grid-row-start: 4;
@@ -14,7 +15,7 @@ const LoopControl = () => {
 
   return (
     <LoopControlContainer>
-
+      <TitleContainer>Loop Control</TitleContainer>
     </LoopControlContainer>
   );
 };

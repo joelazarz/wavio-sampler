@@ -9,8 +9,8 @@ import styled from 'styled-components';
 const LoopContainer = styled.div`
   grid-row-start: 5;
   grid-row-end: 6;
-  grid-column-start: 4;
-  grid-column-end: 14;
+  grid-column-start: 5;
+  grid-column-end: 13;
   padding-right: 2rem;
   padding-left: 2rem;
 `
@@ -41,10 +41,28 @@ const LoopStation = () => {
     loopWave.current.load('https://ia802805.us.archive.org/18/items/cd_studio-one-showcase-vol.-1_various-artists-alton-ellis-cornel-campbel/disc1/10.%20Johnny%20Osbourne%20-%20All%20I%20Have%20Is%20Love_sample.mp3')
   }, []);
 
+  const playLoop = () => {
+    loopWave.current.play();
+  };
+
+  const stopLoop = () => {
+    loopWave.current.stop();
+  };
+
+  const pauseLoop = () => {
+    loopWave.current.playPause();
+  };
+
   return (
     <>
-    <LoopPlayback />
-    <LoopContainer ref={loopformRef}></LoopContainer>
+    <LoopPlayback
+    playLoop={playLoop}
+    stopLoop={stopLoop}
+    pauseLoop={pauseLoop}
+    />
+    <LoopContainer 
+    ref={loopformRef} 
+    />
     <LoopControl />
     </>
   );

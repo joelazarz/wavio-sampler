@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { TitleContainer } from '../../css/TitleContainer';
 
 const DockContainer = styled.div`
   grid-row-start: 1;
@@ -13,7 +14,7 @@ const DockContainer = styled.div`
 const Dock = () => {
   return (
     <DockContainer>
-      
+      <TitleContainer>Social</TitleContainer>
     </DockContainer>
   )
 }

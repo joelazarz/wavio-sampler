@@ -6,8 +6,8 @@ import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
 const LoopPlaybackCotrols = styled.div`
   grid-row-start: 4;
   grid-row-end: 5;
-  grid-column-start: 4;
-  grid-column-end: 14;
+  grid-column-start: 5;
+  grid-column-end: 13;
   height: 1.5rem;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 0.25em;
@@ -17,15 +17,33 @@ const LoopPlaybackCotrols = styled.div`
   padding: 0rem 1rem;
   & > svg {
     margin: 0rem 0.5rem;
+    height:0.8rem; 
+    width: 0.8rem;
   }
 `
 
-const LoopPlayback = () => {
+const LoopPlayback = ({ ...props }) => {
+
+  const { 
+    playLoop, 
+    stopLoop, 
+    pauseLoop 
+  } = props;
+
   return (
     <LoopPlaybackCotrols>
-      <PlayIcon style={{height:'0.8rem', width: '0.8rem', fill: 'lightgreen'}}/>
-      <PauseIcon style={{height:'0.8rem', width: '0.8rem', fill: 'lightblue'}}/>
-      <StopIcon style={{height:'0.8rem', width: '0.8rem', fill: 'red'}}/>
+      <PlayIcon 
+      onClick={playLoop} 
+      style={{fill: 'lightgreen'}}
+      />
+      <PauseIcon 
+      onClick={pauseLoop} 
+      style={{fill: 'lightblue'}}
+      />
+      <StopIcon 
+      onClick={stopLoop} 
+      style={{fill: 'red'}}
+      />
     </LoopPlaybackCotrols>
   )
 }
