@@ -10,6 +10,6 @@ const Kit = () => {
     <LoopStation />
     </>
   )
-}
+};
 
-export default Kit
+export default Kit;

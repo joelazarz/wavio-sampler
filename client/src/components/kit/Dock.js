@@ -17,6 +17,6 @@ const Dock = () => {
       <TitleContainer>Social</TitleContainer>
     </DockContainer>
   )
-}
+};
 
-export default Dock
+export default Dock;

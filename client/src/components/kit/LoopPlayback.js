@@ -46,6 +46,6 @@ const LoopPlayback = ({ ...props }) => {
       />
     </LoopPlaybackCotrols>
   )
-}
+};
 
-export default LoopPlayback
+export default LoopPlayback;
