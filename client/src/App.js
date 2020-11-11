@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { lightTheme, darkTheme } from './css/theme';
 import { GlobalStyles } from './css/global';
 import Container from './css/container'
-// componenets
+// components
 import { Navbar } from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
