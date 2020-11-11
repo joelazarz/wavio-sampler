@@ -10,8 +10,8 @@ import styled from 'styled-components';
 const SampleContainer = styled.div`
   grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 4;
-  grid-column-end: 14;
+  grid-column-start: 5;
+  grid-column-end: 13;
   padding-right: 2rem;
   padding-left: 2rem;
 `
@@ -50,13 +50,31 @@ const SampleStation = () => {
     sampleWave.current.stop();
   };
 
+  const pauseSample = () => {
+    sampleWave.current.playPause();
+  };
+
+  const rateSlider = (val) => {
+    sampleWave.current.setPlaybackRate(val);
+  };
+
+  const zoomSlider = (val) => {
+    sampleWave.current.zoom(val);
+  };
+
+
   return (
     <>
     <SamplePlayback 
     playSample={playSample}
     stopSample={stopSample}
+    pauseSample={pauseSample}
+    rateSlider={rateSlider}
+    zoomSlider={zoomSlider}
     />
-    <SampleContainer ref={sampleformRef}></SampleContainer>
+    <SampleContainer 
+    ref={sampleformRef} 
+    />
     <SampleControl />
     </>
   );
