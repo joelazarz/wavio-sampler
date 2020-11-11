@@ -7,11 +7,23 @@ import { AuthForm,
 import Preview from './Preview';
 
 const Login = () => {
-  const [values, handleChange] = useForm({email: '', password: ''})
+  const [values, handleChange] = useForm({email: '', password: ''});
+
+  const { email, password } = values;
+
+  const onSubmit = e => {
+    e.preventDefault();
+    if (email === '' || password === '') {
+      // set alert
+      console.log('set alert for failed login');
+    } else {
+      // login
+    };
+  };
 
   return (
     <>
-    <AuthForm>
+    <AuthForm onSubmit={onSubmit}>
       <AuthFormTitle>Login</AuthFormTitle>
       <AuthFormLabel htmlFor='email'>Email Address</AuthFormLabel>
       <AuthFormInput
@@ -29,7 +41,7 @@ const Login = () => {
       onChange={handleChange}
       required
       />
-      <AuthFormButton type="submit" value='Login'></AuthFormButton>
+      <AuthFormButton type="submit" value='login'/>
     </AuthForm>
     <Preview />
     </>
