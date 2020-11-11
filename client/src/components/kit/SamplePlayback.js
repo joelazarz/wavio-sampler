@@ -84,7 +84,7 @@ const SamplePlayback = ({ ...props }) => {
           <ZoomSlider
           className="slider"
           type="range"
-          min="1"
+          min="0"
           max="250"
           step="0.5"
           onChange={(e) => zoomSlider(e.target.value)}
