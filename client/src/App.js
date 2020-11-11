@@ -8,13 +8,19 @@ import { Navbar } from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Kit from './components/kit/Kit';
+import PrivateRoute from './components/routing/PrivateRoute';
 // context & hooks
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
 import AuthState from './context/auth/AuthState';
+// setAuthToken
+import setAuthToken from './utils/setAuthToken';
+
+if(localStorage.token) {
+  setAuthToken(localStorage.token);
+};
 
 const App = () => {
-
   const [theme, toggleTheme, componentMounted] = useDarkMode();
   const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
@@ -31,7 +37,7 @@ const App = () => {
             <Navbar toggleTheme={toggleTheme} />
             <Container>
               <Switch>
-                <Route exact path='/' component={Kit} />
+                <PrivateRoute exact path='/' component={Kit} />
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Register} />
               </Switch>

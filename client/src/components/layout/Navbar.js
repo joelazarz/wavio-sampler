@@ -1,4 +1,7 @@
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
+import AuthContext from '../../context/auth/authContext';
 
 const Nav = styled.nav`
 background-color: ${({ theme }) => theme.nav};
@@ -43,9 +46,36 @@ padding: 0px;
 `
 
 export const Navbar = ({ toggleTheme }) => {
+  const authContext = useContext(AuthContext);
+
+  const { isAuthenticated, logout, user } = authContext;
+
+  const onLogout = () => {
+    logout();
+  };
+
+  const authLinks = (
+    <>
+    <span>Hello { user && user.username}</span>
+    <a onClick={onLogout} href="#!">
+          <span>Logout</span>
+        </a>
+    </>
+  );
+
+  const guestLinks = (
+    <>
+      <Link to='/register'>Register</Link>
+      <Link to='/login'>Login</Link>
+    </>
+  );
+
   return (
     <Nav>
-      Wavio Sampler
+      <li>Wavio Sampler</li>
+      <div>
+      {isAuthenticated ? authLinks : guestLinks}
+      </div>
       <ToggleButton onClick={toggleTheme}>t</ToggleButton>
     </Nav>
   )

@@ -1,5 +1,5 @@
 import { useForm } from '../../hooks/useForm';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
 import { AuthForm,
   AuthFormInput, 
@@ -8,10 +8,23 @@ import { AuthForm,
   AuthFormTitle } from '../../css/authForm';
 import Preview from './Preview';
 
-const Register = () => {
+const Register = (props) => {
   const authContext = useContext(AuthContext);
 
-  const { register } = authContext;
+  const { register, error, clearErrors, isAuthenticated } = authContext;
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      props.history.push('/');
+    };
+
+    if(error === 'User already exists') {
+      console.log(error);
+      // setAlert 
+      clearErrors();
+    };
+    // eslint-disable-next-line
+  }, [error, isAuthenticated, props.history]);
 
   const [values, handleChange] = useForm({username:'', email: '', password: ''});
 
