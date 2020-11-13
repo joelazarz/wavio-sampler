@@ -9,3 +9,6 @@ export const EDIT_USER = 'EDIT_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+//Kit
+export const WAVE_COLOR = 'WAVE_COLOR'

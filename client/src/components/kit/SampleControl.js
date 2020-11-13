@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { TitleContainer } from '../../css/TitleContainer';
+//
+import SampleColorPicker from '../kitUtils/SampleColorPicker';
 
 const SampleControlContainer = styled.div`
   grid-row-start: 1;
@@ -16,6 +18,7 @@ const SampleControl = () => {
   return (
     <SampleControlContainer>
       <TitleContainer>Region Control</TitleContainer>
+      <SampleColorPicker />
     </SampleControlContainer>
   );
 };

@@ -1,6 +1,7 @@
 // context
 import { useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
+import KitState from '../../context/kit/KitState';
 // components
 import Dock from './Dock';
 import SampleStation from './SampleStation';
@@ -15,11 +16,13 @@ const Kit = () => {
   }, []);
 
   return (
-    <>
-    <Dock />
-    <SampleStation />
-    <LoopStation />
-    </>
+    <KitState>
+      <>
+        <Dock />
+        <SampleStation />
+        <LoopStation />
+      </>
+    </KitState>
   )
 };
 

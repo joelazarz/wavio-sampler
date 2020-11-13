@@ -13,6 +13,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
 import AuthState from './context/auth/AuthState';
+// import KitState from './context/kit/KitState';
 // setAuthToken
 import setAuthToken from './utils/setAuthToken';
 
@@ -30,21 +31,23 @@ const App = () => {
 
   return (
     <AuthState>
-      <ThemeProvider theme={themeMode}>
-        <Router>
-          <>
-          <GlobalStyles />
-            <Navbar toggleTheme={toggleTheme} />
-            <Container>
-              <Switch>
-                <PrivateRoute exact path='/' component={Kit} />
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/register' component={Register} />
-              </Switch>
-            </Container>
-          </>
-        </Router>
-      </ThemeProvider>
+      {/* <KitState> */}
+        <ThemeProvider theme={themeMode}>
+          <Router>
+            <>
+            <GlobalStyles />
+              <Navbar toggleTheme={toggleTheme} />
+              <Container>
+                <Switch>
+                  <PrivateRoute exact path='/' component={Kit} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/register' component={Register} />
+                </Switch>
+              </Container>
+            </>
+          </Router>
+        </ThemeProvider>
+      {/* </KitState> */}
     </AuthState>
   );
 };
