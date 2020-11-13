@@ -10,6 +10,8 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
+  EDIT_USER,
+  DELETE_USER,
   LOGOUT,
   CLEAR_ERRORS
 } from '../types';
@@ -96,6 +98,16 @@ const AuthState = props => {
   // Logout User
   const logout = () => dispatch({ type: LOGOUT });
 
+  // Edit User
+  const editUser = async formData => {
+    console.log(formData);
+  };
+
+  // Delete User
+  const deleteUser = async () => {
+    console.log('Delete User');
+  };
+
   // Clear Errors
   const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
 
@@ -112,6 +124,8 @@ const AuthState = props => {
       register,
       login,
       logout,
+      editUser,
+      deleteUser,
       clearErrors
     }}
     >
