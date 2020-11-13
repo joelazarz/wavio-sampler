@@ -18,10 +18,10 @@ const SampleColorPicker = () => {
 
   const pickerRef = useRef();
 
-  const hex2rgba = (hex,a) => `rgb(${hex.substr(1).match(/../g).map(x=>+`0x${x}`)},${a})`;
+  const hex2rgba = (hex,a) => `rgba(${hex.substr(1).match(/../g).map(x=>+`0x${x}`)},${a})`;
 
   const changeHandler = (colorObj) => {
-    setWaveformColor(hex2rgba(colorObj.color, 100));
+    setWaveformColor(hex2rgba(colorObj.color, 1));
   };
 
   return (
@@ -30,6 +30,7 @@ const SampleColorPicker = () => {
       <ColorPicker 
         ref={pickerRef}
         color={waveformColor}
+        defaultColor={waveformColor}
         enableAlpha={false}
         onChange={changeHandler}
         mode={'RGB'}

@@ -29,7 +29,7 @@ const SampleStation = () => {
   useEffect(() => {
     sampleWave.current = WaveSurfer.create({
       container: sampleformRef.current,
-      // waveColor: 'white',
+      waveColor: 'white',
       progressColor: '#B8D6DA',
       height: 180,
       cursorColor: 'orange',
@@ -49,7 +49,13 @@ const SampleStation = () => {
   }, []);
 
   useEffect(() => {
+    // let progressColor = waveformColor.replace(/[\d\.]+\)$/g, '0.3)');
     sampleWave.current.setWaveColor(waveformColor);
+    sampleWave.current.setProgressColor(waveformColor);
+    // console.table({
+    //   'Waveform Color': waveformColor,
+    //   "Progress Color": progressColor
+    // });
   }, [waveformColor]);
 
   const playSample = () => {
