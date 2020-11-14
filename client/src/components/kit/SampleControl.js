@@ -17,7 +17,7 @@ const SampleControl = () => {
 
   return (
     <SampleControlContainer>
-      <TitleContainer>Region Control</TitleContainer>
+      <TitleContainer>Options</TitleContainer>
       <SampleColorPicker />
     </SampleControlContainer>
   );

@@ -73,8 +73,8 @@ const SamplePlayback = ({ ...props }) => {
           <RateSlider
           className="slider"
           type="range"
-          min="0.25"
-          max="1.75"
+          min="0.50"
+          max="1.50"
           step="0.05"
           onChange={(e) => rateSlider(e.target.value)}
           />

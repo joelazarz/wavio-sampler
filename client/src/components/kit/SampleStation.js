@@ -20,7 +20,6 @@ const SampleContainer = styled.div`
 
 const SampleStation = () => {
   const kitContext = useContext(KitContext);
-
   const { waveformColor } = kitContext;
 
   const sampleformRef = useRef();
@@ -45,17 +44,13 @@ const SampleStation = () => {
       ]
     });
 
-    sampleWave.current.load('https://ia802805.us.archive.org/18/items/cd_studio-one-showcase-vol.-1_various-artists-alton-ellis-cornel-campbel/disc1/10.%20Johnny%20Osbourne%20-%20All%20I%20Have%20Is%20Love_sample.mp3');
+    sampleWave.current.load('https://ia800104.us.archive.org/9/items/cd_my-love-is-your-love_whitney-houston-whitney-houston-feat.-fait/disc1/03.%20Whitney%20Houston%20-%20My%20Love%20Is%20Your%20Love_sample.mp3');
   }, []);
 
   useEffect(() => {
     // let progressColor = waveformColor.replace(/[\d\.]+\)$/g, '0.3)');
     sampleWave.current.setWaveColor(waveformColor);
     sampleWave.current.setProgressColor(waveformColor);
-    // console.table({
-    //   'Waveform Color': waveformColor,
-    //   "Progress Color": progressColor
-    // });
   }, [waveformColor]);
 
   const playSample = () => {

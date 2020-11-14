@@ -4,12 +4,14 @@ import KitContext from './kitContext';
 import kitReducer from './kitReducer';
 // import types
 import {
-  WAVE_COLOR
+  WAVE_COLOR,
+  LOOP_COLOR
 } from '../types';
 
 const KitState = props => {
   const initialState ={
-    waveformColor: 'rgb(255, 255, 255, 100)'
+    waveformColor: 'rgb(255, 255, 255, 100)',
+    loopColor: 'rgb(255, 255, 255, 100)'
   };
 
   const [state, dispatch] = useReducer(kitReducer, initialState);
@@ -36,11 +38,21 @@ const KitState = props => {
     });
   };
 
+  // Loop Color
+  const setLoopColor = (color) => {
+    dispatch({
+      type: LOOP_COLOR,
+      payload: color
+    });
+  };
+
   return (
     <KitContext.Provider
     value={{
       waveformColor: state.waveformColor,
+      loopColor: state.loopColor,
       setWaveformColor,
+      setLoopColor,
     }}
     >
       {props.children}

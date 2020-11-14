@@ -11,4 +11,5 @@ export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 //Kit
-export const WAVE_COLOR = 'WAVE_COLOR'
+export const WAVE_COLOR = 'WAVE_COLOR';
+export const LOOP_COLOR = 'LOOP_COLOR';

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { TitleContainer } from '../../css/TitleContainer';
+//
+import LoopColorPicker from '../kitUtils/LoopColorPicker';
 
 const LoopControlContainer = styled.div`
   grid-row-start: 4;
@@ -16,6 +18,7 @@ const LoopControl = () => {
   return (
     <LoopControlContainer>
       <TitleContainer>Loop Control</TitleContainer>
+      <LoopColorPicker />
     </LoopControlContainer>
   );
 };

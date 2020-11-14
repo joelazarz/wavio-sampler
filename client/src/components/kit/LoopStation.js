@@ -1,9 +1,11 @@
 import LoopPlayback from './LoopPlayback';
 import LoopControl from './LoopControl';
 
+import KitContext from '../../context/kit/kitContext';
+
 import WaveSurfer from 'wavesurfer.js';
 import RegionPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.regions.min.js';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import styled from 'styled-components';
 
 const LoopContainer = styled.div`
@@ -16,6 +18,9 @@ const LoopContainer = styled.div`
 `
 
 const LoopStation = () => {
+  const kitContext = useContext(KitContext);
+  const { loopColor } = kitContext;
+
   const loopformRef = useRef();
   const loopWave = useRef();
 
@@ -40,6 +45,12 @@ const LoopStation = () => {
 
     loopWave.current.load('https://ia802805.us.archive.org/18/items/cd_studio-one-showcase-vol.-1_various-artists-alton-ellis-cornel-campbel/disc1/10.%20Johnny%20Osbourne%20-%20All%20I%20Have%20Is%20Love_sample.mp3')
   }, []);
+
+  useEffect(() => {
+    // let progressColor = waveformColor.replace(/[\d\.]+\)$/g, '0.3)');
+    loopWave.current.setWaveColor(loopColor);
+    loopWave.current.setProgressColor(loopColor);
+  }, [loopColor]);
 
   const playLoop = () => {
     loopWave.current.play();
