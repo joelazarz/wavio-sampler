@@ -36,7 +36,7 @@ const RegionCreator = () => {
       loop: false,
       color: `rgb(${r}, ${g}, ${b}, 0.4)`,
       attributes: {
-        label: "[1]"
+        label: '[1]'
       }
     };
 

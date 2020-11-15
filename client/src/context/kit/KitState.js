@@ -28,7 +28,7 @@ const KitState = props => {
 
   // Delete kit
 
-  // Add Region to state in RegionCreator.js
+  // Add Region to sample waveform - RegionCreator.js
   const addRegion = (region) => {
     dispatch({
       type: ADD_REGION,
@@ -36,9 +36,9 @@ const KitState = props => {
     });
   };
 
-  // Create region
+  // Create region in db
 
-  // Delete region
+  // Delete region from db
 
   // Waveform Color
   const setWaveformColor = (color) => {

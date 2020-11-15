@@ -54,7 +54,7 @@ const SampleStation = () => {
       return;
     };
   /*logic for component did update*/
-    const region = sampleRegions[sampleRegions.length - 1]
+    const region = sampleRegions[sampleRegions.length - 1];
     sampleWave.current.addRegion(region);
   }, [sampleRegions]);
 
@@ -63,6 +63,21 @@ const SampleStation = () => {
     sampleWave.current.setWaveColor(waveformColor);
     sampleWave.current.setProgressColor(waveformColor);
   }, [waveformColor]);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    };
+
+    sampleWave.current.on('region-mouseenter', (e) => {
+      console.log('hover:', e);
+    });
+
+    sampleWave.current.on('region-click', (e) => {
+      console.log('clicked:', e);
+    });
+  }, []);
 
   const playSample = () => {
     sampleWave.current.play();
