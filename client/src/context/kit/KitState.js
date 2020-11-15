@@ -5,13 +5,19 @@ import kitReducer from './kitReducer';
 // import types
 import {
   ADD_REGION,
+  HOVER_REGION,
+  CLICK_REGION,
+  CLEAR_CLICK,
   WAVE_COLOR,
-  LOOP_COLOR
+  LOOP_COLOR,
+  CLEAR_HOVER
 } from '../types';
 
 const KitState = props => {
   const initialState = {
     sampleRegions: [],
+    hoverRegion: null,
+    clickRegion: null,
     waveformColor: 'rgb(255, 255, 255, 100)',
     loopColor: 'rgb(255, 255, 255, 100)'
   };
@@ -34,6 +40,30 @@ const KitState = props => {
       type: ADD_REGION,
       payload: region
     });
+  };
+
+  // Hover region 
+  const setHoverRegion = (region) => {
+    dispatch({
+      type: HOVER_REGION,
+      payload: region
+    });
+  };
+
+  const clearHoverRegion = () => {
+    dispatch({ type: CLEAR_HOVER });
+  };
+
+  // Click region
+  const setClickRegion = (region) => {
+    dispatch({
+      type: CLICK_REGION,
+      payload: region
+    });
+  };
+
+  const clearClickRegion = () => {
+    dispatch({ type: CLEAR_CLICK });
   };
 
   // Create region in db
@@ -61,6 +91,12 @@ const KitState = props => {
     value={{
       sampleRegions: state.sampleRegions,
       addRegion,
+      hoverRegion: state.hoverRegion,
+      clickRegion: state.clickRegion,
+      setHoverRegion,
+      setClickRegion,
+      clearHoverRegion,
+      clearClickRegion,
       waveformColor: state.waveformColor,
       loopColor: state.loopColor,
       setWaveformColor,

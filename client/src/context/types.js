@@ -11,6 +11,10 @@ export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 //Kit
-export const ADD_REGION = 'ADD_REGION'
+export const ADD_REGION = 'ADD_REGION';
+export const HOVER_REGION = 'HOVER_REGION';
+export const CLEAR_HOVER = 'CLEAR_HOVER';
+export const CLICK_REGION = 'CLICK_REGION';
+export const CLEAR_CLICK = 'CLEAR_CLICK';
 export const WAVE_COLOR = 'WAVE_COLOR';
 export const LOOP_COLOR = 'LOOP_COLOR';

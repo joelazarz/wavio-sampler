@@ -20,7 +20,13 @@ const SampleContainer = styled.div`
 
 const SampleStation = () => {
   const kitContext = useContext(KitContext);
-  const { sampleRegions, waveformColor } = kitContext;
+  const { 
+    sampleRegions, 
+    waveformColor,
+    setHoverRegion,
+    setClickRegion,
+    clearHoverRegion,
+  } = kitContext;
 
   const sampleformRef = useRef();
   const sampleWave = useRef();
@@ -72,14 +78,25 @@ const SampleStation = () => {
 
     sampleWave.current.on('region-mouseenter', (e) => {
       console.log('hover:', e);
+      setHoverRegion(e)
+    });
+
+    sampleWave.current.on('region-mouseleave', (e) => {
+      clearHoverRegion()
     });
 
     sampleWave.current.on('region-click', (e) => {
       console.log('clicked:', e);
+      setClickRegion(e)
     });
   }, []);
 
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    };
+    
     window.addEventListener('keydown', (e) => {
       sampleWave.current.regions.list[e.key].play();
     });
