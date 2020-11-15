@@ -79,6 +79,12 @@ const SampleStation = () => {
     });
   }, []);
 
+  useEffect(() => {
+    window.addEventListener('keydown', (e) => {
+      sampleWave.current.regions.list[e.key].play();
+    });
+  }, []);
+
   const playSample = () => {
     sampleWave.current.play();
   };
