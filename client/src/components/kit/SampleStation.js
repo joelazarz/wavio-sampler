@@ -20,7 +20,7 @@ const SampleContainer = styled.div`
 
 const SampleStation = () => {
   const kitContext = useContext(KitContext);
-  const { waveformColor } = kitContext;
+  const { sampleRegions, waveformColor } = kitContext;
 
   const sampleformRef = useRef();
   const sampleWave = useRef();
@@ -46,6 +46,17 @@ const SampleStation = () => {
 
     sampleWave.current.load('https://ia800104.us.archive.org/9/items/cd_my-love-is-your-love_whitney-houston-whitney-houston-feat.-fait/disc1/03.%20Whitney%20Houston%20-%20My%20Love%20Is%20Your%20Love_sample.mp3');
   }, []);
+
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    };
+  /*logic for component did update*/
+    const region = sampleRegions[sampleRegions.length - 1]
+    sampleWave.current.addRegion(region);
+  }, [sampleRegions]);
 
   useEffect(() => {
     // let progressColor = waveformColor.replace(/[\d\.]+\)$/g, '0.3)');

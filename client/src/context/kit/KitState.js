@@ -4,12 +4,14 @@ import KitContext from './kitContext';
 import kitReducer from './kitReducer';
 // import types
 import {
+  ADD_REGION,
   WAVE_COLOR,
   LOOP_COLOR
 } from '../types';
 
 const KitState = props => {
-  const initialState ={
+  const initialState = {
+    sampleRegions: [],
     waveformColor: 'rgb(255, 255, 255, 100)',
     loopColor: 'rgb(255, 255, 255, 100)'
   };
@@ -25,6 +27,14 @@ const KitState = props => {
   // Edit kit
 
   // Delete kit
+
+  // Add Region to state in RegionCreator.js
+  const addRegion = (region) => {
+    dispatch({
+      type: ADD_REGION,
+      payload: region
+    });
+  };
 
   // Create region
 
@@ -49,6 +59,8 @@ const KitState = props => {
   return (
     <KitContext.Provider
     value={{
+      sampleRegions: state.sampleRegions,
+      addRegion,
       waveformColor: state.waveformColor,
       loopColor: state.loopColor,
       setWaveformColor,

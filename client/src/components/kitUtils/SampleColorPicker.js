@@ -13,7 +13,6 @@ const PickerContainer = styled.div`
 
 const SampleColorPicker = () => {
   const kitContext = useContext(KitContext);
-
   const { waveformColor, setWaveformColor } = kitContext;
 
   const pickerRef = useRef();

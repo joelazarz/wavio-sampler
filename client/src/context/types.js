@@ -11,5 +11,6 @@ export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 //Kit
+export const ADD_REGION = 'ADD_REGION'
 export const WAVE_COLOR = 'WAVE_COLOR';
 export const LOOP_COLOR = 'LOOP_COLOR';
