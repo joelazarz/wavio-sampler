@@ -77,7 +77,6 @@ const SampleStation = () => {
     };
 
     sampleWave.current.on('region-mouseenter', (e) => {
-      console.log('hover:', e);
       setHoverRegion(e)
     });
 
@@ -86,7 +85,6 @@ const SampleStation = () => {
     });
 
     sampleWave.current.on('region-click', (e) => {
-      console.log('clicked:', e);
       setClickRegion(e)
     });
   }, []);
@@ -96,8 +94,9 @@ const SampleStation = () => {
       isFirstRender.current = false;
       return;
     };
-    
+
     window.addEventListener('keydown', (e) => {
+      if (!sampleWave.current.regions.list[e.key]) { return; };
       sampleWave.current.regions.list[e.key].play();
     });
   }, []);

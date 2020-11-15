@@ -3,6 +3,8 @@ import { TitleContainer } from '../../css/TitleContainer';
 //
 import SampleColorPicker from '../kitUtils/SampleColorPicker';
 import RegionCreator from '../kitUtils/RegionCreator';
+import RegionHover from '../kitUtils/RegionHover';
+import RegionClick from '../kitUtils/RegionClick';
 
 const SampleControlContainer = styled.div`
   grid-row-start: 1;
@@ -20,6 +22,8 @@ const SampleControl = () => {
       <TitleContainer>Options</TitleContainer>
       <SampleColorPicker />
       <RegionCreator />
+      <RegionHover />
+      <RegionClick />
     </SampleControlContainer>
   );
 };
