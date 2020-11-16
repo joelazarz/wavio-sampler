@@ -53,7 +53,7 @@ const SampleStation = () => {
     });
 
     sampleWave.current.load(sample);
-  }, []);
+  }, [sample]);
 
   const isFirstRender = useRef(true);
 
@@ -64,7 +64,7 @@ const SampleStation = () => {
     };
   /*logic for component did update*/
     sampleWave.current.clearRegions();
-    sampleRegions.map(reg => {
+    sampleRegions.forEach(reg => {
       sampleWave.current.addRegion(reg)
     })
   }, [sampleRegions]);
@@ -92,6 +92,7 @@ const SampleStation = () => {
     sampleWave.current.on('region-click', (e) => {
       setClickRegion(e)
     });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -103,6 +104,7 @@ const SampleStation = () => {
     sampleWave.current.on('region-update-end', (e) => {
       updateSampleWaveRegions([e])
     });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

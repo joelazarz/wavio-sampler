@@ -3,8 +3,6 @@ import KitContext from '../../context/kit/kitContext';
 
 import styled from 'styled-components';
 import {ReactComponent as SquareIcon} from '../../css/icons/square.svg'
-import {ReactComponent as BlankRegionIcon} from '../../css/icons/blankRegion.svg'
-import { TitleContainer } from '../../css/TitleContainer';
 
 const RowContainer = styled.div`
   font-size: 0.7rem;
@@ -81,7 +79,7 @@ const RegionHover = () => {
         <StatusContainer>
           {regionArr.map((r) => {
             if(r === 'x') {
-              return;
+              return null;
             }
 
             return <RegionBlock 

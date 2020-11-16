@@ -51,7 +51,8 @@ const DropZone = (props) => {
     isDragReject
   } = useDropzone({accept: 'audio/*',  maxFiles:1});
 
-  const acceptedFile = acceptedFiles.map(file => { 
+  if (acceptedFiles === null) { return; };
+  acceptedFiles.forEach(file => { 
     const sampleURL = URL.createObjectURL(file)
     loadSample(sampleURL);
   });
