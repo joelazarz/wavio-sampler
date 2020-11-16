@@ -21,6 +21,7 @@ const SampleContainer = styled.div`
 const SampleStation = () => {
   const kitContext = useContext(KitContext);
   const {
+    sample,
     updateSampleWaveRegions, 
     sampleRegions, 
     waveformColor,
@@ -51,7 +52,7 @@ const SampleStation = () => {
       ]
     });
 
-    sampleWave.current.load('https://ia800104.us.archive.org/9/items/cd_my-love-is-your-love_whitney-houston-whitney-houston-feat.-fait/disc1/03.%20Whitney%20Houston%20-%20My%20Love%20Is%20Your%20Love_sample.mp3');
+    sampleWave.current.load(sample);
   }, []);
 
   const isFirstRender = useRef(true);

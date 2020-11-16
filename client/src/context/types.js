@@ -11,6 +11,7 @@ export const LOGOUT = 'LOGOUT';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 //Kit
+export const LOAD_SAMPLE = 'LOAD_SAMPLE'
 export const ADD_REGION = 'ADD_REGION';
 export const SET_REGIONS = 'SET_REGIONS'
 export const HOVER_REGION = 'HOVER_REGION';

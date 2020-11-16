@@ -4,6 +4,7 @@ import KitContext from './kitContext';
 import kitReducer from './kitReducer';
 // import types
 import {
+  LOAD_SAMPLE,
   ADD_REGION,
   SET_REGIONS,
   HOVER_REGION,
@@ -17,6 +18,7 @@ import {
 
 const KitState = props => {
   const initialState = {
+    sample: null,
     sampleRegions: [],
     hoverRegion: null,
     clickRegion: null,
@@ -35,6 +37,14 @@ const KitState = props => {
   // Edit kit
 
   // Delete kit
+
+  // Load sample into kit
+  const loadSample = (sample) => {
+    dispatch({
+      type: LOAD_SAMPLE,
+      payload: sample
+    });
+  };
 
   // Add Region to sample waveform - RegionCreator.js
   const addRegion = (region) => {
@@ -107,11 +117,13 @@ const KitState = props => {
   return (
     <KitContext.Provider
     value={{
+      sample: state.sample,
       sampleRegions: state.sampleRegions,
       hoverRegion: state.hoverRegion,
       clickRegion: state.clickRegion,
       waveformColor: state.waveformColor,
       loopColor: state.loopColor,
+      loadSample,
       addRegion,
       updateSampleWaveRegions,
       setHoverRegion,

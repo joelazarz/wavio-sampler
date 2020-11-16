@@ -13,6 +13,7 @@ import PrivateRoute from './components/routing/PrivateRoute';
 import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
 import AuthState from './context/auth/AuthState';
+import KitState from './context/kit/KitState';
 // import KitState from './context/kit/KitState';
 // setAuthToken
 import setAuthToken from './utils/setAuthToken';
@@ -31,7 +32,7 @@ const App = () => {
 
   return (
     <AuthState>
-      {/* <KitState> */}
+      <KitState>
         <ThemeProvider theme={themeMode}>
           <Router>
             <>
@@ -47,7 +48,7 @@ const App = () => {
             </>
           </Router>
         </ThemeProvider>
-      {/* </KitState> */}
+      </KitState>
     </AuthState>
   );
 };

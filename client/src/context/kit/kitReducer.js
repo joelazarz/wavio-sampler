@@ -1,5 +1,6 @@
 // import types
 import { 
+  LOAD_SAMPLE,
   ADD_REGION,
   SET_REGIONS,
   HOVER_REGION,
@@ -13,6 +14,12 @@ import {
 
 export default (state, action) => {
   switch(action.type){
+    case LOAD_SAMPLE:
+      return {
+        ...state,
+        sample: action.payload
+      };
+
     case ADD_REGION:
       return {
         ...state,
