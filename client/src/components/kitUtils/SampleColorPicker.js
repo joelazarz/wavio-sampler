@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import KitContext from '../../context/kit/kitContext';
 
 const PickerContainer = styled.div`
-  margin: 10px;
+  margin: 2px 10px;
   display: flex;
   place-items: center;
   justify-content: space-between;

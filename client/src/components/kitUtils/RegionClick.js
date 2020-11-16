@@ -6,13 +6,14 @@ import { RegionEditContainer } from '../../css/RegionEditContainer';
 import {ReactComponent as CloseIcon} from '../../css/icons/close.svg'
 
 const RowContainer = styled.div`
-  margin: 2px;
+  margin: 4px 10px;
   display: flex;
   width: 100%;
   /* place-items: center; */
   justify-content: space-between;
   & > svg {
-    margin: 0rem 0.2rem;
+    margin: 0rem;
+    margin-right: 20px;
     height:0.8rem; 
     width: 0.8rem;
     fill: white;
@@ -25,14 +26,14 @@ const RowContainer = styled.div`
 const DeleteRegionButton = styled.button`
   font-family: inherit;
   min-height: 1rem;
-  margin: 0.1rem 0.4rem;
-  background-color: blue;
+  margin: 0.1rem 6px;
+  background-color: slategrey;
   border: none;
   border-radius: 0.25em;
-  width: 100%;
+  width: 90%;
   text-align: center;
   &:hover {
-    background-color: lightblue;
+    background-color: silver;
   }
 `
 
@@ -54,6 +55,10 @@ const RegionClick = () => {
         <DeleteRegionButton onClick={() => removeSelectedRegion(clickRegion.id)}>
           Delete
         </DeleteRegionButton>
+      </RowContainer>
+      <RowContainer>
+        <span>Loop:</span>
+        {/* button */}
       </RowContainer>
     </RegionEditContainer>
   )
