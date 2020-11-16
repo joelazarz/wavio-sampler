@@ -20,11 +20,14 @@ const SampleContainer = styled.div`
 
 const SampleStation = () => {
   const kitContext = useContext(KitContext);
-  const { 
+  const {
+    updateSampleWaveRegions, 
     sampleRegions, 
     waveformColor,
     setHoverRegion,
     setClickRegion,
+    clickRegion,
+    deleteCounter,
     clearHoverRegion,
   } = kitContext;
 
@@ -60,8 +63,10 @@ const SampleStation = () => {
       return;
     };
   /*logic for component did update*/
-    const region = sampleRegions[sampleRegions.length - 1];
-    sampleWave.current.addRegion(region);
+    sampleWave.current.clearRegions();
+    sampleRegions.map(reg => {
+      sampleWave.current.addRegion(reg)
+    })
   }, [sampleRegions]);
 
   useEffect(() => {
@@ -95,11 +100,27 @@ const SampleStation = () => {
       return;
     };
 
-    window.addEventListener('keydown', (e) => {
-      if (!sampleWave.current.regions.list[e.key]) { return; };
-      sampleWave.current.regions.list[e.key].play();
+    sampleWave.current.on('region-update-end', (e) => {
+      // console.log(e);
+      updateSampleWaveRegions([e])
     });
   }, []);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    };
+
+    window.addEventListener('keydown', handleTrigger);
+    return () => window.removeEventListener('keydown', handleTrigger)
+  }, [sampleRegions]);
+
+  const handleTrigger = (e) => {
+    console.log(sampleWave.current.regions.list[e.key]);
+    if (!sampleWave.current.regions.list[e.key]) { return; };
+    sampleWave.current.regions.list[e.key].play();
+  };
 
   const playSample = () => {
     sampleWave.current.play();

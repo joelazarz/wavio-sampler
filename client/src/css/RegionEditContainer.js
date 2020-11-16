@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const RegionEditContainer= styled.div`
 display: flex;
+flex-direction: column;
 min-height: 4em;
 justify-content: space-between;
 background-color: ${({ theme }) => theme.nav};

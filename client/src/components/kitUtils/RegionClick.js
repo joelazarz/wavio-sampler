@@ -17,14 +17,28 @@ const RowContainer = styled.div`
     width: 0.8rem;
     fill: white;
     & :hover {
-      fill: lightblue;
+      fill: red;
     }
+  }
+`
+
+const DeleteRegionButton = styled.button`
+  font-family: inherit;
+  min-height: 1rem;
+  margin: 0.1rem 0.4rem;
+  background-color: blue;
+  border: none;
+  border-radius: 0.25em;
+  width: 100%;
+  text-align: center;
+  &:hover {
+    background-color: lightblue;
   }
 `
 
 const RegionClick = () => {
   const kitContext = useContext(KitContext);
-  const { clickRegion, clearClickRegion } = kitContext;
+  const { clickRegion, clearClickRegion, removeSelectedRegion } = kitContext;
 
   if(!clickRegion) {
     return <RegionEditContainer />
@@ -35,6 +49,11 @@ const RegionClick = () => {
       <RowContainer>
         <span>{clickRegion ? `Region: [${clickRegion.id}] ` : '...'}</span>
         <CloseIcon onClick={clearClickRegion}/>
+      </RowContainer>
+      <RowContainer>
+        <DeleteRegionButton onClick={() => removeSelectedRegion(clickRegion.id)}>
+          Delete
+        </DeleteRegionButton>
       </RowContainer>
     </RegionEditContainer>
   )

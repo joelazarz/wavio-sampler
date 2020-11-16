@@ -12,9 +12,11 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 //Kit
 export const ADD_REGION = 'ADD_REGION';
+export const SET_REGIONS = 'SET_REGIONS'
 export const HOVER_REGION = 'HOVER_REGION';
 export const CLEAR_HOVER = 'CLEAR_HOVER';
 export const CLICK_REGION = 'CLICK_REGION';
 export const CLEAR_CLICK = 'CLEAR_CLICK';
+export const REMOVE_REGION = 'REMOVE_REGION';
 export const WAVE_COLOR = 'WAVE_COLOR';
 export const LOOP_COLOR = 'LOOP_COLOR';

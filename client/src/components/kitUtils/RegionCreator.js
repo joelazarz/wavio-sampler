@@ -24,20 +24,34 @@ const RegionCreator = () => {
   const onClick = () => {
     if(sampleRegions.length === 8) {return;}; 
 
+    let arr = sampleRegions.map(r => r.id);
+
+    const availableId = (arr) => {
+      var min = 1;
+      arr.sort((a,b) => {
+        return a - b; 
+      });
+
+      for (var i in arr) {
+        if (arr[i] > -1 && arr[i] == min) {
+          min++;
+        }
+      }
+
+      return min;
+    };
+
     const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
     const r = randomBetween(0, 255);
     const g = randomBetween(0, 255);
     const b = randomBetween(0, 255);
 
     const region = {
-      id: `${sampleRegions.length + 1}`,
+      id: `${availableId(arr)}`,
       start: 0,
-      end: 5,
+      end: 4,
       loop: false,
-      color: `rgb(${r}, ${g}, ${b}, 0.4)`,
-      attributes: {
-        label: '[1]'
-      }
+      color: `rgb(${r}, ${g}, ${b}, 0.4)`
     };
 
     addRegion(region);

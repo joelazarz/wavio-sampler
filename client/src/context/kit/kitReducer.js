@@ -1,10 +1,12 @@
 // import types
 import { 
   ADD_REGION,
+  SET_REGIONS,
   HOVER_REGION,
   CLEAR_HOVER,
   CLICK_REGION,
   CLEAR_CLICK,
+  REMOVE_REGION,
   LOOP_COLOR,
   WAVE_COLOR 
 } from "../types";
@@ -15,6 +17,12 @@ export default (state, action) => {
       return {
         ...state,
         sampleRegions: [...state.sampleRegions, action.payload]
+      };
+
+    case SET_REGIONS:
+      return {
+        ...state,
+        sampleRegions: state.sampleRegions.map(obj => action.payload.find(region => region.id === obj.id) || obj)
       };
 
     case HOVER_REGION:
@@ -42,6 +50,14 @@ export default (state, action) => {
         ...state,
         clickRegion: null
       };
+
+    case REMOVE_REGION:
+      return {
+        ...state,
+        sampleRegions: state.sampleRegions.filter(region => region.id !== action.payload),
+        clickRegion: null,
+        deleteCounter: state.deleteCounter++
+      }
 
     case WAVE_COLOR:
       return {

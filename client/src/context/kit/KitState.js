@@ -5,9 +5,11 @@ import kitReducer from './kitReducer';
 // import types
 import {
   ADD_REGION,
+  SET_REGIONS,
   HOVER_REGION,
   CLICK_REGION,
   CLEAR_CLICK,
+  REMOVE_REGION,
   WAVE_COLOR,
   LOOP_COLOR,
   CLEAR_HOVER
@@ -18,6 +20,7 @@ const KitState = props => {
     sampleRegions: [],
     hoverRegion: null,
     clickRegion: null,
+    deleteCounter: 0,
     waveformColor: 'rgb(255, 255, 255, 100)',
     loopColor: 'rgb(255, 255, 255, 100)'
   };
@@ -38,6 +41,14 @@ const KitState = props => {
   const addRegion = (region) => {
     dispatch({
       type: ADD_REGION,
+      payload: region
+    });
+  };
+
+  // set sampleRegions on every update
+  const updateSampleWaveRegions = (region) => {
+    dispatch({
+      type: SET_REGIONS,
       payload: region
     });
   };
@@ -66,6 +77,14 @@ const KitState = props => {
     dispatch({ type: CLEAR_CLICK });
   };
 
+  // Remove region from current waveform
+  const removeSelectedRegion = (id) => {
+    dispatch({
+      type: REMOVE_REGION,
+      payload: id
+    });
+  };
+
   // Create region in db
 
   // Delete region from db
@@ -91,12 +110,15 @@ const KitState = props => {
     value={{
       sampleRegions: state.sampleRegions,
       addRegion,
+      updateSampleWaveRegions,
       hoverRegion: state.hoverRegion,
       clickRegion: state.clickRegion,
       setHoverRegion,
       setClickRegion,
       clearHoverRegion,
       clearClickRegion,
+      removeSelectedRegion,
+      deleteCounter: state.deleteCounter,
       waveformColor: state.waveformColor,
       loopColor: state.loopColor,
       setWaveformColor,
