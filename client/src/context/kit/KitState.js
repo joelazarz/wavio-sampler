@@ -20,7 +20,6 @@ const KitState = props => {
     sampleRegions: [],
     hoverRegion: null,
     clickRegion: null,
-    deleteCounter: 0,
     waveformColor: 'rgb(255, 255, 255, 100)',
     loopColor: 'rgb(255, 255, 255, 100)'
   };
@@ -109,18 +108,17 @@ const KitState = props => {
     <KitContext.Provider
     value={{
       sampleRegions: state.sampleRegions,
-      addRegion,
-      updateSampleWaveRegions,
       hoverRegion: state.hoverRegion,
       clickRegion: state.clickRegion,
+      waveformColor: state.waveformColor,
+      loopColor: state.loopColor,
+      addRegion,
+      updateSampleWaveRegions,
       setHoverRegion,
       setClickRegion,
       clearHoverRegion,
       clearClickRegion,
       removeSelectedRegion,
-      deleteCounter: state.deleteCounter,
-      waveformColor: state.waveformColor,
-      loopColor: state.loopColor,
       setWaveformColor,
       setLoopColor,
     }}

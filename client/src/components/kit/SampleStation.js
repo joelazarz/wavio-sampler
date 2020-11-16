@@ -26,8 +26,6 @@ const SampleStation = () => {
     waveformColor,
     setHoverRegion,
     setClickRegion,
-    clickRegion,
-    deleteCounter,
     clearHoverRegion,
   } = kitContext;
 
@@ -57,6 +55,7 @@ const SampleStation = () => {
   }, []);
 
   const isFirstRender = useRef(true);
+
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
@@ -101,7 +100,6 @@ const SampleStation = () => {
     };
 
     sampleWave.current.on('region-update-end', (e) => {
-      // console.log(e);
       updateSampleWaveRegions([e])
     });
   }, []);

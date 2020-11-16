@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import KitContext from '../../context/kit/kitContext';
 
 import styled from 'styled-components';
@@ -8,15 +8,46 @@ import { TitleContainer } from '../../css/TitleContainer';
 
 const RowContainer = styled.div`
   display: flex;
+  margin: 0em 0.5em;
   min-height: 1.5rem;
-  width: 100%;
   place-items: center;
   justify-content: space-between;
+  background-color: ${({ theme }) => theme.nav};
+  border-radius: 0.25em;
   & > svg {
     margin: 0rem 0.5rem;
     height:0.8rem; 
     width: 0.8rem;
   }
+`
+
+const StatusContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(8, minmax(1rem, 1fr));
+  grid-template-rows: 1;
+  margin: 0em 0.5em;
+  padding: 0em 0.5em;
+  min-height: 1.5rem;
+  max-height: 1.5rem;
+  place-items: center;
+  background-color: ${({ theme }) => theme.nav};
+  border-radius: 0.25em;
+  & > svg {
+    margin: 0rem 0.5rem;
+    height:0.8rem; 
+    width: 0.8rem;
+  }
+`
+
+const RegionBlock = styled.div`
+  display: flex;
+  grid-row-start: 1;
+  min-height: 1rem;
+  font-size: 0.5rem;
+  width: 1rem;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
 `
 
 const RegionHover = () => {
@@ -41,20 +72,20 @@ const RegionHover = () => {
   if(!hoverRegion) {
     regionSpaceDisplay(sampleRegions);
     return (
-      <TitleContainer>
-        <RowContainer style={{'padding': '0rem 0.1rem', 'justifyContent': 'center'}}>
+        <StatusContainer>
           {regionArr.map((r) => {
             if(r === 'x') {
-              return <BlankRegionIcon style={{'margin': '0em 0.1em', 'width': '0.8rem', 'fill': 'transparent'}} />
+              return;
             }
 
-            return <SquareIcon 
+            return <RegionBlock 
             key={r.id}
-            style={{'margin': '0em 0.1em', 'fill': `${r.color}`}}
-            />
+            style={{'background-color': `${r.color}`, 'grid-column-start': `${r.id}`}}
+            >
+              {r.id}
+            </RegionBlock>
           })}
-        </RowContainer>
-      </TitleContainer>
+        </StatusContainer>
     )
   };
 
