@@ -7,9 +7,13 @@ import {ReactComponent as BlankRegionIcon} from '../../css/icons/blankRegion.svg
 import { TitleContainer } from '../../css/TitleContainer';
 
 const RowContainer = styled.div`
+  font-size: 0.7rem;
   display: flex;
   margin: 0em 0.5em;
+  padding: 0em 0.5em;
   min-height: 1.5rem;
+  max-width: 95%;
+  min-width: 95%;
   place-items: center;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.nav};
@@ -26,9 +30,11 @@ const StatusContainer = styled.div`
   grid-template-columns: repeat(8, minmax(1rem, 1fr));
   grid-template-rows: 1;
   margin: 0em 0.5em;
-  padding: 0em 0.5em;
+  padding: 0em 0.2em;
   min-height: 1.5rem;
   max-height: 1.5rem;
+  max-width: 95%;
+  min-width: 95%;
   place-items: center;
   background-color: ${({ theme }) => theme.nav};
   border-radius: 0.25em;
@@ -90,12 +96,12 @@ const RegionHover = () => {
   };
 
   return (
-    <TitleContainer>
+    // <TitleContainer>
       <RowContainer>
         <span>{hoverRegion ? `Region: [${hoverRegion.id}] ` : '...'}</span>
         <SquareIcon style={{ 'fill': `${hoverRegion.color}` }}/>
       </RowContainer>
-    </TitleContainer>
+    // </TitleContainer>
   )
 };
 
