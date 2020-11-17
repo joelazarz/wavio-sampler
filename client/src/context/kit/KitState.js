@@ -10,6 +10,7 @@ import {
   HOVER_REGION,
   CLICK_REGION,
   CLEAR_CLICK,
+  LOOP_REGION,
   REMOVE_REGION,
   WAVE_COLOR,
   LOOP_COLOR,
@@ -86,6 +87,14 @@ const KitState = props => {
     dispatch({ type: CLEAR_CLICK });
   };
 
+  // Loop selected region
+  const loopRegion = (region) => {
+    dispatch({
+      type: LOOP_REGION,
+      payload: region
+    });
+  };
+
   // Remove region from current waveform
   const removeSelectedRegion = (id) => {
     dispatch({
@@ -130,6 +139,7 @@ const KitState = props => {
       setClickRegion,
       clearHoverRegion,
       clearClickRegion,
+      loopRegion,
       removeSelectedRegion,
       setWaveformColor,
       setLoopColor,

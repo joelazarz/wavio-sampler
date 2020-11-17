@@ -7,6 +7,7 @@ import {
   CLEAR_HOVER,
   CLICK_REGION,
   CLEAR_CLICK,
+  LOOP_REGION,
   REMOVE_REGION,
   LOOP_COLOR,
   WAVE_COLOR 
@@ -27,6 +28,7 @@ export default (state, action) => {
       };
 
     case SET_REGIONS:
+    case LOOP_REGION:
       return {
         ...state,
         sampleRegions: state.sampleRegions.map(obj => action.payload.find(region => region.id === obj.id) || obj)

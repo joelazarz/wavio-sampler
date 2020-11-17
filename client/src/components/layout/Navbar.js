@@ -72,7 +72,7 @@ export const Navbar = ({ toggleTheme }) => {
 
   return (
     <Nav>
-      <li>Wavio Sampler</li>
+      <span>Wavio Sampler</span>
       <div>
       {isAuthenticated ? authLinks : guestLinks}
       </div>

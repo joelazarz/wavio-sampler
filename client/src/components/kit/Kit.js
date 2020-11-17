@@ -5,7 +5,7 @@ import KitContext from '../../context/kit/kitContext';
 
 // components
 import Dock from './Dock';
-import DropZone from './DropZone';
+import DropZone from '../kitUtils/DropZone';
 import SampleStation from './SampleStation';
 import LoopStation from './LoopStation';
 

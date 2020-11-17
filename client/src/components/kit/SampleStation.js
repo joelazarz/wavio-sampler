@@ -118,7 +118,6 @@ const SampleStation = () => {
   }, [sampleRegions]);
 
   const handleTrigger = (e) => {
-    console.log(sampleWave.current.regions.list[e.key]);
     if (!sampleWave.current.regions.list[e.key]) { return; };
     sampleWave.current.regions.list[e.key].play();
   };

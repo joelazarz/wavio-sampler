@@ -21,15 +21,13 @@ const Container = styled.div`
   margin: 0em 2em;
   grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 5;
-  grid-column-end: 13;
+  grid-column-start: 6;
+  grid-column-end: 12;
   height: 18em;
-  padding-right: 2rem;
-  padding-left: 2rem;
   flex-direction: column;
   place-items: center;
   border-width: 2px;
-  border-radius: 0.25em;
+  border-radius: 1em;
   border-color: ${props => getColor(props)};
   border-style: dashed;
   background-color: ${({ theme }) => theme.body};
@@ -37,6 +35,13 @@ const Container = styled.div`
   outline: none;
   transition: border .24s ease-in-out;
 `;
+
+const DropText = styled.div`
+  background-color: rgb(255,250,250, 0.1);
+  padding: 5em;
+  border: 1px dotted white;
+  border-radius: 0.25em;
+`
 
 const DropZone = (props) => {
   const kitContext = useContext(KitContext);
@@ -60,7 +65,9 @@ const DropZone = (props) => {
   return (
       <Container {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
         <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
+        <DropText>
+          Drag 'n' drop some files here, or click to select files
+        </DropText>
       </Container>
   )
 }

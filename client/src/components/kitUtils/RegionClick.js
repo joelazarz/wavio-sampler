@@ -4,6 +4,8 @@ import KitContext from '../../context/kit/kitContext';
 import styled from 'styled-components';
 import { RegionEditContainer } from '../../css/RegionEditContainer';
 import {ReactComponent as CloseIcon} from '../../css/icons/close.svg'
+import {ReactComponent as RepeatIcon} from '../../css/icons/repeat.svg'
+import {ReactComponent as NoRepeatIcon} from '../../css/icons/no-repeat.svg'
 
 const RowContainer = styled.div`
   margin: 4px 10px;
@@ -17,7 +19,7 @@ const RowContainer = styled.div`
     height:0.8rem; 
     width: 0.8rem;
     fill: white;
-    & :hover {
+    &#clear-region :hover {
       fill: red;
     }
   }
@@ -39,7 +41,17 @@ const DeleteRegionButton = styled.button`
 
 const RegionClick = () => {
   const kitContext = useContext(KitContext);
-  const { clickRegion, clearClickRegion, removeSelectedRegion } = kitContext;
+  const { 
+    clickRegion, 
+    clearClickRegion, 
+    loopRegion,
+    removeSelectedRegion 
+  } = kitContext;
+
+  const loopClickedRegion = () => {
+    clickRegion.loop = !clickRegion.loop;
+    loopRegion([clickRegion]);
+  };
 
   if(!clickRegion) {
     return <RegionEditContainer />
@@ -49,7 +61,7 @@ const RegionClick = () => {
     <RegionEditContainer>
       <RowContainer>
         <span>{clickRegion ? `Region: [${clickRegion.id}] ` : '...'}</span>
-        <CloseIcon onClick={clearClickRegion}/>
+        <CloseIcon id="clear-region" onClick={clearClickRegion}/>
       </RowContainer>
       <RowContainer>
         <DeleteRegionButton onClick={() => removeSelectedRegion(clickRegion.id)}>
@@ -58,7 +70,10 @@ const RegionClick = () => {
       </RowContainer>
       <RowContainer>
         <span>Loop:</span>
-        {/* button */}
+        {clickRegion.loop ? 
+        <RepeatIcon onClick={loopClickedRegion} style={{ 'fill': 'lightgreen'}} /> 
+        : <NoRepeatIcon onClick={loopClickedRegion} style={{ 'fill': 'red'}} />
+        }
       </RowContainer>
     </RegionEditContainer>
   )
