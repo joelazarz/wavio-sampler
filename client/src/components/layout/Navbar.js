@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import AuthContext from '../../context/auth/authContext';
+import {ReactComponent as SunIcon} from '../../css/icons/sun.svg';
+import {ReactComponent as MoonIcon} from '../../css/icons/moon.svg';
 
 const Nav = styled.nav`
 background-color: ${({ theme }) => theme.nav};
@@ -40,12 +42,16 @@ min-width: 1.5rem;
 font-size: 11px;
 background-color: rgba(255, 255, 255, 0.2);
 padding: 0px;
+& > svg {
+  height:12px; 
+  width:12px;
+  }
 &:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
 `
 
-export const Navbar = ({ toggleTheme }) => {
+export const Navbar = ({ toggleTheme, theme }) => {
   const authContext = useContext(AuthContext);
 
   const { isAuthenticated, logout, user } = authContext;
@@ -76,7 +82,12 @@ export const Navbar = ({ toggleTheme }) => {
       <div>
       {isAuthenticated ? authLinks : guestLinks}
       </div>
-      <ToggleButton onClick={toggleTheme}>t</ToggleButton>
+      <ToggleButton onClick={toggleTheme}>
+        {
+          (theme === 'light') ? <MoonIcon style={{'fill': 'midnightblue'}} /> 
+          : <SunIcon style={{'fill': 'yellow'}}/>
+        }
+      </ToggleButton>
     </Nav>
   )
 }

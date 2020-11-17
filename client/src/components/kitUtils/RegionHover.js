@@ -81,10 +81,9 @@ const RegionHover = () => {
             if(r === 'x') {
               return null;
             }
-
             return <RegionBlock 
             key={r.id}
-            style={{'background-color': `${r.color}`, 'grid-column-start': `${r.id}`}}
+            style={{'backgroundColor': `${r.color}`, 'gridColumnStart': `${r.id}`}}
             >
               {r.id}
             </RegionBlock>

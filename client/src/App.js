@@ -37,7 +37,7 @@ const App = () => {
           <Router>
             <>
             <GlobalStyles />
-              <Navbar toggleTheme={toggleTheme} />
+              <Navbar theme={theme} toggleTheme={toggleTheme} />
               <Container>
                 <Switch>
                   <PrivateRoute exact path='/' component={Kit} />

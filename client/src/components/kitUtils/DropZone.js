@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
 import KitContext from '../../context/kit/kitContext';
 import styled from 'styled-components';
@@ -19,9 +19,9 @@ const getColor = (props) => {
 const Container = styled.div`
   display: grid;
   margin: 0em 2em;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  grid-column-start: 6;
+  grid-row-start: 4;
+  grid-row-end: 8;
+  grid-column-start: 5;
   grid-column-end: 12;
   height: 18em;
   flex-direction: column;
@@ -53,17 +53,34 @@ const DropZone = (props) => {
     getInputProps,
     isDragActive,
     isDragAccept,
-    isDragReject
-  } = useDropzone({accept: 'audio/*',  maxFiles:1});
-
-  if (acceptedFiles === null) { return; };
-  acceptedFiles.forEach(file => { 
-    const sampleURL = URL.createObjectURL(file)
-    loadSample(sampleURL);
+    isDragReject,
+    onDrop
+  } = useDropzone({
+    accept: 'audio/*',  
+    maxFiles: 1,
+    maxSize: 10000000
   });
 
+  useEffect(() => {
+    if (acceptedFiles === null) { return; };
+    acceptedFiles.forEach(file => { 
+      const sampleURL = URL.createObjectURL(file)
+      loadSample(sampleURL);
+    });
+  },[acceptedFiles,
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject,
+    onDrop])
+
   return (
-      <Container {...getRootProps({isDragActive, isDragAccept, isDragReject})}>
+      <Container {...getRootProps({
+        isDragActive, 
+        isDragAccept, 
+        isDragReject,
+        })}>
         <input {...getInputProps()} />
         <DropText>
           Drag 'n' drop some files here, or click to select files

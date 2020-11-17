@@ -21,11 +21,16 @@ const Kit = () => {
   }, []);
 
   return (
-      <>
-        <Dock />
-        { sample ? <SampleStation /> : <DropZone /> }
+    <>
+      <Dock />
+        { sample ? 
+        <>
+        <SampleStation /> 
         <LoopStation />
-      </>
+        </>
+        : 
+        <DropZone /> }
+    </>
   )
 };
 
