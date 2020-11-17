@@ -3,9 +3,7 @@ import KitContext from '../../context/kit/kitContext';
 
 import styled from 'styled-components';
 import { RegionEditContainer } from '../../css/RegionEditContainer';
-import {ReactComponent as CloseIcon} from '../../css/icons/close.svg'
-import {ReactComponent as RepeatIcon} from '../../css/icons/repeat.svg'
-import {ReactComponent as NoRepeatIcon} from '../../css/icons/no-repeat.svg'
+import {ReactComponent as CloseIcon} from '../../css/icons/close.svg';
 
 const RowContainer = styled.div`
   margin: 4px 10px;
@@ -44,14 +42,8 @@ const RegionClick = () => {
   const { 
     clickRegion, 
     clearClickRegion, 
-    loopRegion,
     removeSelectedRegion 
   } = kitContext;
-
-  const loopClickedRegion = () => {
-    clickRegion.loop = !clickRegion.loop;
-    loopRegion([clickRegion]);
-  };
 
   if(!clickRegion) {
     return <RegionEditContainer />
@@ -67,13 +59,6 @@ const RegionClick = () => {
         <DeleteRegionButton onClick={() => removeSelectedRegion(clickRegion.id)}>
           Delete
         </DeleteRegionButton>
-      </RowContainer>
-      <RowContainer>
-        <span>Loop:</span>
-        {clickRegion.loop ? 
-        <RepeatIcon onClick={loopClickedRegion} style={{ 'fill': 'lightgreen'}} /> 
-        : <NoRepeatIcon onClick={loopClickedRegion} style={{ 'fill': 'red'}} />
-        }
       </RowContainer>
     </RegionEditContainer>
   )
