@@ -12,8 +12,8 @@ import styled from 'styled-components';
 const SampleContainer = styled.div`
   grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 5;
-  grid-column-end: 13;
+  grid-column-start: 3;
+  grid-column-end: 14;
   padding-right: 2rem;
   padding-left: 2rem;
 `
@@ -32,6 +32,7 @@ const SampleStation = () => {
 
   const sampleformRef = useRef();
   const sampleWave = useRef();
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
     sampleWave.current = WaveSurfer.create({
@@ -52,10 +53,11 @@ const SampleStation = () => {
       ]
     });
 
+    sampleWave.current.on('play', () => console.log('play event'))
+    sampleWave.current.on('pause', () => console.log('finish event'))
+
     sampleWave.current.load(sample);
   }, [sample]);
-
-  const isFirstRender = useRef(true);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -70,7 +72,6 @@ const SampleStation = () => {
   }, [sampleRegions]);
 
   useEffect(() => {
-    // let progressColor = waveformColor.replace(/[\d\.]+\)$/g, '0.3)');
     sampleWave.current.setWaveColor(waveformColor);
     sampleWave.current.setProgressColor(waveformColor);
   }, [waveformColor]);
@@ -117,7 +118,10 @@ const SampleStation = () => {
     return () => window.removeEventListener('keydown', handleTrigger)
   }, [sampleRegions]);
 
+  // functions 
+
   const handleTrigger = (e) => {
+    if (document.activeElement.matches('input')) { return; };
     if (!sampleWave.current.regions.list[e.key]) { return; };
     sampleWave.current.regions.list[e.key].play();
   };

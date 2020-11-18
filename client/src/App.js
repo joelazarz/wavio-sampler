@@ -14,7 +14,6 @@ import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
 import AuthState from './context/auth/AuthState';
 import KitState from './context/kit/KitState';
-// import KitState from './context/kit/KitState';
 // setAuthToken
 import setAuthToken from './utils/setAuthToken';
 

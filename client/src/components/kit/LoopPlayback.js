@@ -6,8 +6,8 @@ import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
 const LoopPlaybackCotrols = styled.div`
   grid-row-start: 4;
   grid-row-end: 5;
-  grid-column-start: 5;
-  grid-column-end: 13;
+  grid-column-start: 3;
+  grid-column-end: 14;
   height: 1.5rem;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 0.25em;

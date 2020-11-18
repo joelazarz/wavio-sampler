@@ -6,7 +6,7 @@ import LoopColorPicker from '../kitUtils/LoopColorPicker';
 const LoopControlContainer = styled.div`
   grid-row-start: 4;
   grid-row-end: 6;
-  grid-column-start: 13;
+  grid-column-start: 14;
   grid-column-end: 17;
   margin-top: 1rem;
   border-radius: 6px;

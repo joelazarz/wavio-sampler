@@ -7,8 +7,8 @@ import '../../css/slider.css'
 const SamplePlaybackCotrols = styled.div`
   grid-row-start: 1;
   grid-row-end: 2;
-  grid-column-start: 5;
-  grid-column-end: 13;
+  grid-column-start: 3;
+  grid-column-end: 14;
   height: 1.5rem;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 0.25em;

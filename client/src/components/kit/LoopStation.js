@@ -11,8 +11,8 @@ import styled from 'styled-components';
 const LoopContainer = styled.div`
   grid-row-start: 5;
   grid-row-end: 6;
-  grid-column-start: 5;
-  grid-column-end: 13;
+  grid-column-start: 3;
+  grid-column-end: 14;
   padding-right: 2rem;
   padding-left: 2rem;
 `
