@@ -21,7 +21,8 @@ const SampleContainer = styled.div`
 const SampleStation = () => {
   const kitContext = useContext(KitContext);
   const {
-    sample,
+    loadedKit,
+    sampleBlob,
     updateSampleWaveRegions, 
     sampleRegions, 
     waveformColor,
@@ -33,7 +34,7 @@ const SampleStation = () => {
   const sampleformRef = useRef();
   const sampleWave = useRef();
   const isFirstRender = useRef(true);
-
+  
   useEffect(() => {
     sampleWave.current = WaveSurfer.create({
       container: sampleformRef.current,
@@ -53,11 +54,18 @@ const SampleStation = () => {
       ]
     });
 
-    sampleWave.current.on('play', () => console.log('play event'))
-    sampleWave.current.on('pause', () => console.log('finish event'))
+    sampleWave.current.on('play', () => console.log('play event'));
+    sampleWave.current.on('pause', () => console.log('finish event'));
+  }, []);
 
-    sampleWave.current.load(sample);
-  }, [sample]);
+  useEffect(() => {
+    if (sampleBlob) {
+      sampleWave.current.load(sampleBlob);
+    } else if (loadedKit) {
+      sampleWave.current.load(loadedKit.sample);
+      sampleWave.current.setWaveColor(waveformColor);
+    }
+  }, [sampleBlob, loadedKit]);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -67,7 +75,7 @@ const SampleStation = () => {
   /*logic for component did update*/
     sampleWave.current.clearRegions();
     sampleRegions.forEach(reg => {
-      sampleWave.current.addRegion(reg)
+      sampleWave.current.addRegion(reg);
     })
   }, [sampleRegions]);
 

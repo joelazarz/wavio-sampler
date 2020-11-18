@@ -13,7 +13,7 @@ const Kit = () => {
   const authContext = useContext(AuthContext);
   const kitContext = useContext(KitContext);
 
-  const { sample } = kitContext
+  const { sampleBlob, loadedKit } = kitContext
 
   useEffect(() => {
     authContext.loadUser();
@@ -23,7 +23,7 @@ const Kit = () => {
   return (
     <>
       <Dock />
-        { sample ? 
+        { sampleBlob || loadedKit ? 
         <>
         <SampleStation /> 
         <LoopStation />

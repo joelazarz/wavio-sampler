@@ -6,7 +6,7 @@ grid-row-end: 6;
 /* height: 30vh; */
 min-width: 12rem;
 grid-column-start: 2;
-grid-column-end: 6;
+grid-column-end: 9;
 margin: 1rem 5rem;
 display: flex;
 flex-direction: column;

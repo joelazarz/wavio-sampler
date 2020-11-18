@@ -3,7 +3,6 @@ import { useState, useEffect, useContext } from 'react';
 
 import { useDropzone } from 'react-dropzone';
 import styled from 'styled-components';
-import axios from 'axios';
 
 const getColor = (props) => {
   if (props.isDragAccept) {
@@ -18,7 +17,7 @@ const getColor = (props) => {
   return '#eeeeee';
 }
 
-const FormContainer = styled.div`
+const FormContainer = styled.form`
   display: flex; 
   /* margin: 4px 10px; */
   flex-direction: column;
@@ -111,12 +110,14 @@ const SaveKitForm = (props) => {
   });
 
   const kitContext = useContext(KitContext);
-  const { uploadSample, sampleLink } = kitContext;
+  const { uploadSample, sampleLink, createKit } = kitContext;
 
   const [kit, setKit] = useState({
     name: '',
     sample: ''
   });
+
+  const { name, sample } = kit;
 
   const onChange = e => setKit({...kit, [e.target.name]: e.target.value});
 
@@ -134,10 +135,29 @@ const SaveKitForm = (props) => {
       sample: sampleLink
     });
   }, [sampleLink])
+
+  const onSubmit = e => {
+    e.preventDefault();
+    if (name === '' || sample === '') {
+      // set alert
+      console.log('set alert for failed register');
+    } else {
+      createKit({
+        name,
+        sample
+      });
+    };
+  };
   
   return (
-    <FormContainer>
-      <KitNameInput name="name" type="text" placeholder="kit name" value={kit.name} onChange={onChange}/>
+    <FormContainer onSubmit={onSubmit}>
+      <KitNameInput 
+      name="name" 
+      type="text" 
+      placeholder="kit name" 
+      value={name} 
+      onChange={onChange}
+      />
       <KitSaveWarning>For security purposes you will need to choose the file again - Thank you.</KitSaveWarning>
       <DropContainer
       {...getRootProps({
@@ -153,7 +173,10 @@ const SaveKitForm = (props) => {
         <span>Drag file or click to choose</span>
         }</DropText>
       </DropContainer>
-      <KitSubmit type="submit" value="Save Kit" />
+      <KitSubmit 
+      type="submit" 
+      value="Save Kit" 
+      />
     </FormContainer>
   )
 }

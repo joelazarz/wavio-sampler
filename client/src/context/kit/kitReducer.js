@@ -2,6 +2,7 @@
 import { 
   UPLOAD_SAMPLE,
   LOAD_SAMPLE,
+  CREATE_KIT,
   ADD_REGION,
   SET_REGIONS,
   HOVER_REGION,
@@ -24,7 +25,20 @@ export default (state, action) => {
     case LOAD_SAMPLE:
       return {
         ...state,
-        sample: action.payload
+        sampleBlob: action.payload
+      };
+
+    case CREATE_KIT:
+      return {
+        ...state,
+        loadedKit: action.payload,
+        sampleLink: null,
+        sampleBlob: null,
+        sampleRegions: [],
+        hoverRegion: null,
+        clickRegion: null,
+        waveformColor: 'rgb(255, 255, 255, 100)',
+        loopColor: 'rgb(255, 255, 255, 100)'
       };
 
     case ADD_REGION:

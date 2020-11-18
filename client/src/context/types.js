@@ -23,3 +23,4 @@ export const WAVE_COLOR = 'WAVE_COLOR';
 export const LOOP_COLOR = 'LOOP_COLOR';
 
 export const UPLOAD_SAMPLE = 'UPLOAD_SAMPLE';
+export const CREATE_KIT = 'CREATE_KIT';

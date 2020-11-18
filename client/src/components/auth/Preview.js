@@ -5,7 +5,7 @@ grid-row-start: 2;
 grid-row-end: 4;
 /* height: 30vh; */
 font-size: 3em;
-grid-column-start: 7;
+grid-column-start: 8;
 grid-column-end: 15;
 margin: 1rem;
 display: flex;
