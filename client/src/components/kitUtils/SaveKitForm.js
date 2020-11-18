@@ -1,4 +1,22 @@
+import KitContext from '../../context/kit/kitContext';
+import { useState, useEffect, useContext } from 'react'; 
+
+import { useDropzone } from 'react-dropzone';
 import styled from 'styled-components';
+import axios from 'axios';
+
+const getColor = (props) => {
+  if (props.isDragAccept) {
+      return '#00e676';
+  }
+  if (props.isDragReject) {
+      return '#ff1744';
+  }
+  if (props.isDragActive) {
+      return '#2196f3';
+  }
+  return '#eeeeee';
+}
 
 const FormContainer = styled.div`
   display: flex; 
@@ -38,6 +56,35 @@ const KitSaveWarning = styled.div`
   padding: 0.3rem;
 `
 
+const DropContainer = styled.div`
+  display: flex;
+  align-self: flex-start;
+  margin: 0.5em;
+  max-width: 96%;
+  min-width: 96%;
+  height: 4em;
+  font-family: inherit;
+  flex-direction: column;
+  place-items: center;
+  border-width: 1px;
+  border-radius: 1em;
+  border-color: ${props => getColor(props)};
+  border-style: dashed;
+  background-color: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
+  outline: none;
+  transition: border .24s ease-in-out;
+`;
+
+const DropText = styled.div`
+  background-color: rgb(255,250,250, 0.1);
+  padding: 4px;
+  margin: 10px;
+  font-size: 10px;
+  border: 1px dotted white;
+  border-radius: 0.25em;
+`
+
 const KitSubmit = styled.input`
   font-family: inherit;
   color: ${({ theme }) => theme.text};
@@ -48,13 +95,64 @@ const KitSubmit = styled.input`
   padding: 0.3rem;
 `
 
+const SaveKitForm = (props) => {
 
-const SaveKitForm = () => {
+  const {
+    acceptedFiles,
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject
+  } = useDropzone({
+    accept: 'audio/*',  
+    maxFiles: 1,
+    maxSize: 10000000
+  });
+
+  const kitContext = useContext(KitContext);
+  const { uploadSample, sampleLink } = kitContext;
+
+  const [kit, setKit] = useState({
+    name: '',
+    sample: ''
+  });
+
+  const onChange = e => setKit({...kit, [e.target.name]: e.target.value});
+
+  useEffect(() => {
+    if (acceptedFiles.length === 0) { return; };
+    let formData = new FormData();
+    setKit({name: acceptedFiles[0].name});
+    formData.append('audio', acceptedFiles[0]);
+    uploadSample(formData);
+  },[acceptedFiles])
+
+  useEffect(() => {
+    setKit({
+      name: kit.name,
+      sample: sampleLink
+    });
+  }, [sampleLink])
   
   return (
     <FormContainer>
-      <KitNameInput name="name" type="text" placeholder="kit name" />
+      <KitNameInput name="name" type="text" placeholder="kit name" value={kit.name} onChange={onChange}/>
       <KitSaveWarning>For security purposes you will need to choose the file again - Thank you.</KitSaveWarning>
+      <DropContainer
+      {...getRootProps({
+        isDragActive, 
+        isDragAccept, 
+        isDragReject,
+        })}>
+        <input {...getInputProps()} />
+        <DropText>{
+        kit.name && sampleLink === null ?
+        <span>Loading... </span>
+        :
+        <span>Drag file or click to choose</span>
+        }</DropText>
+      </DropContainer>
       <KitSubmit type="submit" value="Save Kit" />
     </FormContainer>
   )

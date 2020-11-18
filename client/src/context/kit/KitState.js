@@ -4,6 +4,7 @@ import KitContext from './kitContext';
 import kitReducer from './kitReducer';
 // import types
 import {
+  UPLOAD_SAMPLE,
   LOAD_SAMPLE,
   ADD_REGION,
   SET_REGIONS,
@@ -18,6 +19,7 @@ import {
 
 const KitState = props => {
   const initialState = {
+    sampleLink: null,
     sample: null,
     sampleRegions: [],
     hoverRegion: null,
@@ -37,6 +39,28 @@ const KitState = props => {
   // Edit kit
 
   // Delete kit
+
+  // Upload sample from SaveKitForm.js
+  const uploadSample = async formData => {
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    };
+
+    try {
+      const res = await axios.post('/api/upload', formData, config);
+
+      dispatch({
+        type: UPLOAD_SAMPLE,
+        payload: res.data
+      });
+
+    } catch (err) {
+      console.log(err);
+    };
+
+  };
 
   // Load sample into kit
   const loadSample = (sample) => {
@@ -117,12 +141,14 @@ const KitState = props => {
   return (
     <KitContext.Provider
     value={{
+      sampleLink: state.sampleLink,
       sample: state.sample,
       sampleRegions: state.sampleRegions,
       hoverRegion: state.hoverRegion,
       clickRegion: state.clickRegion,
       waveformColor: state.waveformColor,
       loopColor: state.loopColor,
+      uploadSample,
       loadSample,
       addRegion,
       updateSampleWaveRegions,

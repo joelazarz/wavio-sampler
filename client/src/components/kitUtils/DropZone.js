@@ -53,8 +53,7 @@ const DropZone = (props) => {
     getInputProps,
     isDragActive,
     isDragAccept,
-    isDragReject,
-    onDrop
+    isDragReject
   } = useDropzone({
     accept: 'audio/*',  
     maxFiles: 1,
@@ -62,18 +61,12 @@ const DropZone = (props) => {
   });
 
   useEffect(() => {
-    if (acceptedFiles === null) { return; };
+    if (acceptedFiles.length === 0) { return; };
     acceptedFiles.forEach(file => { 
       const sampleURL = URL.createObjectURL(file)
       loadSample(sampleURL);
     });
-  },[acceptedFiles,
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-    isDragReject,
-    onDrop])
+  },[acceptedFiles])
 
   return (
       <Container {...getRootProps({

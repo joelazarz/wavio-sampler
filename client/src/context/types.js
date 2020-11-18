@@ -21,3 +21,5 @@ export const CLEAR_CLICK = 'CLEAR_CLICK';
 export const REMOVE_REGION = 'REMOVE_REGION';
 export const WAVE_COLOR = 'WAVE_COLOR';
 export const LOOP_COLOR = 'LOOP_COLOR';
+
+export const UPLOAD_SAMPLE = 'UPLOAD_SAMPLE';

@@ -2,6 +2,8 @@ node_modules
 
 /config/default.json
 
+.env
+
 /client/build
 
 .DS_Store

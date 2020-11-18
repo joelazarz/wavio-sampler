@@ -1,7 +1,9 @@
 const express = require('express');
 const connectDB = require('./config/db');
+require('dotenv').config()
 
 const app = express();
+
 
 // Connect Database
 connectDB();
@@ -16,6 +18,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/kits', require('./routes/kits'));
 app.use('/api/regions', require('./routes/regions'));
+app.use('/api/upload', require('./routes/upload'));
 
 const PORT = process.env.PORT || 5000;
 
