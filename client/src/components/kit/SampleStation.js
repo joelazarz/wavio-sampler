@@ -65,6 +65,7 @@ const SampleStation = () => {
       sampleWave.current.load(loadedKit.sample);
       sampleWave.current.setWaveColor(waveformColor);
     }
+    // eslint-disable-next-line
   }, [sampleBlob, loadedKit]);
 
   useEffect(() => {
@@ -123,7 +124,7 @@ const SampleStation = () => {
     };
 
     window.addEventListener('keydown', handleTrigger);
-    return () => window.removeEventListener('keydown', handleTrigger)
+    return () => window.removeEventListener('keydown', handleTrigger);
   }, [sampleRegions]);
 
   // functions 

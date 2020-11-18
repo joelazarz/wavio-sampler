@@ -66,6 +66,7 @@ const DropZone = (props) => {
       const sampleURL = URL.createObjectURL(file)
       loadSample(sampleURL);
     });
+    // eslint-disable-next-line
   },[acceptedFiles])
 
   return (

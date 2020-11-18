@@ -10,8 +10,8 @@ import {
   AUTH_ERROR,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
-  EDIT_USER,
-  DELETE_USER,
+  // EDIT_USER,
+  // DELETE_USER,
   LOGOUT,
   CLEAR_ERRORS
 } from '../types';

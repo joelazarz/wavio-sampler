@@ -127,6 +127,7 @@ const SaveKitForm = (props) => {
     setKit({name: acceptedFiles[0].name});
     formData.append('audio', acceptedFiles[0]);
     uploadSample(formData);
+    // eslint-disable-next-line
   },[acceptedFiles])
 
   useEffect(() => {
@@ -134,6 +135,7 @@ const SaveKitForm = (props) => {
       name: kit.name,
       sample: sampleLink
     });
+    // eslint-disable-next-line
   }, [sampleLink])
 
   const onSubmit = e => {

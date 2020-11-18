@@ -13,7 +13,7 @@ const Kit = () => {
   const authContext = useContext(AuthContext);
   const kitContext = useContext(KitContext);
 
-  const { sampleBlob, loadedKit } = kitContext
+  const { sampleBlob, loadedKit } = kitContext;
 
   useEffect(() => {
     authContext.loadUser();
