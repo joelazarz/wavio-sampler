@@ -40,23 +40,23 @@ const DeleteRegionButton = styled.button`
 const RegionClick = () => {
   const kitContext = useContext(KitContext);
   const { 
-    clickRegion, 
-    clearClickRegion, 
-    removeSelectedRegion 
+    clickedRegion, 
+    clearClickedRegion, 
+    removeSelectedRegion,
   } = kitContext;
 
-  if(!clickRegion) {
+  if(!clickedRegion) {
     return <RegionEditContainer />
   };
 
   return (
     <RegionEditContainer>
       <RowContainer>
-        <span>{clickRegion ? `Region: [${clickRegion.id}] ` : '...'}</span>
-        <CloseIcon id="clear-region" onClick={clearClickRegion}/>
+        <span>{clickedRegion ? `Region: [${clickedRegion.id}] ` : '...'}</span>
+        <CloseIcon id="clear-region" onClick={clearClickedRegion}/>
       </RowContainer>
       <RowContainer>
-        <DeleteRegionButton onClick={() => removeSelectedRegion(clickRegion.id)}>
+        <DeleteRegionButton onClick={() => removeSelectedRegion(clickedRegion.id)}>
           Delete
         </DeleteRegionButton>
       </RowContainer>

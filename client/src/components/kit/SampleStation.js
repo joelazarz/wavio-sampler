@@ -23,12 +23,12 @@ const SampleStation = () => {
   const {
     loadedKit,
     sampleBlob,
+    waveformColor,
     updateSampleWaveRegions, 
     sampleRegions, 
-    waveformColor,
-    setHoverRegion,
-    setClickRegion,
-    clearHoverRegion,
+    setHoveredRegion,
+    clearHoveredRegion,
+    setClickedRegion,
   } = kitContext;
 
   const sampleformRef = useRef();
@@ -73,7 +73,7 @@ const SampleStation = () => {
       isFirstRender.current = false;
       return;
     };
-  /*logic for component did update*/
+
     sampleWave.current.clearRegions();
     sampleRegions.forEach(reg => {
       sampleWave.current.addRegion(reg);
@@ -92,15 +92,15 @@ const SampleStation = () => {
     };
 
     sampleWave.current.on('region-mouseenter', (e) => {
-      setHoverRegion(e)
+      setHoveredRegion(e)
     });
 
     sampleWave.current.on('region-mouseleave', (e) => {
-      clearHoverRegion()
+      clearHoveredRegion()
     });
 
     sampleWave.current.on('region-click', (e) => {
-      setClickRegion(e)
+      setClickedRegion(e)
     });
     // eslint-disable-next-line
   }, []);
@@ -130,7 +130,7 @@ const SampleStation = () => {
   // functions 
 
   const handleTrigger = (e) => {
-    if (document.activeElement.matches('input')) { return; };
+    if (document.activeElement.matches('.text-input')) { return; };
     if (!sampleWave.current.regions.list[e.key]) { return; };
     sampleWave.current.regions.list[e.key].play();
   };

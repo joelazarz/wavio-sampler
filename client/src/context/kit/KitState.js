@@ -24,8 +24,8 @@ const KitState = props => {
     sampleLink: null,
     sampleBlob: null,
     sampleRegions: [],
-    hoverRegion: null,
-    clickRegion: null,
+    hoveredRegion: null,
+    clickedRegion: null,
     waveformColor: 'rgb(255, 255, 255, 100)',
     loopColor: 'rgb(255, 255, 255, 100)'
   };
@@ -37,6 +37,7 @@ const KitState = props => {
   // Get selected kit
 
   // Create kit
+  // loadedKit: res.data
   const createKit = async formData => {
     const config = {
       headers: {
@@ -63,6 +64,7 @@ const KitState = props => {
   // Delete kit
 
   // Upload sample from SaveKitForm.js
+  // sampleLink: res link from s3 bucket
   const uploadSample = async formData => {
     const config = {
       headers: {
@@ -84,7 +86,8 @@ const KitState = props => {
 
   };
 
-  // Load sample into kit
+  // Load sample into kit - SampleStation.js
+  // sampleBlob: sample
   const loadSample = (sample) => {
     dispatch({
       type: LOAD_SAMPLE,
@@ -93,6 +96,7 @@ const KitState = props => {
   };
 
   // Add Region to sample waveform - RegionCreator.js
+  // sampleRegions: ...regions, region
   const addRegion = (region) => {
     dispatch({
       type: ADD_REGION,
@@ -100,7 +104,8 @@ const KitState = props => {
     });
   };
 
-  // set sampleRegions on every update
+  // update Region in sampleRegions array after an update (resize,drag) - SampleStation.js
+  // sampleRegions: update specific region within array
   const updateSampleWaveRegions = (region) => {
     dispatch({
       type: SET_REGIONS,
@@ -108,31 +113,38 @@ const KitState = props => {
     });
   };
 
-  // Hover region 
-  const setHoverRegion = (region) => {
+  // set Region that is being hovered to display in RegionHover.js - SampleStation.js 
+  // hoveredRegion: region
+  const setHoveredRegion = (region) => {
     dispatch({
       type: HOVER_REGION,
       payload: region
     });
   };
 
-  const clearHoverRegion = () => {
+  // unset Region that was hovered - SampleStation.js
+  // hoveredRegion: null
+  const clearHoveredRegion = () => {
     dispatch({ type: CLEAR_HOVER });
   };
 
-  // Click region
-  const setClickRegion = (region) => {
+  // set clicked region to load into RegionClick.js - SampleStation.js
+  // clickedRegion: region
+  const setClickedRegion = (region) => {
     dispatch({
       type: CLICK_REGION,
       payload: region
     });
   };
 
-  const clearClickRegion = () => {
+  // clear clicked region from RegionClick.js
+  // clickedRegion: null
+  const clearClickedRegion = () => {
     dispatch({ type: CLEAR_CLICK });
   };
 
   // Remove region from current waveform
+  // sampleRegions: remove specific region from array
   const removeSelectedRegion = (id) => {
     dispatch({
       type: REMOVE_REGION,
@@ -144,7 +156,8 @@ const KitState = props => {
 
   // Delete region from db
 
-  // Waveform Color
+  // Waveform Color - sampleStation.js
+  // waveformColor: color
   const setWaveformColor = (color) => {
     dispatch({
       type: WAVE_COLOR,
@@ -152,7 +165,8 @@ const KitState = props => {
     });
   };
 
-  // Loop Color
+  // Loop Color - loopStation.js
+  // loopColor: color
   const setLoopColor = (color) => {
     dispatch({
       type: LOOP_COLOR,
@@ -167,8 +181,8 @@ const KitState = props => {
       sampleLink: state.sampleLink,
       sampleBlob: state.sampleBlob,
       sampleRegions: state.sampleRegions,
-      hoverRegion: state.hoverRegion,
-      clickRegion: state.clickRegion,
+      hoveredRegion: state.hoveredRegion,
+      clickedRegion: state.clickedRegion,
       waveformColor: state.waveformColor,
       loopColor: state.loopColor,
       createKit,
@@ -176,10 +190,10 @@ const KitState = props => {
       loadSample,
       addRegion,
       updateSampleWaveRegions,
-      setHoverRegion,
-      setClickRegion,
-      clearHoverRegion,
-      clearClickRegion,
+      setHoveredRegion,
+      setClickedRegion,
+      clearHoveredRegion,
+      clearClickedRegion,
       removeSelectedRegion,
       setWaveformColor,
       setLoopColor,

@@ -36,8 +36,8 @@ export default (state, action) => {
         sampleLink: null,
         sampleBlob: null,
         sampleRegions: [],
-        hoverRegion: null,
-        clickRegion: null,
+        hoveredRegion: null,
+        clickedRegion: null,
         waveformColor: 'rgb(255, 255, 255, 100)',
         loopColor: 'rgb(255, 255, 255, 100)'
       };
@@ -57,34 +57,34 @@ export default (state, action) => {
     case HOVER_REGION:
       return {
         ...state,
-        hoverRegion: action.payload,
+        hoveredRegion: action.payload,
         // clickRegion: null
       };
     
     case CLEAR_HOVER:
       return {
         ...state,
-        hoverRegion: null
+        hoveredRegion: null
       };
     
     case CLICK_REGION:
       return {
         ...state,
-        hoverRegion: null,
-        clickRegion: action.payload
+        hoveredRegion: null,
+        clickedRegion: action.payload
       };
     
     case CLEAR_CLICK:
       return {
         ...state,
-        clickRegion: null
+        clickedRegion: null
       };
 
     case REMOVE_REGION:
       return {
         ...state,
         sampleRegions: state.sampleRegions.filter(region => region.id !== action.payload),
-        clickRegion: null,
+        clickedRegion: null,
         deleteCounter: state.deleteCounter++
       }
 

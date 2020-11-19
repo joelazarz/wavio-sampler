@@ -56,7 +56,7 @@ const RegionBlock = styled.div`
 
 const RegionHover = () => {
   const kitContext = useContext(KitContext);
-  const { hoverRegion, sampleRegions } = kitContext;
+  const { hoveredRegion, sampleRegions } = kitContext;
 
   let regionArr = [];
 
@@ -73,7 +73,7 @@ const RegionHover = () => {
     return regionArr;
   };
   
-  if(!hoverRegion) {
+  if(!hoveredRegion) {
     regionSpaceDisplay(sampleRegions);
     return (
         <StatusContainer>
@@ -95,8 +95,8 @@ const RegionHover = () => {
   return (
     // <TitleContainer>
       <RowContainer>
-        <span>{hoverRegion ? `Region: [${hoverRegion.id}] ` : '...'}</span>
-        <SquareIcon style={{ 'fill': `${hoverRegion.color}` }}/>
+        <span>{hoveredRegion ? `Region: [${hoveredRegion.id}] ` : '...'}</span>
+        <SquareIcon style={{ 'fill': `${hoveredRegion.color}` }}/>
       </RowContainer>
     // </TitleContainer>
   )

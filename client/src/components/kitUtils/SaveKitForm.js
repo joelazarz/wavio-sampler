@@ -161,6 +161,7 @@ const SaveKitForm = (props) => {
       placeholder="kit name" 
       value={name} 
       onChange={onChange}
+      className="text-input"
       />
       <KitSaveWarning>For security purposes you will need to choose the file again - Thank you.</KitSaveWarning>
       <DropContainer
