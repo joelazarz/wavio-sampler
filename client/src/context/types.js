@@ -24,3 +24,6 @@ export const LOOP_COLOR = 'LOOP_COLOR';
 
 export const UPLOAD_SAMPLE = 'UPLOAD_SAMPLE';
 export const CREATE_KIT = 'CREATE_KIT';
+
+export const SET_RECORD = 'SET_RECORD';
+export const SET_LOOPBLOB = 'SET_LOOPBLOB';

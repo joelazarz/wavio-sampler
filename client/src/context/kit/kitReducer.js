@@ -5,6 +5,8 @@ import {
   CREATE_KIT,
   ADD_REGION,
   SET_REGIONS,
+  SET_RECORD,
+  SET_LOOPBLOB,
   HOVER_REGION,
   CLEAR_HOVER,
   CLICK_REGION,
@@ -36,6 +38,7 @@ export default (state, action) => {
         sampleLink: null,
         sampleBlob: null,
         sampleRegions: [],
+        setRecording: false,
         hoveredRegion: null,
         clickedRegion: null,
         waveformColor: 'rgb(255, 255, 255, 100)',
@@ -52,6 +55,19 @@ export default (state, action) => {
       return {
         ...state,
         sampleRegions: state.sampleRegions.map(obj => action.payload.find(region => region.id === obj.id) || obj)
+      };
+
+    case SET_RECORD:
+      return {
+        ...state,
+        loopBlob: null,
+        setRecord: action.payload
+      };
+
+    case SET_LOOPBLOB:
+      return {
+        ...state,
+        loopBlob: action.payload
       };
 
     case HOVER_REGION:

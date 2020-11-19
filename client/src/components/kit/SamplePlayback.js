@@ -1,8 +1,10 @@
+import { useContext } from 'react';
+import KitContext from '../../context/kit/kitContext';
 import styled from 'styled-components';
 import {ReactComponent as PlayIcon} from '../../css/icons/play.svg'
 import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg'
 import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
-import '../../css/slider.css'
+import '../../css/slider.css';
 
 const SamplePlaybackCotrols = styled.div`
   grid-row-start: 1;
@@ -44,6 +46,8 @@ const ZoomSlider = styled.input`
 `
 
 const SamplePlayback = ({ ...props }) => {
+  const kitContext = useContext(KitContext);
+  const { setRecord, setRecording } = kitContext;
 
   const { 
     playSample, 
@@ -52,6 +56,10 @@ const SamplePlayback = ({ ...props }) => {
     rateSlider,
     zoomSlider,
   } = props;
+
+  const handleRecord = () => {
+    setRecord(!setRecording);
+  };
 
   return (
     <SamplePlaybackCotrols>
@@ -79,6 +87,9 @@ const SamplePlayback = ({ ...props }) => {
           onChange={(e) => rateSlider(e.target.value)}
           />
         </SlideContainer>
+
+        <span onClick={handleRecord} style={{ 'color': setRecording ? 'red' : 'white' }}>RECORD</span>
+
         <SlideContainer>
           <span>Zoom:</span> 
           <ZoomSlider

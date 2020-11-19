@@ -19,12 +19,18 @@ const LoopContainer = styled.div`
 
 const LoopStation = () => {
   const kitContext = useContext(KitContext);
-  const { loopColor } = kitContext;
+  const { 
+    loopColor, 
+    loopBlob, 
+    waveformColor 
+  } = kitContext;
 
-  const loopformRef = useRef();
-  const loopWave = useRef();
-
+  const loopformRef = useRef(null);
+  const loopWave = useRef(null);
+  
   useEffect(() => {
+    if (loopBlob === null) { return };
+
     loopWave.current = WaveSurfer.create({
       container: loopformRef.current,
       waveColor: 'white',
@@ -43,11 +49,19 @@ const LoopStation = () => {
       ]
     });
 
-    loopWave.current.load('https://ia802805.us.archive.org/18/items/cd_studio-one-showcase-vol.-1_various-artists-alton-ellis-cornel-campbel/disc1/10.%20Johnny%20Osbourne%20-%20All%20I%20Have%20Is%20Love_sample.mp3')
-  }, []);
+    if(loopBlob){
+      loopWave.current.load(loopBlob);
+      loopWave.current.setWaveColor(waveformColor);
+    } else {
+      loopWave.current.load('https://raw.githubusercontent.com/anars/blank-audio/master/250-milliseconds-of-silence.mp3');
+    };
+
+    loopWave.current.zoom(1);
+
+  }, [loopBlob]);
 
   useEffect(() => {
-    // let progressColor = waveformColor.replace(/[\d\.]+\)$/g, '0.3)');
+    if (!loopBlob) { return };
     loopWave.current.setWaveColor(loopColor);
     loopWave.current.setProgressColor(loopColor);
   }, [loopColor]);
@@ -71,9 +85,14 @@ const LoopStation = () => {
     stopLoop={stopLoop}
     pauseLoop={pauseLoop}
     />
+    {
+    loopBlob ?
     <LoopContainer 
     ref={loopformRef} 
     />
+    :
+    <></>
+    }
     <LoopControl />
     </>
   );

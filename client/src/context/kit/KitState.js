@@ -9,6 +9,8 @@ import {
   CREATE_KIT,
   ADD_REGION,
   SET_REGIONS,
+  SET_RECORD,
+  SET_LOOPBLOB,
   HOVER_REGION,
   CLICK_REGION,
   CLEAR_CLICK,
@@ -23,7 +25,10 @@ const KitState = props => {
     loadedKit: null,
     sampleLink: null,
     sampleBlob: null,
+    loopBlob: null,
     sampleRegions: [],
+    setRecording: false,
+    recordCapture: null,
     hoveredRegion: null,
     clickedRegion: null,
     waveformColor: 'rgb(255, 255, 255, 100)',
@@ -113,6 +118,24 @@ const KitState = props => {
     });
   };
 
+  // set recording status to true - SamplePlayback.js
+  // setRecord: !state.setRecording
+  const setRecord = status => {
+    dispatch({ 
+      type: SET_RECORD,
+      payload: status 
+    });
+  };
+
+  // set recorded blob to loopBlob - SampleStation.js
+  // loopBlob: blob
+  const setLoopBlob = blob => {
+    dispatch({ 
+      type: SET_LOOPBLOB,
+      payload: blob 
+    });
+  };
+
   // set Region that is being hovered to display in RegionHover.js - SampleStation.js 
   // hoveredRegion: region
   const setHoveredRegion = (region) => {
@@ -180,7 +203,10 @@ const KitState = props => {
       loadedKit: state.loadedKit,
       sampleLink: state.sampleLink,
       sampleBlob: state.sampleBlob,
+      loopBlob: state.loopBlob,
       sampleRegions: state.sampleRegions,
+      setRecording: state.setRecord,
+      recordCapture: state.recordCapture,
       hoveredRegion: state.hoveredRegion,
       clickedRegion: state.clickedRegion,
       waveformColor: state.waveformColor,
@@ -190,6 +216,8 @@ const KitState = props => {
       loadSample,
       addRegion,
       updateSampleWaveRegions,
+      setRecord,
+      setLoopBlob,
       setHoveredRegion,
       setClickedRegion,
       clearHoveredRegion,
