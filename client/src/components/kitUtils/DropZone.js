@@ -19,6 +19,7 @@ const getColor = (props) => {
 const Container = styled.div`
   display: grid;
   margin: 0em 2em;
+  padding: 0em 4em;
   grid-row-start: 4;
   grid-row-end: 8;
   grid-column-start: 5;

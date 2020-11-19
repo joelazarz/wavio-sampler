@@ -8,6 +8,7 @@ const LoopControlContainer = styled.div`
   grid-row-end: 6;
   grid-column-start: 14;
   grid-column-end: 17;
+  min-height: 20em;
   margin-top: 1rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.paneBackground};

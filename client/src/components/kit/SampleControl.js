@@ -17,30 +17,42 @@ const SampleControlContainer = styled.div`
   grid-row-end: 3;
   grid-column-start: 14;
   grid-column-end: 17;
+  min-height: 20em;
   margin-top: 1rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.paneBackground};
 `
 
 const blink = keyframes`
-  from {
+  0% {
     fill: white;
+    margin-right: 1px;
+    height: 0.8rem; 
+    width: 0.8rem;
   }
 
-  to {
+  50% {
     fill: red;
+    margin-right: 0px;
+    height: 0.9rem; 
+    width: 0.9rem;
+  }
+
+  100% {
+    fill: white;
+    margin-right: 1px;
+    height: 0.8rem; 
+    width: 0.8rem;
   }
 `;
 
 const NotUploadedIcon = styled(UploadIcon)`
-  height:0.8rem; 
-  width: 0.8rem;
   animation: ${blink} 1s ease infinite;
 `
 
 const UploadedIcon = styled(UploadIcon)`
-  height:0.8rem; 
-  width: 0.8rem;
+  height:0.9rem; 
+  width: 0.9rem;
   fill: green;
 `
 

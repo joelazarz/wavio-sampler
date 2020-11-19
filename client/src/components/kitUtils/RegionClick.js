@@ -25,7 +25,7 @@ const RowContainer = styled.div`
 
 const DeleteRegionButton = styled.button`
   font-family: inherit;
-  min-height: 1rem;
+  max-height: 1rem;
   margin: 0.1rem 6px;
   background-color: slategrey;
   border: none;

@@ -33,6 +33,7 @@ const KitNameInput = styled.input`
   display: flex;
   /* width: 100%; */
   margin: 0.5em;
+  padding: 5px;
   font-family: inherit;
   background-color: ${({ theme }) => theme.nav};
   color: ${({ theme }) => theme.text};
@@ -102,7 +103,8 @@ const SaveKitForm = (props) => {
     getInputProps,
     isDragActive,
     isDragAccept,
-    isDragReject
+    isDragReject,
+    onDropAccepted
   } = useDropzone({
     accept: 'audio/*',  
     maxFiles: 1,
@@ -169,7 +171,7 @@ const SaveKitForm = (props) => {
         })}>
         <input {...getInputProps()} />
         <DropText>{
-        kit.name && sampleLink === null ?
+        onDropAccepted && sampleLink === null ?
         <span>Loading... </span>
         :
         <span>Drag file or click to choose</span>
