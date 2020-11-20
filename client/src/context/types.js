@@ -27,3 +27,4 @@ export const CREATE_KIT = 'CREATE_KIT';
 
 export const SET_RECORD = 'SET_RECORD';
 export const SET_LOOPBLOB = 'SET_LOOPBLOB';
+export const LOOPBLOB_NULL = 'LOOPBLOB_NULL';

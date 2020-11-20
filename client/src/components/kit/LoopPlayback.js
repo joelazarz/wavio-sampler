@@ -3,6 +3,7 @@ import {ReactComponent as PlayIcon} from '../../css/icons/play.svg'
 import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg'
 import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
 import {ReactComponent as ResizeIcon} from '../../css/icons/resize.svg'
+import {ReactComponent as CaptureIcon} from '../../css/icons/capture.svg'
 
 const LoopPlaybackCotrols = styled.div`
   grid-row-start: 4;
@@ -29,7 +30,8 @@ const LoopPlayback = ({ ...props }) => {
     playLoop, 
     stopLoop, 
     pauseLoop,
-    resizeLoop
+    resizeLoop,
+    clipLoop
   } = props;
 
   return (
@@ -48,6 +50,10 @@ const LoopPlayback = ({ ...props }) => {
       />
       <ResizeIcon 
       onClick={resizeLoop} 
+      style={{fill: 'white'}}
+      />
+      <CaptureIcon 
+      onClick={clipLoop}
       style={{fill: 'white'}}
       />
     </LoopPlaybackCotrols>

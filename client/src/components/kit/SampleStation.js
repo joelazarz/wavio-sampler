@@ -64,9 +64,6 @@ const SampleStation = () => {
       ]
     });
 
-    sampleWave.current.on('play', () => console.log('play event'));
-    sampleWave.current.on('pause', () => console.log('finish event'));
-
     if (sampleBlob) {
       sampleWave.current.load(sampleBlob);
     } else if (loadedKit) {
