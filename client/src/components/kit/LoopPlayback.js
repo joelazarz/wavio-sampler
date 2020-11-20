@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import {ReactComponent as PlayIcon} from '../../css/icons/play.svg'
 import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg'
 import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
+import {ReactComponent as ResizeIcon} from '../../css/icons/resize.svg'
 
 const LoopPlaybackCotrols = styled.div`
   grid-row-start: 4;
@@ -27,7 +28,8 @@ const LoopPlayback = ({ ...props }) => {
   const { 
     playLoop, 
     stopLoop, 
-    pauseLoop 
+    pauseLoop,
+    resizeLoop
   } = props;
 
   return (
@@ -43,6 +45,10 @@ const LoopPlayback = ({ ...props }) => {
       <StopIcon 
       onClick={stopLoop} 
       style={{fill: 'red'}}
+      />
+      <ResizeIcon 
+      onClick={resizeLoop} 
+      style={{fill: 'white'}}
       />
     </LoopPlaybackCotrols>
   )

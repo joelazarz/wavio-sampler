@@ -57,25 +57,42 @@ const LoopStation = () => {
     };
 
     loopWave.current.zoom(1);
-
+    // eslint-disable-next-line
   }, [loopBlob]);
 
   useEffect(() => {
     if (!loopBlob) { return };
     loopWave.current.setWaveColor(loopColor);
     loopWave.current.setProgressColor(loopColor);
+    // eslint-disable-next-line
   }, [loopColor]);
 
   const playLoop = () => {
+    if(loopWave.current.regions.list['resize']) {
+      loopWave.current.play();
+      loopWave.current.regions.list['resize'].play();
+    };
     loopWave.current.play();
+  };
+  
+  const pauseLoop = () => {
+    loopWave.current.playPause();
   };
 
   const stopLoop = () => {
     loopWave.current.stop();
   };
 
-  const pauseLoop = () => {
-    loopWave.current.playPause();
+  const resizeLoop = () => {
+    const region = {
+      id: 'resize',
+      start: 0,
+      end: `${loopWave.current.getDuration() - 0.001}`,
+      loop: true,
+      color: `rgb(246, 155, 155, 0.4)`
+    };
+
+    loopWave.current.addRegion(region);
   };
 
   return (
@@ -84,15 +101,9 @@ const LoopStation = () => {
     playLoop={playLoop}
     stopLoop={stopLoop}
     pauseLoop={pauseLoop}
+    resizeLoop={resizeLoop}
     />
-    {
-    loopBlob ?
-    <LoopContainer 
-    ref={loopformRef} 
-    />
-    :
-    <></>
-    }
+    { loopBlob ? <LoopContainer ref={loopformRef} /> : <></> }
     <LoopControl />
     </>
   );

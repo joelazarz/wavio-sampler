@@ -79,7 +79,7 @@ const SampleStation = () => {
     dest.current = sampleWave.current.backend.ac.createMediaStreamDestination();
     mediaRecorder.current = new MediaRecorder(dest.current.stream);
     gain.current.connect(dest.current);
-
+    // eslint-disable-next-line
   }, [sampleBlob, loadedKit]);
 
   useEffect(() => {
@@ -89,17 +89,8 @@ const SampleStation = () => {
     };
 
     recordInput();
-  }, [setRecording])
-
-  // useEffect(() => {
-  //   if (sampleBlob) {
-  //     sampleWave.current.load(sampleBlob);
-  //   } else if (loadedKit) {
-  //     sampleWave.current.load(loadedKit.sample);
-  //     sampleWave.current.setWaveColor(waveformColor);
-  //   }
-  //   // eslint-disable-next-line
-  // }, [sampleBlob, loadedKit]);
+    // eslint-disable-next-line
+  }, [setRecording]);
 
   useEffect(() => {
     if (isFirstRender.current) {
@@ -193,7 +184,6 @@ const SampleStation = () => {
   
       mediaRecorder.current.start();
       mediaRecorder.current.ondataavailable = (e) => {
-      // push each chunk (blobs) in an array
       recChunks.push(e.data);
       };
 
@@ -201,7 +191,6 @@ const SampleStation = () => {
     } else if (!setRecording) {
       mediaRecorder.current.stop();
       mediaRecorder.current.onstop = () => {
-      // Make blob out of our blobs, and open it.
       const blob = new Blob(chunks, { 'type' : 'audio/wav; codecs=opus' });
       let recordedBlob = URL.createObjectURL(blob);
       setLoopBlob(recordedBlob);
@@ -220,9 +209,7 @@ const SampleStation = () => {
     rateSlider={rateSlider}
     zoomSlider={zoomSlider}
     />
-    <SampleContainer 
-    ref={sampleformRef} 
-    />
+    <SampleContainer ref={sampleformRef} />
     <SampleControl />
     </>
   );

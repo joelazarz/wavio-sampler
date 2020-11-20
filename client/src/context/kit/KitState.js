@@ -93,7 +93,7 @@ const KitState = props => {
 
   // Load sample into kit - SampleStation.js
   // sampleBlob: sample
-  const loadSample = (sample) => {
+  const loadSample = sample => {
     dispatch({
       type: LOAD_SAMPLE,
       payload: sample
@@ -102,7 +102,7 @@ const KitState = props => {
 
   // Add Region to sample waveform - RegionCreator.js
   // sampleRegions: ...regions, region
-  const addRegion = (region) => {
+  const addRegion = region => {
     dispatch({
       type: ADD_REGION,
       payload: region
@@ -111,7 +111,7 @@ const KitState = props => {
 
   // update Region in sampleRegions array after an update (resize,drag) - SampleStation.js
   // sampleRegions: update specific region within array
-  const updateSampleWaveRegions = (region) => {
+  const updateSampleWaveRegions = region => {
     dispatch({
       type: SET_REGIONS,
       payload: region
@@ -138,7 +138,7 @@ const KitState = props => {
 
   // set Region that is being hovered to display in RegionHover.js - SampleStation.js 
   // hoveredRegion: region
-  const setHoveredRegion = (region) => {
+  const setHoveredRegion = region => {
     dispatch({
       type: HOVER_REGION,
       payload: region
@@ -153,7 +153,7 @@ const KitState = props => {
 
   // set clicked region to load into RegionClick.js - SampleStation.js
   // clickedRegion: region
-  const setClickedRegion = (region) => {
+  const setClickedRegion = region => {
     dispatch({
       type: CLICK_REGION,
       payload: region
@@ -168,7 +168,7 @@ const KitState = props => {
 
   // Remove region from current waveform
   // sampleRegions: remove specific region from array
-  const removeSelectedRegion = (id) => {
+  const removeSelectedRegion = id => {
     dispatch({
       type: REMOVE_REGION,
       payload: id
@@ -181,7 +181,7 @@ const KitState = props => {
 
   // Waveform Color - sampleStation.js
   // waveformColor: color
-  const setWaveformColor = (color) => {
+  const setWaveformColor = color => {
     dispatch({
       type: WAVE_COLOR,
       payload: color
@@ -190,7 +190,7 @@ const KitState = props => {
 
   // Loop Color - loopStation.js
   // loopColor: color
-  const setLoopColor = (color) => {
+  const setLoopColor = color => {
     dispatch({
       type: LOOP_COLOR,
       payload: color
