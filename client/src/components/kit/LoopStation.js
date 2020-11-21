@@ -18,6 +18,8 @@ const LoopContainer = styled.div`
 `
 
 const LoopStation = () => {
+  console.log('LoopStation Render');
+
   const kitContext = useContext(KitContext);
   const { 
     loopColor, 
@@ -137,9 +139,9 @@ const LoopStation = () => {
         sample = (0.5 + sample < 0 ? sample * 32768 : sample * 32767)|0;  // scale to 16-bit signed int
         view.setInt16(pos, sample, true);                                 // write 16-bit sample
         pos += 2;
-      }
+      };
       offset++                                                            // next source sample
-    }
+    };
 
     // create Blob
     return new Blob([buffer], {type: "audio/wav"});
@@ -147,13 +149,13 @@ const LoopStation = () => {
     function setUint16(data) {
       view.setUint16(pos, data, true);
       pos += 2;
-    }
+    };
 
     function setUint32(data) {
       view.setUint32(pos, data, true);
       pos += 4;
-    }
-  }
+    };
+  };
 
   const clipLoop = () => {
     loopWave.current.stop();
@@ -204,6 +206,7 @@ const LoopStation = () => {
     pauseLoop={pauseLoop}
     resizeLoop={resizeLoop}
     clipLoop={clipLoop}
+    loopBlob={loopBlob}
     />
     { loopBlob ? <LoopContainer ref={loopformRef} /> : <></> }
     <LoopControl />

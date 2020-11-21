@@ -4,6 +4,7 @@ import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg'
 import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
 import {ReactComponent as ResizeIcon} from '../../css/icons/resize.svg'
 import {ReactComponent as CaptureIcon} from '../../css/icons/capture.svg'
+import {ReactComponent as DownloadIcon} from '../../css/icons/download.svg'
 
 const LoopPlaybackCotrols = styled.div`
   grid-row-start: 4;
@@ -22,6 +23,11 @@ const LoopPlaybackCotrols = styled.div`
     height:0.8rem; 
     width: 0.8rem;
   }
+  & > a {
+    margin: 0rem 0.5rem;
+    height:0.8rem; 
+    width: 0.8rem;
+  }
 `
 
 const LoopPlayback = ({ ...props }) => {
@@ -31,7 +37,8 @@ const LoopPlayback = ({ ...props }) => {
     stopLoop, 
     pauseLoop,
     resizeLoop,
-    clipLoop
+    clipLoop,
+    loopBlob
   } = props;
 
   return (
@@ -56,6 +63,11 @@ const LoopPlayback = ({ ...props }) => {
       onClick={clipLoop}
       style={{fill: 'white'}}
       />
+      <a 
+      href={loopBlob} 
+      download>
+        <DownloadIcon style={{fill: 'white'}} />
+      </a>
     </LoopPlaybackCotrols>
   )
 };
