@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styled from 'styled-components';
 import { TitleContainer } from '../../css/TitleContainer';
 
@@ -13,12 +13,12 @@ const DockContainer = styled.div`
   border-radius: 6px;
 `
 
-const Dock = () => {
+const Dock = memo(() => {
   return (
     <DockContainer>
       <TitleContainer>Social</TitleContainer>
     </DockContainer>
   )
-};
+});
 
 export default Dock;

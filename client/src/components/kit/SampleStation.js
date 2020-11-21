@@ -10,7 +10,6 @@ import WaveSurfer from 'wavesurfer.js';
 import RegionPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.regions.min.js';
 import styled from 'styled-components';
 
-
 const SampleContainer = styled.div`
   grid-row-start: 2;
   grid-row-end: 3;
@@ -21,8 +20,6 @@ const SampleContainer = styled.div`
 `
 
 const SampleStation = memo(() => {
-  console.log('sample station re render');
-
   const sampleContext = useContext(SampleContext);
   const kitContext = useContext(KitContext);
 

@@ -20,8 +20,6 @@ const LoopContainer = styled.div`
 `
 
 const LoopStation = memo(() => {
-  console.log('loopstation re render');
-
   const kitContext = useContext(KitContext);
   const loopContext = useContext(LoopContext);
   
