@@ -1,7 +1,7 @@
 // context
 import { useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
-import KitContext from '../../context/kit/kitContext';
+import SampleContext from '../../context/sample/sampleContext';
 
 // components
 import Dock from './Dock';
@@ -11,9 +11,9 @@ import LoopStation from './LoopStation';
 
 const Kit = () => {
   const authContext = useContext(AuthContext);
-  const kitContext = useContext(KitContext);
+  const sampleContext = useContext(SampleContext);
 
-  const { sampleBlob, loadedKit } = kitContext;
+  const { sampleBlob, loadedKit } = sampleContext;
 
   useEffect(() => {
     authContext.loadUser();
@@ -29,7 +29,8 @@ const Kit = () => {
         <LoopStation />
         </>
         : 
-        <DropZone /> }
+        <DropZone /> 
+      }
     </>
   )
 };

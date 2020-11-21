@@ -1,6 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { useDropzone } from 'react-dropzone';
-import KitContext from '../../context/kit/kitContext';
+import SampleContext from '../../context/sample/sampleContext';
 import styled from 'styled-components';
 
 const getColor = (props) => {
@@ -45,8 +45,8 @@ const DropText = styled.div`
 `
 
 const DropZone = (props) => {
-  const kitContext = useContext(KitContext);
-  const { loadSample } = kitContext;
+  const sampleContext = useContext(SampleContext);
+  const { loadSample } = sampleContext;
 
   const {
     acceptedFiles,

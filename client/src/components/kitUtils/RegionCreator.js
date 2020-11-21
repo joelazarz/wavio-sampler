@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import KitContext from '../../context/kit/kitContext';
+import SampleContext from '../../context/sample/sampleContext';
 
 import {ReactComponent as AddIcon} from '../../css/icons/plus-sign.svg'
 import styled from 'styled-components';
@@ -18,8 +18,8 @@ const RegionAddContainer = styled.div`
 `
 
 const RegionCreator = () => {
-  const kitContext = useContext(KitContext);
-  const { addRegion, sampleRegions } = kitContext;
+  const sampleContext = useContext(SampleContext);
+  const { addRegion, sampleRegions } = sampleContext;
 
   const onClick = () => {
     if(sampleRegions.length === 8) {return;}; 

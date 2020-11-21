@@ -1,4 +1,4 @@
-import KitContext from '../../context/kit/kitContext';
+import SampleContext from '../../context/sample/sampleContext';
 import { useState, useEffect, useContext } from 'react'; 
 
 import { useDropzone } from 'react-dropzone';
@@ -111,8 +111,8 @@ const SaveKitForm = (props) => {
     maxSize: 10000000
   });
 
-  const kitContext = useContext(KitContext);
-  const { uploadSample, sampleLink, createKit } = kitContext;
+  const sampleContext = useContext(SampleContext);
+  const { uploadSample, sampleLink, createKit } = sampleContext;
 
   const [kit, setKit] = useState({
     name: '',

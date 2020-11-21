@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import KitContext from '../../context/kit/kitContext';
+import SampleContext from '../../context/sample/sampleContext';
 
 import styled from 'styled-components';
 import { RegionEditContainer } from '../../css/RegionEditContainer';
@@ -38,12 +38,12 @@ const DeleteRegionButton = styled.button`
 `
 
 const RegionClick = () => {
-  const kitContext = useContext(KitContext);
+  const sampleContext = useContext(SampleContext);
   const { 
     clickedRegion, 
     clearClickedRegion, 
     removeSelectedRegion,
-  } = kitContext;
+  } = sampleContext;
 
   if(!clickedRegion) {
     return <RegionEditContainer />

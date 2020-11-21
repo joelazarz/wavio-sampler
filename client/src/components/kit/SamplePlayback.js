@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import KitContext from '../../context/kit/kitContext';
+import SampleContext from '../../context/sample/sampleContext';
 import styled from 'styled-components';
 import {ReactComponent as PlayIcon} from '../../css/icons/play.svg'
 import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg'
@@ -46,8 +46,8 @@ const ZoomSlider = styled.input`
 `
 
 const SamplePlayback = ({ ...props }) => {
-  const kitContext = useContext(KitContext);
-  const { setRecord, setRecording } = kitContext;
+  const sampleContext = useContext(SampleContext);
+  const { setRecord, setRecording } = sampleContext;
 
   const { 
     playSample, 

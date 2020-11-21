@@ -1,6 +1,7 @@
 import SamplePlayback from './SamplePlayback';
 import SampleControl from './SampleControl';
 
+import SampleContext from '../../context/sample/sampleContext';
 import KitContext from '../../context/kit/kitContext';
 
 import WaveSurfer from 'wavesurfer.js';
@@ -19,7 +20,9 @@ const SampleContainer = styled.div`
 `
 
 const SampleStation = () => {
+  const sampleContext = useContext(SampleContext);
   const kitContext = useContext(KitContext);
+
   const {
     loadedKit,
     sampleBlob,
@@ -27,11 +30,12 @@ const SampleStation = () => {
     updateSampleWaveRegions, 
     sampleRegions,
     setRecording,
-    setLoopBlob,
     setHoveredRegion,
     clearHoveredRegion,
     setClickedRegion,
-  } = kitContext;
+  } = sampleContext;
+
+  const { setLoopBlob } = kitContext;
 
   const sampleformRef = useRef();
   const sampleWave = useRef();

@@ -2,7 +2,7 @@ import { useRef, useContext } from 'react'
 import ColorPicker from 'rc-color-picker';
 import 'rc-color-picker/assets/index.css';
 import styled from 'styled-components';
-import KitContext from '../../context/kit/kitContext';
+import LoopContext from '../../context/loop/loopContext';
 
 const PickerContainer = styled.div`
   margin: 5px 10px;
@@ -12,9 +12,9 @@ const PickerContainer = styled.div`
 `
 
 const LoopColorPicker = () => {
-  const kitContext = useContext(KitContext);
+  const loopContext = useContext(LoopContext);
 
-  const { loopColor, setLoopColor } = kitContext;
+  const { loopColor, setLoopColor } = loopContext;
 
   const pickerRef = useRef();
 

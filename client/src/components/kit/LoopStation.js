@@ -1,7 +1,9 @@
+import React from 'react';
 import LoopPlayback from './LoopPlayback';
 import LoopControl from './LoopControl';
 
 import KitContext from '../../context/kit/kitContext';
+import LoopContext from '../../context/loop/loopContext';
 
 import WaveSurfer from 'wavesurfer.js';
 import RegionPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.regions.min.js';
@@ -17,16 +19,14 @@ const LoopContainer = styled.div`
   padding-left: 2rem;
 `
 
-const LoopStation = () => {
-  console.log('LoopStation Render');
+const LoopStation = React.memo(() => {
+  console.log('loopstation re render');
 
   const kitContext = useContext(KitContext);
-  const { 
-    loopColor, 
-    loopBlob, 
-    setLoopBlob,
-    waveformColor 
-  } = kitContext;
+  const loopContext = useContext(LoopContext);
+  
+  const { loopBlob, setLoopBlob } = kitContext;
+  const { loopColor } = loopContext;
 
   const loopformRef = useRef(null);
   const loopWave = useRef(null);
@@ -54,7 +54,7 @@ const LoopStation = () => {
 
     if(loopBlob){
       loopWave.current.load(loopBlob);
-      loopWave.current.setWaveColor(waveformColor);
+      loopWave.current.setWaveColor(loopColor);
     } else {
       loopWave.current.load('https://raw.githubusercontent.com/anars/blank-audio/master/250-milliseconds-of-silence.mp3');
     };
@@ -212,6 +212,6 @@ const LoopStation = () => {
     <LoopControl />
     </>
   );
-};
+});
 
 export default LoopStation;

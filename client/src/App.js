@@ -14,6 +14,8 @@ import { ThemeProvider } from 'styled-components';
 import { useDarkMode } from './hooks/useDarkMode';
 import AuthState from './context/auth/AuthState';
 import KitState from './context/kit/KitState';
+import SampleState from './context/sample/SampleState';
+import LoopState from './context/loop/LoopState';
 // setAuthToken
 import setAuthToken from './utils/setAuthToken';
 
@@ -32,21 +34,25 @@ const App = () => {
   return (
     <AuthState>
       <KitState>
-        <ThemeProvider theme={themeMode}>
-          <Router>
-            <>
-            <GlobalStyles />
-              <Navbar theme={theme} toggleTheme={toggleTheme} />
-              <Container>
-                <Switch>
-                  <PrivateRoute exact path='/' component={Kit} />
-                  <Route exact path='/login' component={Login} />
-                  <Route exact path='/register' component={Register} />
-                </Switch>
-              </Container>
-            </>
-          </Router>
-        </ThemeProvider>
+        <SampleState>
+          <LoopState>
+            <ThemeProvider theme={themeMode}>
+              <Router>
+                <>
+                <GlobalStyles />
+                  <Navbar theme={theme} toggleTheme={toggleTheme} />
+                  <Container>
+                    <Switch>
+                      <PrivateRoute exact path='/' component={Kit} />
+                      <Route exact path='/login' component={Login} />
+                      <Route exact path='/register' component={Register} />
+                    </Switch>
+                  </Container>
+                </>
+              </Router>
+            </ThemeProvider>
+          </LoopState>
+        </SampleState>
       </KitState>
     </AuthState>
   );

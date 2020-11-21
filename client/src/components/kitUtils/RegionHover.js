@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import KitContext from '../../context/kit/kitContext';
+import SampleContext from '../../context/sample/sampleContext';
 
 import styled from 'styled-components';
 import {ReactComponent as SquareIcon} from '../../css/icons/square.svg'
@@ -55,8 +55,8 @@ const RegionBlock = styled.div`
 `
 
 const RegionHover = () => {
-  const kitContext = useContext(KitContext);
-  const { hoveredRegion, sampleRegions } = kitContext;
+  const sampleContext = useContext(SampleContext);
+  const { hoveredRegion, sampleRegions } = sampleContext;
 
   let regionArr = [];
 

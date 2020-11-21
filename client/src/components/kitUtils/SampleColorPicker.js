@@ -2,7 +2,7 @@ import { useRef, useContext } from 'react'
 import ColorPicker from 'rc-color-picker';
 import 'rc-color-picker/assets/index.css';
 import styled from 'styled-components';
-import KitContext from '../../context/kit/kitContext';
+import SampleContext from '../../context/sample/sampleContext';
 
 const PickerContainer = styled.div`
   margin: 2px 10px;
@@ -12,8 +12,8 @@ const PickerContainer = styled.div`
 `
 
 const SampleColorPicker = () => {
-  const kitContext = useContext(KitContext);
-  const { waveformColor, setWaveformColor } = kitContext;
+  const sampleContext = useContext(SampleContext);
+  const { waveformColor, setWaveformColor } = sampleContext;
 
   const pickerRef = useRef();
 

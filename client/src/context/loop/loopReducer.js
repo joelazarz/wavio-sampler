@@ -1,18 +1,19 @@
 // import types
 import { 
-  SET_LOOPBLOB
+  LOOP_COLOR 
 } from "../types";
 
 // eslint-disable-next-line
 export default (state, action) => {
   switch(action.type){
-    case SET_LOOPBLOB:
+    case LOOP_COLOR:
       return {
         ...state,
-        loopBlob: action.payload
+        loopColor: action.payload
       };
 
-      default:
+
+    default:
       return state;
   };
 };

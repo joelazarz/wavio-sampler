@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import KitContext from '../../context/kit/kitContext';
+import SampleContext from '../../context/sample/sampleContext';
 import styled from 'styled-components';
 import { keyframes } from 'styled-components';
 import { TitleContainer } from '../../css/TitleContainer';
@@ -59,8 +59,8 @@ const UploadedIcon = styled(UploadIcon)`
 const SampleControl = () => {
   const [formView, setFormView] = useState(false);
 
-  const kitContext = useContext(KitContext);
-  const { loadedKit } = kitContext;
+  const sampleContext = useContext(SampleContext);
+  const { loadedKit } = sampleContext;
 
   return (
     <SampleControlContainer>
