@@ -1,12 +1,13 @@
+import React, { memo } from 'react';
+import { useEffect, useState, useRef, useContext } from 'react';
 import SamplePlayback from './SamplePlayback';
 import SampleControl from './SampleControl';
-
+// context
 import SampleContext from '../../context/sample/sampleContext';
 import KitContext from '../../context/kit/kitContext';
-
+//
 import WaveSurfer from 'wavesurfer.js';
 import RegionPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.regions.min.js';
-import { useEffect, useState, useRef, useContext } from 'react';
 import styled from 'styled-components';
 
 
@@ -19,7 +20,9 @@ const SampleContainer = styled.div`
   padding-left: 2rem;
 `
 
-const SampleStation = () => {
+const SampleStation = memo(() => {
+  console.log('sample station re render');
+
   const sampleContext = useContext(SampleContext);
   const kitContext = useContext(KitContext);
 
@@ -214,6 +217,6 @@ const SampleStation = () => {
     <SampleControl />
     </>
   );
-};
+});
 
 export default SampleStation;

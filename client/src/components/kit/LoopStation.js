@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
+import { useEffect, useRef, useContext } from 'react';
 import LoopPlayback from './LoopPlayback';
 import LoopControl from './LoopControl';
-
+// context
 import KitContext from '../../context/kit/kitContext';
 import LoopContext from '../../context/loop/loopContext';
-
+//
 import WaveSurfer from 'wavesurfer.js';
 import RegionPlugin from 'wavesurfer.js/dist/plugin/wavesurfer.regions.min.js';
-import { useEffect, useRef, useContext } from 'react';
 import styled from 'styled-components';
 
 const LoopContainer = styled.div`
@@ -19,7 +19,7 @@ const LoopContainer = styled.div`
   padding-left: 2rem;
 `
 
-const LoopStation = React.memo(() => {
+const LoopStation = memo(() => {
   console.log('loopstation re render');
 
   const kitContext = useContext(KitContext);
