@@ -79,14 +79,17 @@ const SamplePlayback = ({ ...props }) => {
       onClick={playSample} 
       style={{fill: 'lightgreen'}}
       />
+
       <PauseIcon 
       onClick={pauseSample} 
       style={{fill: 'lightblue'}}
       />
+
       <StopIcon 
       onClick={stopSample} 
       style={{fill: 'red'}}
       />
+
       <SliderControl>
         <SlideContainer>
           <span>Rate:</span>

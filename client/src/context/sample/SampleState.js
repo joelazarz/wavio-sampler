@@ -111,7 +111,7 @@ const KitState = props => {
   // Add Region to sample waveform - RegionCreator.js
   // sampleRegions: ...regions, region
   const addRegion = region => {
-    if(!state.sampleBlob || !state.loadedKit) { return; };
+    // if(!state.sampleBlob || !state.loadedKit) { return; };
 
     dispatch({
       type: ADD_REGION,

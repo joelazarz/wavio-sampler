@@ -194,20 +194,20 @@ const SampleStation = memo(() => {
     setLoopBlob(null);
 
     if(setRecording) {
-      let recChunks = [];
+      let recordedChunks = [];
   
       mediaRecorder.current.start();
       mediaRecorder.current.ondataavailable = (e) => {
-      recChunks.push(e.data);
+        recordedChunks.push(e.data);
       };
 
-      setChunks(recChunks);
+      setChunks(recordedChunks);
     } else if (!setRecording) {
       mediaRecorder.current.stop();
       mediaRecorder.current.onstop = () => {
-      const blob = new Blob(chunks, { 'type' : 'audio/wav; codecs=opus' });
-      let recordedBlob = URL.createObjectURL(blob);
-      setLoopBlob(recordedBlob);
+        const blob = new Blob(chunks, { 'type' : 'audio/wav; codecs=opus' });
+        let recordedBlob = URL.createObjectURL(blob);
+        setLoopBlob(recordedBlob);
       };
       setChunks([]);
     };

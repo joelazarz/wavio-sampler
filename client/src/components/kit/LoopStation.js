@@ -24,7 +24,7 @@ const LoopStation = memo(() => {
   const loopContext = useContext(LoopContext);
   
   const { loopBlob, setLoopBlob } = kitContext;
-  const { loopColor } = loopContext;
+  const { loopColor, addToLoopBank, calledUpLoop } = loopContext;
 
   const loopformRef = useRef(null);
   const loopWave = useRef(null);
@@ -68,7 +68,18 @@ const LoopStation = memo(() => {
     // eslint-disable-next-line
   }, [loopColor]);
 
+  useEffect(() => {
+    if(calledUpLoop === null) { return; };
+
+    let calledLoop = URL.createObjectURL(bufferToWave(calledUpLoop[0], calledUpLoop[0].length));
+    loopWave.current.destroy();
+    loopWave.current = null;
+    setLoopBlob(calledLoop);
+    // eslint-disable-next-line
+  }, [calledUpLoop])
+
   const playLoop = () => {
+    if (!loopBlob) { return; };
     if(loopWave.current.regions.list['resize']) {
       loopWave.current.play();
       loopWave.current.regions.list['resize'].play();
@@ -77,14 +88,17 @@ const LoopStation = memo(() => {
   };
   
   const pauseLoop = () => {
+    if (!loopBlob) { return; };
     loopWave.current.playPause();
   };
 
   const stopLoop = () => {
+    if (!loopBlob) { return; };
     loopWave.current.stop();
   };
 
   const resizeLoop = () => {
+    if (!loopBlob) { return; };
     if(loopWave.current.regions.list['resize']) { 
       loopWave.current.regions.list['resize'].remove();
     };
@@ -156,16 +170,13 @@ const LoopStation = memo(() => {
   };
 
   const clipLoop = () => {
+    if (!loopBlob) { return; };
     loopWave.current.stop();
     
     const region = loopWave.current.regions.list['resize'];
     const loopWaveBuffer = loopWave.current.backend.buffer;
-    console.log(loopWaveBuffer);
     
-    if (!region) { 
-      console.log('no resize region');
-      return;
-    };
+    if (!region) { return; };
     
     const regionStart = region.start;
     const regionEnd = region.end;
@@ -187,6 +198,9 @@ const LoopStation = memo(() => {
         writableSegmentData.set(newBufferData); 
       };
     };
+
+    // @todo push writable segment to loopBank 
+    addToLoopBank(writableSegment);
 
     let clippedBlobURL = URL.createObjectURL(bufferToWave(writableSegment, writableSegment.length));
 

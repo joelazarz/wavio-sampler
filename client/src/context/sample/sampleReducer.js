@@ -87,8 +87,7 @@ export default (state, action) => {
     case HOVER_REGION:
       return {
         ...state,
-        hoveredRegion: action.payload,
-        // clickRegion: null
+        hoveredRegion: action.payload
       };
     
     case CLEAR_HOVER:
@@ -114,8 +113,7 @@ export default (state, action) => {
       return {
         ...state,
         sampleRegions: state.sampleRegions.filter(region => region.id !== action.payload),
-        clickedRegion: null,
-        deleteCounter: state.deleteCounter++
+        clickedRegion: null
       }
 
     case WAVE_COLOR:
