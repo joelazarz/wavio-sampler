@@ -18,7 +18,7 @@ export default (state, action) => {
       return {
         ...state,
         calledUpLoop: state.loopBank.filter(loop => loop.id === action.payload)
-      }
+      };
 
     case LOOP_COLOR:
       return {

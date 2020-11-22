@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import SampleContext from '../../context/sample/sampleContext';
+import { availableId } from '../../utils/availableId';
 
 import {ReactComponent as AddIcon} from '../../css/icons/plus-sign.svg'
 import styled from 'styled-components';
@@ -25,21 +26,6 @@ const RegionCreator = () => {
     if(sampleRegions.length === 8) { return; }; 
 
     let arr = sampleRegions.map(r => r.id);
-
-    const availableId = (arr) => {
-      var min = 1;
-      arr.sort((a,b) => {
-        return a - b; 
-      });
-
-      for (var i in arr) {
-        // eslint-disable-next-line
-        if (arr[i] > -1 && arr[i] == min) {
-          min++;
-        }
-      }
-      return min;
-    };
 
     const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
     const r = randomBetween(0, 255);

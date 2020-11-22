@@ -25,7 +25,7 @@ const LoopBank = () => {
         {loopBank.map(loop => <span key={loop.id} onClick={() => callUpLoop(loop.id)}>{loop.id}</span>)}
       </ul>
     </LoopBankContainer>
-  )
-}
+  );
+};
 
-export default LoopBank
+export default LoopBank;

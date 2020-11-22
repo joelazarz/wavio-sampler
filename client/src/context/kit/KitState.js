@@ -20,7 +20,7 @@ const KitState = props => {
     if(state.loopBlob) {
       URL.revokeObjectURL(state.loopBlob);
     };
-
+    
     dispatch({ 
       type: SET_LOOPBLOB,
       payload: blob 

@@ -1,4 +1,5 @@
 import { useReducer } from 'react';
+import { availableId } from '../../utils/availableId';
 import LoopContext from './loopContext';
 import loopReducer from './loopReducer';
 // import types
@@ -22,8 +23,8 @@ const LoopState = props => {
   const addToLoopBank = loop => {
     if(state.loopBank.length === 8) { return; };
 
-    let id = state.loopBank.length + 1;
-    let loopToBank = Object.assign(loop, {id: id});
+    let arr = state.loopBank.map(l => l.id);
+    let loopToBank = Object.assign(loop, {id: availableId(arr)});
 
     dispatch({
       type: ADDTO_LOOPBANK,
