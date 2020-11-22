@@ -40,6 +40,10 @@ const KitState = props => {
   // Create kit
   // loadedKit: res.data
   const createKit = async formData => {
+    if(state.sampleBlob) {
+      URL.revokeObjectURL(state.sampleBlob);
+    };
+
     const config = {
       headers: {
         'Content-Type': 'application/json'
@@ -97,6 +101,10 @@ const KitState = props => {
 
   // Eject sample - SampleStation.js
   const ejectSample = () => {
+    if(state.sampleBlob) {
+      URL.revokeObjectURL(state.sampleBlob);
+    };
+
     dispatch({ type: EJECT_SAMPLE });
   };
 
@@ -123,7 +131,7 @@ const KitState = props => {
   // set recording status to true - SamplePlayback.js
   // setRecord: !state.setRecording
   const setRecord = status => {
-    if(!state.sampleBlob || !state.loadedKit) { return; };
+    if(!state.sampleBlob && !state.loadedKit) { return; };
 
     dispatch({ 
       type: SET_RECORD,

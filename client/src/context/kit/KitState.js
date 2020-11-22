@@ -17,6 +17,10 @@ const KitState = props => {
   // set recorded blob to loopBlob - SampleStation.js
   // loopBlob: blob
   const setLoopBlob = blob => {
+    if(state.loopBlob) {
+      URL.revokeObjectURL(state.loopBlob);
+    };
+
     dispatch({ 
       type: SET_LOOPBLOB,
       payload: blob 
