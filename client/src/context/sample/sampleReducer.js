@@ -1,7 +1,8 @@
 // import types
-import { 
+import {
   UPLOAD_SAMPLE,
   LOAD_SAMPLE,
+  EJECT_SAMPLE,
   CREATE_KIT,
   ADD_REGION,
   SET_REGIONS,
@@ -28,6 +29,20 @@ export default (state, action) => {
       return {
         ...state,
         sampleBlob: action.payload
+      };
+
+    case EJECT_SAMPLE:
+      return {
+        ...state,
+        loadedKit: null,
+        sampleLink: null,
+        sampleBlob: null,
+        sampleRegions: [],
+        setRecording: false,
+        hoveredRegion: null,
+        clickedRegion: null,
+        waveformColor: 'rgb(255, 255, 255, 100)',
+        loopColor: 'rgb(255, 255, 255, 100)'
       };
 
     case CREATE_KIT:

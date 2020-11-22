@@ -6,6 +6,7 @@ import sampleReducer from './sampleReducer';
 import {
   UPLOAD_SAMPLE,
   LOAD_SAMPLE,
+  EJECT_SAMPLE,
   CREATE_KIT,
   ADD_REGION,
   SET_REGIONS,
@@ -83,7 +84,6 @@ const KitState = props => {
     } catch (err) {
       console.log(err);
     };
-
   };
 
   // Load sample into kit - SampleStation.js
@@ -95,9 +95,16 @@ const KitState = props => {
     });
   };
 
+  // Eject sample - SampleStation.js
+  const ejectSample = () => {
+    dispatch({ type: EJECT_SAMPLE });
+  };
+
   // Add Region to sample waveform - RegionCreator.js
   // sampleRegions: ...regions, region
   const addRegion = region => {
+    if(!state.sampleBlob || !state.loadedKit) { return; };
+
     dispatch({
       type: ADD_REGION,
       payload: region
@@ -116,6 +123,8 @@ const KitState = props => {
   // set recording status to true - SamplePlayback.js
   // setRecord: !state.setRecording
   const setRecord = status => {
+    if(!state.sampleBlob || !state.loadedKit) { return; };
+
     dispatch({ 
       type: SET_RECORD,
       payload: status 
@@ -168,6 +177,8 @@ const KitState = props => {
   // Waveform Color - sampleStation.js
   // waveformColor: color
   const setWaveformColor = color => {
+    if(!state.sampleBlob || !state.loadedKit) { return; };
+
     dispatch({
       type: WAVE_COLOR,
       payload: color
@@ -188,6 +199,7 @@ const KitState = props => {
       createKit,
       uploadSample,
       loadSample,
+      ejectSample,
       addRegion,
       updateSampleWaveRegions,
       setRecord,

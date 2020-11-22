@@ -22,7 +22,7 @@ const RegionCreator = () => {
   const { addRegion, sampleRegions } = sampleContext;
 
   const onClick = () => {
-    if(sampleRegions.length === 8) {return;}; 
+    if(sampleRegions.length === 8) { return; }; 
 
     let arr = sampleRegions.map(r => r.id);
 

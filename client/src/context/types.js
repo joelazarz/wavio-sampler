@@ -16,7 +16,8 @@ export const SET_LOOPBLOB = 'SET_LOOPBLOB';
 // Sample Context
 export const CREATE_KIT = 'CREATE_KIT';
 export const UPLOAD_SAMPLE = 'UPLOAD_SAMPLE';
-export const LOAD_SAMPLE = 'LOAD_SAMPLE'
+export const LOAD_SAMPLE = 'LOAD_SAMPLE';
+export const EJECT_SAMPLE = 'EJECT_SAMPLE'
 export const ADD_REGION = 'ADD_REGION';
 export const REMOVE_REGION = 'REMOVE_REGION';
 export const SET_REGIONS = 'SET_REGIONS'

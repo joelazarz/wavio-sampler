@@ -17,6 +17,7 @@ const SampleContainer = styled.div`
   grid-column-end: 14;
   padding-right: 2rem;
   padding-left: 2rem;
+  overscroll-behavior-x: none;
 `
 
 const SampleStation = memo(() => {
@@ -50,6 +51,8 @@ const SampleStation = memo(() => {
   const [chunks, setChunks] = useState([]);
   
   useEffect(() => {
+    if(!sampleBlob || loadedKit) { return; };
+
     sampleWave.current = WaveSurfer.create({
       container: sampleformRef.current,
       waveColor: 'white',
@@ -73,7 +76,7 @@ const SampleStation = memo(() => {
     } else if (loadedKit) {
       sampleWave.current.load(loadedKit.sample);
       sampleWave.current.setWaveColor(waveformColor);
-    };
+    }; 
 
     gain.current = sampleWave.current.backend.ac.createGain();
     sampleWave.current.backend.setFilter(gain.current); 
@@ -150,36 +153,46 @@ const SampleStation = memo(() => {
 
     window.addEventListener('keydown', handleTrigger);
     return () => window.removeEventListener('keydown', handleTrigger);
+    // eslint-disable-next-line
   }, [sampleRegions]);
 
   // functions 
   const handleTrigger = (e) => {
+    if(!sampleBlob || loadedKit) { return; };
     if (document.activeElement.matches('.text-input')) { return; };
     if (!sampleWave.current.regions.list[e.key]) { return; };
     sampleWave.current.regions.list[e.key].play();
   };
 
   const playSample = () => {
+    if(!sampleBlob || loadedKit) { return; };
     sampleWave.current.play();
   };
 
   const stopSample = () => {
+    if(!sampleBlob || loadedKit) { return; };
     sampleWave.current.stop();
   };
 
   const pauseSample = () => {
+    if(!sampleBlob || loadedKit) { return; };
     sampleWave.current.playPause();
   };
 
   const rateSlider = (val) => {
+    if(!sampleBlob || loadedKit) { return; };
     sampleWave.current.setPlaybackRate(val);
   };
 
   const zoomSlider = (val) => {
+    if(!sampleBlob || loadedKit) { return; };
     sampleWave.current.zoom(val);
   };
 
   const recordInput = () => {
+    if(!sampleBlob || loadedKit) { return; };
+    setLoopBlob(null);
+
     if(setRecording) {
       let recChunks = [];
   
@@ -210,7 +223,7 @@ const SampleStation = memo(() => {
     rateSlider={rateSlider}
     zoomSlider={zoomSlider}
     />
-    <SampleContainer ref={sampleformRef} />
+    { sampleBlob || loadedKit ? <SampleContainer ref={sampleformRef} /> : <></> }
     <SampleControl />
     </>
   );

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {ReactComponent as PlayIcon} from '../../css/icons/play.svg'
 import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg'
 import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
+import {ReactComponent as EjectIcon} from '../../css/icons/eject.svg'
 import '../../css/slider.css';
 
 const SamplePlaybackCotrols = styled.div`
@@ -37,6 +38,12 @@ const SlideContainer = styled.div`
   place-items: center;
 `
 
+const RecordButton = styled.button`
+  background-color: ${({ theme }) => theme.nav};
+  border: none;
+  border-radius: 0.25em;
+`
+
 const RateSlider = styled.input`
 
 `
@@ -47,7 +54,7 @@ const ZoomSlider = styled.input`
 
 const SamplePlayback = ({ ...props }) => {
   const sampleContext = useContext(SampleContext);
-  const { setRecord, setRecording } = sampleContext;
+  const { setRecord, setRecording, ejectSample } = sampleContext;
 
   const { 
     playSample, 
@@ -59,6 +66,11 @@ const SamplePlayback = ({ ...props }) => {
 
   const handleRecord = () => {
     setRecord(!setRecording);
+  };
+
+  const handleEject = () => {
+    if(setRecording) { return };
+    ejectSample();
   };
 
   return (
@@ -88,7 +100,11 @@ const SamplePlayback = ({ ...props }) => {
           />
         </SlideContainer>
 
-        <span onClick={handleRecord} style={{ 'color': setRecording ? 'red' : 'white' }}>RECORD</span>
+        <RecordButton 
+        onClick={handleRecord} 
+        style={{ 'color': setRecording ? 'red' : 'white' }}>
+        RECORD
+        </RecordButton>
 
         <SlideContainer>
           <span>Zoom:</span> 
@@ -102,6 +118,12 @@ const SamplePlayback = ({ ...props }) => {
           />
         </SlideContainer>
       </SliderControl>
+
+      <EjectIcon 
+      onClick={handleEject}
+      style={{fill: 'snow', marginLeft: '2em'}}
+      />
+
     </SamplePlaybackCotrols>
   );
 };

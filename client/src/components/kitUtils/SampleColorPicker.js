@@ -12,8 +12,6 @@ const PickerContainer = styled.div`
 `
 
 const SampleColorPicker = () => {
-  console.log('sample color picker re render');
-
   const sampleContext = useContext(SampleContext);
   const { waveformColor, setWaveformColor } = sampleContext;
 
