@@ -24,7 +24,7 @@ const LoopStation = memo(() => {
   const loopContext = useContext(LoopContext);
   
   const { loopBlob, setLoopBlob } = kitContext;
-  const { loopColor, addToLoopBank, calledUpLoop } = loopContext;
+  const { loopColor, addToLoopBank, calledUpLoop, sequenceBank } = loopContext;
 
   const loopformRef = useRef(null);
   const loopWave = useRef(null);
@@ -76,7 +76,17 @@ const LoopStation = memo(() => {
     loopWave.current = null;
     setLoopBlob(calledLoop);
     // eslint-disable-next-line
-  }, [calledUpLoop])
+  }, [calledUpLoop]);
+
+  useEffect(() => {
+    if(sequenceBank.length === 0) { return; };
+
+    let sequencedLoop = URL.createObjectURL(bufferToWave(concatBuffers(sequenceBank), concatBuffers(sequenceBank).length));
+    loopWave.current.destroy();
+    loopWave.current = null;
+    setLoopBlob(sequencedLoop);
+    // eslint-disable-next-line
+  }, [sequenceBank]);
 
   const playLoop = () => {
     if (!loopBlob) { return; };
@@ -208,6 +218,46 @@ const LoopStation = memo(() => {
     loopWave.current = null;
 
     setLoopBlob(clippedBlobURL);
+  };
+
+  const concatBuffers = () => {
+    // sequence bank - arr of buffers to concatenate
+    const lwContext = loopWave.current.backend.ac;       // loopWave Audio Context
+    const sequenceBankLength = sequenceBank.length;     // int of Buffers in sequenceBank
+    let channels = [];                                  // 
+    let totalDuration = 0;                              // duration to increase to event. create a buffer that will hold all data
+
+    if (sequenceBankLength === 0) { return; };          // guard clause
+
+    for (let i = 0; i < sequenceBankLength; i++) {
+      channels.push(sequenceBank[i].numberOfChannels);
+      totalDuration += sequenceBank[i].duration;
+    };
+
+    let numberOfChannels = channels.reduce((a, b) => { return Math.min(a, b); });
+    let joinedBuffer = lwContext.createBuffer(numberOfChannels, lwContext.sampleRate * totalDuration, lwContext.sampleRate);
+
+    for (let b = 0; b < numberOfChannels; b++) {
+      var newChannelDataSum = 0;
+      var channel = joinedBuffer.getChannelData(b);
+      var dataIndex = 0;
+
+      for (let c = 0; c < sequenceBankLength; c++) {
+        var newChannelData = sequenceBank[c].getChannelData(b);
+        if (channel.length >= newChannelData.length + newChannelDataSum) {
+          newChannelDataSum += newChannelData.length;
+          channel.set(newChannelData, dataIndex);
+          dataIndex += newChannelData.length; // position to store the next buffer values
+        } else {
+          try {
+              channel.set(newChannelData, dataIndex - 1);
+          } catch {
+              return;
+          };
+        };
+      };
+    };
+    return joinedBuffer;
   };
 
   return (

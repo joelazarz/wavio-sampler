@@ -6,6 +6,7 @@ import loopReducer from './loopReducer';
 import {
   ADDTO_LOOPBANK,
   CALLUP_LOOP,
+  ADDTO_SEQUENCE,
   LOOP_COLOR
 } from '../types';
 
@@ -13,6 +14,7 @@ const LoopState = props => {
   const initialState = {
     loopBank: [],
     calledUpLoop: null,
+    sequenceBank: [],
     loopColor: 'rgb(255, 255, 255, 100)'
   };
 
@@ -32,10 +34,24 @@ const LoopState = props => {
     });
   };
 
+  // load loop from loopBank into LoopStation
+  // called in LoopBank.js - sent to state.calledUpLoop in LoopStation.js
+  // calledUpLoop: <AudioBuffer>
   const callUpLoop = id => {
     dispatch({
       type: CALLUP_LOOP,
       payload: id
+    });
+  };
+
+  const setToSequence = id => {
+    if(state.sequenceBank.length === 16) { return };
+
+    let loop = state.loopBank.filter(loop => loop.id === id);
+
+    dispatch({
+      type: ADDTO_SEQUENCE,
+      payload: loop[0]
     });
   };
 
@@ -53,9 +69,11 @@ const LoopState = props => {
     value={{
       loopBank: state.loopBank,
       calledUpLoop: state.calledUpLoop,
+      sequenceBank: state.sequenceBank,
       loopColor: state.loopColor,
       addToLoopBank,
       callUpLoop,
+      setToSequence,
       setLoopColor
     }}
     >

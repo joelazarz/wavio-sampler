@@ -2,6 +2,7 @@
 import { 
   ADDTO_LOOPBANK,
   CALLUP_LOOP,
+  ADDTO_SEQUENCE,
   LOOP_COLOR 
 } from "../types";
 
@@ -19,6 +20,12 @@ export default (state, action) => {
         ...state,
         calledUpLoop: state.loopBank.filter(loop => loop.id === action.payload)
       };
+    
+    case ADDTO_SEQUENCE:
+      return {
+        ...state,
+        sequenceBank: [...state.sequenceBank, action.payload]
+      }
 
     case LOOP_COLOR:
       return {

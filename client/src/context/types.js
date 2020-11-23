@@ -31,4 +31,5 @@ export const WAVE_COLOR = 'WAVE_COLOR';
 // Loop Context
 export const ADDTO_LOOPBANK = 'ADDTO_LOOPBANK';
 export const CALLUP_LOOP = 'CALLUP_LOOP';
+export const ADDTO_SEQUENCE = 'ADDTO_SEQUENCE';
 export const LOOP_COLOR = 'LOOP_COLOR';
