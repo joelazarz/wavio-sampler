@@ -16,15 +16,16 @@ const getColor = (props) => {
   return '#eeeeee';
 }
 
-const Container = styled.div`
+const DropContainer = styled.div`
   display: grid;
-  margin: 0em 2em;
-  padding: 0em 4em;
-  grid-row-start: 4;
-  grid-row-end: 8;
-  grid-column-start: 5;
-  grid-column-end: 12;
-  height: 18em;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 3;
+  grid-column-end: 14;
+  height: 200px;
+  margin: 0 2em;
+  padding-right: 2rem;
+  padding-left: 2rem;
   flex-direction: column;
   place-items: center;
   border-width: 2px;
@@ -39,7 +40,7 @@ const Container = styled.div`
 
 const DropText = styled.div`
   background-color: rgb(255,250,250, 0.1);
-  padding: 5em;
+  /* padding: 5em; */
   border: 1px dotted white;
   border-radius: 0.25em;
 `
@@ -71,7 +72,7 @@ const DropZone = (props) => {
   },[acceptedFiles])
 
   return (
-      <Container {...getRootProps({
+      <DropContainer {...getRootProps({
         isDragActive, 
         isDragAccept, 
         isDragReject,
@@ -80,7 +81,7 @@ const DropZone = (props) => {
         <DropText>
           Drag 'n' drop some files here, or click to select files
         </DropText>
-      </Container>
+      </DropContainer>
   )
 }
 

@@ -51,7 +51,7 @@ const SequenceStatus = styled.div`
   background-color: ${({ theme }) => theme.body};
   margin-top: auto;
   place-items: center;
-  width: 98%;
+  width: 100%;
   border-radius: 0.25em;
   & > svg {
     margin: 2px 0px;
@@ -67,7 +67,7 @@ const ClearSequenceButton = styled.button`
   font-size: 12px;
   background-color: ${({ theme }) => theme.body};
   color: ${({ theme }) => theme.text};
-  margin: 2px auto;
+  margin: 10px auto;
   width: 80%;
   justify-content: center;
   vertical-align:middle;

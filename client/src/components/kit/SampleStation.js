@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { useEffect, useState, useRef, useContext } from 'react';
 import SamplePlayback from './SamplePlayback';
 import SampleControl from './SampleControl';
+import DropZone from '../kitUtils/DropZone';
 // context
 import SampleContext from '../../context/sample/sampleContext';
 import KitContext from '../../context/kit/kitContext';
@@ -91,26 +92,31 @@ const SampleStation = memo(() => {
       isFirstRender.current = false;
       return;
     };
-
+    
     recordInput();
     // eslint-disable-next-line
   }, [setRecording]);
-
+  
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
     };
+    if(!sampleBlob || loadedKit) { return; };
 
     sampleWave.current.clearRegions();
     sampleRegions.forEach(reg => {
       sampleWave.current.addRegion(reg);
     })
+    // eslint-disable-next-line
   }, [sampleRegions]);
   
   useEffect(() => {
+    if(!sampleBlob || loadedKit) { return; };
+
     sampleWave.current.setWaveColor(waveformColor);
     sampleWave.current.setProgressColor(waveformColor);
+    // eslint-disable-next-line
   }, [waveformColor]);
 
   useEffect(() => {
@@ -118,6 +124,9 @@ const SampleStation = memo(() => {
       isFirstRender.current = false;
       return;
     };
+
+    if(!sampleBlob || loadedKit) { return; };
+
 
     sampleWave.current.on('region-mouseenter', (e) => {
       setHoveredRegion(e)
@@ -138,6 +147,8 @@ const SampleStation = memo(() => {
       isFirstRender.current = false;
       return;
     };
+    if(!sampleBlob || loadedKit) { return; };
+
 
     sampleWave.current.on('region-update-end', (e) => {
       updateSampleWaveRegions([e])
@@ -150,6 +161,8 @@ const SampleStation = memo(() => {
       isFirstRender.current = false;
       return;
     };
+    if(!sampleBlob || loadedKit) { return; };
+
 
     window.addEventListener('keydown', handleTrigger);
     return () => window.removeEventListener('keydown', handleTrigger);
@@ -223,7 +236,7 @@ const SampleStation = memo(() => {
     rateSlider={rateSlider}
     zoomSlider={zoomSlider}
     />
-    { sampleBlob || loadedKit ? <SampleContainer ref={sampleformRef} /> : <></> }
+    { sampleBlob || loadedKit ? <SampleContainer ref={sampleformRef} /> : <DropZone /> }
     <SampleControl />
     </>
   );
