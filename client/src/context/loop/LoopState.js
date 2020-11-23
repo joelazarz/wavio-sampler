@@ -7,6 +7,7 @@ import {
   ADDTO_LOOPBANK,
   CALLUP_LOOP,
   ADDTO_SEQUENCE,
+  CLEAR_SEQUENCE,
   LOOP_COLOR
 } from '../types';
 
@@ -47,12 +48,16 @@ const LoopState = props => {
   const setToSequence = id => {
     if(state.sequenceBank.length === 16) { return };
 
-    let loop = state.loopBank.filter(loop => loop.id === id);
+    let loop = state.loopBank.filter(loop => loop.id === id)[0];
 
     dispatch({
       type: ADDTO_SEQUENCE,
-      payload: loop[0]
+      payload: loop
     });
+  };
+
+  const clearSequence = () => {
+    dispatch({ type: CLEAR_SEQUENCE })
   };
 
   // Loop Color - loopStation.js
@@ -74,6 +79,7 @@ const LoopState = props => {
       addToLoopBank,
       callUpLoop,
       setToSequence,
+      clearSequence,
       setLoopColor
     }}
     >

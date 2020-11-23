@@ -36,7 +36,7 @@ const LoopStation = memo(() => {
       container: loopformRef.current,
       waveColor: 'white',
       progressColor: '#B8D6DA',
-      height: 180,
+      height: 200,
       cursorColor: 'orange',
       cursorWidth: 2,
       hideScrollbar: false,
@@ -222,12 +222,12 @@ const LoopStation = memo(() => {
 
   const concatBuffers = () => {
     // sequence bank - arr of buffers to concatenate
-    const lwContext = loopWave.current.backend.ac;       // loopWave Audio Context
-    const sequenceBankLength = sequenceBank.length;     // int of Buffers in sequenceBank
-    let channels = [];                                  // 
-    let totalDuration = 0;                              // duration to increase to event. create a buffer that will hold all data
+    const lwContext = loopWave.current.backend.ac;          // loopWave Audio Context
+    const sequenceBankLength = sequenceBank.length;         // int of Buffers in sequenceBank
+    let channels = [];                                      // 
+    let totalDuration = 0;                                  // duration to increase to event. create a buffer that will hold all data
 
-    if (sequenceBankLength === 0) { return; };          // guard clause
+    if (sequenceBankLength === 0) { return; };              // guard clause
 
     for (let i = 0; i < sequenceBankLength; i++) {
       channels.push(sequenceBank[i].numberOfChannels);
@@ -247,7 +247,7 @@ const LoopStation = memo(() => {
         if (channel.length >= newChannelData.length + newChannelDataSum) {
           newChannelDataSum += newChannelData.length;
           channel.set(newChannelData, dataIndex);
-          dataIndex += newChannelData.length; // position to store the next buffer values
+          dataIndex += newChannelData.length;               // position to store the next buffer values
         } else {
           try {
               channel.set(newChannelData, dataIndex - 1);

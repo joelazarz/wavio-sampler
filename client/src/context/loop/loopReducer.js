@@ -3,6 +3,7 @@ import {
   ADDTO_LOOPBANK,
   CALLUP_LOOP,
   ADDTO_SEQUENCE,
+  CLEAR_SEQUENCE,
   LOOP_COLOR 
 } from "../types";
 
@@ -26,6 +27,12 @@ export default (state, action) => {
         ...state,
         sequenceBank: [...state.sequenceBank, action.payload]
       }
+
+    case CLEAR_SEQUENCE:
+      return {
+        ...state,
+        sequenceBank: []
+      };
 
     case LOOP_COLOR:
       return {

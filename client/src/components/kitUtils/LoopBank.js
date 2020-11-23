@@ -36,24 +36,40 @@ const LoopRow = styled.div`
   }
 `
 
+const ClearSequenceButton = styled.button`
+  display: flex;
+  font-family: inherit;
+  background-color: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
+  margin: 2px auto;
+  width: 80%;
+  justify-content: center;
+  vertical-align:middle;
+  border: none;
+  border-radius: 0.25em;
+`
+
 const LoopBank = () => {
   const loopContext = useContext(LoopContext);
-  const { loopBank, callUpLoop, setToSequence } = loopContext;
+  const { loopBank, callUpLoop, setToSequence, clearSequence } = loopContext;
 
   return (
-    <LoopBankContainer>
-      <>
-        {loopBank.map(loop => 
-          <LoopRow 
-          key={loop.id} 
-          >
-            {loop.id} 
-            <CallUpIcon onClick={() => callUpLoop(loop.id)} />
-            <SequenceIcon onClick={() => setToSequence(loop.id)} />
-          </LoopRow>
-        )}
-      </>
-    </LoopBankContainer>
+    <>
+      <LoopBankContainer>
+        <>
+          {loopBank.map(loop => 
+            <LoopRow 
+            key={loop.id} 
+            >
+              {loop.id} 
+              <CallUpIcon onClick={() => callUpLoop(loop.id)} />
+              <SequenceIcon onClick={() => setToSequence(loop.id)} />
+            </LoopRow>
+          )}
+        </>
+      </LoopBankContainer>
+    <ClearSequenceButton onClick={clearSequence}><span>Clear Sequence</span></ClearSequenceButton>
+    </>
   );
 };
 

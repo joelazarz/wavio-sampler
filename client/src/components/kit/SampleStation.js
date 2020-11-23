@@ -57,7 +57,7 @@ const SampleStation = memo(() => {
       container: sampleformRef.current,
       waveColor: 'white',
       progressColor: '#B8D6DA',
-      height: 180,
+      height: 200,
       cursorColor: 'orange',
       cursorWidth: 2,
       hideScrollbar: false,
