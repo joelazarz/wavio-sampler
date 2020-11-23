@@ -4,6 +4,7 @@ import LoopContext from '../../context/loop/loopContext';
 import {ReactComponent as CallUpIcon} from '../../css/icons/leftarrow.svg'
 import {ReactComponent as SequenceIcon} from '../../css/icons/plus-sign.svg'
 import {ReactComponent as XIcon} from '../../css/icons/x.svg'
+import {ReactComponent as SquareIcon} from '../../css/icons/square.svg'
 import styled from 'styled-components';
 
 const LoopBankContainer= styled.div`
@@ -42,6 +43,24 @@ const IconContainer = styled.div`
   }
 `
 
+const SequenceStatus = styled.div`
+  display: grid;
+  grid-template-columns: repeat(8, minmax(8px, 1fr));
+  grid-template-rows: repeat(2, minmax(12px, auto));
+  grid-gap: 1px;
+  background-color: ${({ theme }) => theme.body};
+  margin-top: auto;
+  place-items: center;
+  width: 98%;
+  border-radius: 0.25em;
+  & > svg {
+    margin: 2px 0px;
+    height:10px; 
+    width: 12px;
+    fill: pink;
+  }
+`
+
 const ClearSequenceButton = styled.button`
   display: flex;
   font-family: inherit;
@@ -62,6 +81,7 @@ const LoopBank = () => {
     loopBank, 
     removeFromLoopBank, 
     callUpLoop, 
+    sequenceBank,
     setToSequence, 
     clearSequence 
   } = loopContext;
@@ -83,6 +103,11 @@ const LoopBank = () => {
             </LoopRow>
           )}
         </>
+        <SequenceStatus>
+          {sequenceBank.map((l, idx) => 
+            <SquareIcon key={idx}/>
+          )}
+        </SequenceStatus>
       </LoopBankContainer>
     <ClearSequenceButton onClick={clearSequence}><span>Clear Sequence</span></ClearSequenceButton>
     </>
