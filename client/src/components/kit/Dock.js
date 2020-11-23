@@ -4,12 +4,12 @@ import { TitleContainer } from '../../css/TitleContainer';
 
 const DockContainer = styled.div`
   grid-row-start: 1;
-  grid-row-end: 16;
+  grid-row-end: 6;
   grid-column-start: 1;
   grid-column-end: 3;
-  min-height: 100%;
+  min-height: 95%;
   background-color: ${({ theme }) => theme.paneBackground};
-  margin-top: 1rem;
+  margin-top: 2rem;
   border-radius: 6px;
 `
 

@@ -17,8 +17,8 @@ const SampleControlContainer = styled.div`
   grid-row-end: 3;
   grid-column-start: 14;
   grid-column-end: 17;
-  min-height: 20em;
-  margin-top: 1rem;
+  min-height: 22em;
+  margin-top: 2rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.paneBackground};
 `

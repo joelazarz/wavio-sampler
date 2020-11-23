@@ -6,7 +6,7 @@ import {ReactComponent as AddIcon} from '../../css/icons/plus-sign.svg'
 import styled from 'styled-components';
 
 const RegionAddContainer = styled.div`
-  margin: 5px 10px;
+  margin: 7px 10px;
   display: flex;
   place-items: center;
   justify-content: space-between;

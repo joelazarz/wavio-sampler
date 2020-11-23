@@ -15,7 +15,7 @@ const SamplePlaybackCotrols = styled.div`
   height: 1.5rem;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 0.25em;
-  margin: 1rem;
+  margin: 2rem 1rem 0rem 1rem;
   display: flex;
   place-items: center;
   padding: 0rem 1rem;

@@ -24,9 +24,9 @@ const Kit = () => {
 
   return (
     <>
-      <Dock />
         { sampleBlob || loadedKit || loopBlob ? 
         <>
+        <Dock />
         <SampleStation /> 
         <LoopStation />
         </>
