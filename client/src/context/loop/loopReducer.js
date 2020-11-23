@@ -1,6 +1,7 @@
 // import types
 import { 
   ADDTO_LOOPBANK,
+  REMOVEFROM_LOOPBANK,
   CALLUP_LOOP,
   ADDTO_SEQUENCE,
   CLEAR_SEQUENCE,
@@ -14,6 +15,12 @@ export default (state, action) => {
       return {
         ...state,
         loopBank: [...state.loopBank, action.payload]
+      };
+
+    case REMOVEFROM_LOOPBANK:
+      return {
+        ...state,
+        loopBank: state.loopBank.filter(loop => loop.id !== action.payload)
       };
 
     case CALLUP_LOOP:

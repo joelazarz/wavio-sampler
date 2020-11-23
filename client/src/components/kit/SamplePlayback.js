@@ -38,18 +38,13 @@ const SlideContainer = styled.div`
   place-items: center;
 `
 
+const RateSlider = styled.input``
+const ZoomSlider = styled.input``
+
 const RecordButton = styled.button`
   background-color: ${({ theme }) => theme.nav};
   border: none;
   border-radius: 0.25em;
-`
-
-const RateSlider = styled.input`
-
-`
-
-const ZoomSlider = styled.input`
-
 `
 
 const SamplePlayback = ({ ...props }) => {

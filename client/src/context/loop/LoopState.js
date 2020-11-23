@@ -5,6 +5,7 @@ import loopReducer from './loopReducer';
 // import types
 import {
   ADDTO_LOOPBANK,
+  REMOVEFROM_LOOPBANK,
   CALLUP_LOOP,
   ADDTO_SEQUENCE,
   CLEAR_SEQUENCE,
@@ -32,6 +33,13 @@ const LoopState = props => {
     dispatch({
       type: ADDTO_LOOPBANK,
       payload: loopToBank
+    });
+  };
+
+  const removeFromLoopBank = id => {
+    dispatch({
+      type: REMOVEFROM_LOOPBANK,
+      payload: id
     });
   };
 
@@ -77,6 +85,7 @@ const LoopState = props => {
       sequenceBank: state.sequenceBank,
       loopColor: state.loopColor,
       addToLoopBank,
+      removeFromLoopBank,
       callUpLoop,
       setToSequence,
       clearSequence,
