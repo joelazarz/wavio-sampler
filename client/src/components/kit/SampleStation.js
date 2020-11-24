@@ -14,7 +14,7 @@ import styled from 'styled-components';
 const SampleContainer = styled.div`
   grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 3;
+  grid-column-start: 4;
   grid-column-end: 14;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -162,7 +162,6 @@ const SampleStation = memo(() => {
       return;
     };
     if(!sampleBlob || loadedKit) { return; };
-
 
     window.addEventListener('keydown', handleTrigger);
     return () => window.removeEventListener('keydown', handleTrigger);

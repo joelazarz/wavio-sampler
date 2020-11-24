@@ -20,7 +20,7 @@ const DropContainer = styled.div`
   display: grid;
   grid-row-start: 2;
   grid-row-end: 3;
-  grid-column-start: 3;
+  grid-column-start: 4;
   grid-column-end: 14;
   height: 200px;
   margin: 0 2em;
