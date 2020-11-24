@@ -79,6 +79,10 @@ const SampleStation = memo(() => {
       sampleWave.current.setWaveColor(waveformColor);
     }; 
 
+    sampleWave.current.on('region-update-end', (e) => {
+      updateSampleWaveRegions([e])
+    });
+
     gain.current = sampleWave.current.backend.ac.createGain();
     sampleWave.current.backend.setFilter(gain.current); 
     dest.current = sampleWave.current.backend.ac.createMediaStreamDestination();
@@ -140,21 +144,6 @@ const SampleStation = memo(() => {
     });
     // eslint-disable-next-line
   }, [sampleBlob, loadedKit]);
-
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    };
-
-    if(!sampleBlob && !loadedKit) { return; };
-
-
-    sampleWave.current.on('region-update-end', (e) => {
-      updateSampleWaveRegions([e])
-    });
-    // eslint-disable-next-line
-  }, []);
 
   useEffect(() => {
     if (isFirstRender.current) {

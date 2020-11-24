@@ -14,11 +14,11 @@ const RegionSchema = mongoose.Schema({
     ref: 'kit'
   },
   start: {
-    type: mongoose.Schema.Types.Decimal128,
+    type: String,
     required: true,
   },
   end: {
-    type: mongoose.Schema.Types.Decimal128,
+    type: String,
     required: true,
   },
   date: {

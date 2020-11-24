@@ -1,5 +1,6 @@
 import { useReducer } from 'react';
 import axios from 'axios';
+import { availableId } from '../../utils/availableId';
 import SampleContext from './sampleContext';
 import sampleReducer from './sampleReducer';
 // import types
@@ -140,8 +141,23 @@ const SampleState = props => {
 
   // Add Region to sample waveform - RegionCreator.js
   // sampleRegions: ...regions, region
-  const addRegion = region => {
+  const addRegion = (start = 0, end = 4) => {
     // if(!state.sampleBlob || !state.loadedKit) { return; };
+
+    let arr = state.sampleRegions.map(r => r.id);
+
+    const randomBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+    const r = randomBetween(0, 255);
+    const g = randomBetween(0, 255);
+    const b = randomBetween(0, 255);
+
+    const region = {
+      id: `${availableId(arr)}`,
+      start: `${start}`,
+      end: `${end}`,
+      loop: false,
+      color: `rgb(${r}, ${g}, ${b}, 0.4)`
+    };
 
     dispatch({
       type: ADD_REGION,

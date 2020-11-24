@@ -74,7 +74,7 @@ const HelpContainer = styled.div`
 
 const Dock = memo(() => {
   const sampleContext = useContext(SampleContext);
-  const { createKit, getKits, dbKits, loadedKit, kitRegions, loadKit, ejectSample } = sampleContext;
+  const { createKit, getKits, dbKits, loadedKit, kitRegions, loadKit, addRegion, ejectSample } = sampleContext;
 
   useEffect(() => {
     getKits();
@@ -92,7 +92,7 @@ const Dock = memo(() => {
       <SavedRegionsContainer>
         <Header>Saved Regions</Header>
         {!loadedKit ? <></> : kitRegions.map(r => 
-          <DockRow key={r.id}>{r.name}<LoadIcon key={r.id} /></DockRow>
+          <DockRow key={r.id}>{r.name}<LoadIcon key={r.id} onClick={() => addRegion(`${r.start}`, `${r.end}`)} /></DockRow>
         )}
       </SavedRegionsContainer>
       <BrowseKitsContainer>
