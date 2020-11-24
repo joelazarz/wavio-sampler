@@ -19,7 +19,7 @@ import {
   CLEAR_HOVER
 } from '../types';
 
-const KitState = props => {
+const SampleState = props => {
   const initialState = {
     loadedKit: null,
     sampleLink: null,
@@ -200,7 +200,7 @@ const KitState = props => {
       sampleLink: state.sampleLink,
       sampleBlob: state.sampleBlob,
       sampleRegions: state.sampleRegions,
-      setRecording: state.setRecord,
+      setRecording: state.setRecording,
       hoveredRegion: state.hoveredRegion,
       clickedRegion: state.clickedRegion,
       waveformColor: state.waveformColor,
@@ -224,4 +224,4 @@ const KitState = props => {
   );
 };
 
-export default KitState;
+export default SampleState;

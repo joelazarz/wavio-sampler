@@ -7,7 +7,6 @@ import {
   ADD_REGION,
   SET_REGIONS,
   SET_RECORD,
-  SET_LOOPBLOB,
   HOVER_REGION,
   CLEAR_HOVER,
   CLICK_REGION,
@@ -74,14 +73,7 @@ export default (state, action) => {
     case SET_RECORD:
       return {
         ...state,
-        loopBlob: null,
-        setRecord: action.payload
-      };
-
-    case SET_LOOPBLOB:
-      return {
-        ...state,
-        loopBlob: action.payload
+        setRecording: action.payload
       };
 
     case HOVER_REGION:
