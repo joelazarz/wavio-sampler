@@ -19,7 +19,7 @@ const LoopControl = () => {
 
   return (
     <LoopControlContainer>
-      <TitleContainer>Loop Control</TitleContainer>
+      <TitleContainer>Sequencer / Options</TitleContainer>
       <LoopColorPicker />
       <LoopBank />
     </LoopControlContainer>

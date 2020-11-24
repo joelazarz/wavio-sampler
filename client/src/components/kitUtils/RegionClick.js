@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import SampleContext from '../../context/sample/sampleContext';
 
 import styled from 'styled-components';
@@ -37,13 +37,67 @@ const RemoveRegionButton = styled.button`
   }
 `
 
+const CreateRegionForm = styled.form`
+
+`
+
+const RegionNameInput = styled.input`
+  display: flex;
+  margin: 0.5em;
+  padding: 5px;
+  font-family: inherit;
+  background-color: ${({ theme }) => theme.body};
+  color: ${({ theme }) => theme.text};
+  border: 1px dotted white;
+  border-radius: 0.25em;
+  place-items: center;
+`
+
+const RegionSubmit = styled.input`
+  font-family: inherit;
+  font-size: 10px;
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.nav};
+  border: 1px solid white;
+  border-radius: 0.25em;
+  margin: 0.5rem;
+  padding: 0.3rem;
+  width: 90%;
+  text-align: center;
+`
+
 const RegionClick = () => {
   const sampleContext = useContext(SampleContext);
   const { 
+    loadedKit,
     clickedRegion, 
     clearClickedRegion, 
     removeSelectedRegion,
+    createRegion
   } = sampleContext;
+
+  const [region, setRegion] = useState({ name: '' });
+
+  const { name } = region;
+
+  const onChange = e => setRegion({...region, [e.target.name]: e.target.value});
+
+  const onSubmit = e => {
+    e.preventDefault();
+    if (name === '' || !clickedRegion) {
+      // set alert
+      console.log('set alert for failed region save');
+    } else {
+      const { start, end } = clickedRegion;
+      const { id } = loadedKit;
+      createRegion({
+        name: name,
+        kit: id,
+        start: start,
+        end: end,
+      });
+    };
+  };
 
   if(!clickedRegion) {
     return <RegionEditContainer />
@@ -60,6 +114,28 @@ const RegionClick = () => {
           Remove
         </RemoveRegionButton>
       </RowContainer>
+
+      {!loadedKit ? <></> :
+      <CreateRegionForm onSubmit={onSubmit}>
+      <RegionNameInput 
+      name="name" 
+      type="text" 
+      placeholder="Region Name" 
+      value={name} 
+      onChange={onChange}
+      className="text-input"
+      required
+      />
+      <RegionSubmit 
+      type="submit" 
+      value="Save Region" 
+      />
+
+      </CreateRegionForm>
+      }
+
+
+
     </RegionEditContainer>
   )
 };

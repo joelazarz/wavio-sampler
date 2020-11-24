@@ -10,6 +10,7 @@ import {
   LOAD_SAMPLE,
   EJECT_SAMPLE,
   CREATE_KIT,
+  CREATE_REGION,
   ADD_REGION,
   SET_REGIONS,
   SET_RECORD,
@@ -25,6 +26,7 @@ const SampleState = props => {
   const initialState = {
     dbKits: null,
     loadedKit: null,
+    kitRegions: [],
     sampleLink: null,
     sampleBlob: null,
     sampleRegions: [],
@@ -207,6 +209,23 @@ const SampleState = props => {
   };
 
   // Create region in db
+  const createRegion = async formData => {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    try {
+      const res = await axios.post('/api/regions', formData, config);
+      dispatch({
+        type: CREATE_REGION,
+        payload: res.data
+      });
+    } catch (err) {
+      console.log(err);
+    };
+  };
 
   // Delete region from db
 
@@ -226,6 +245,7 @@ const SampleState = props => {
     value={{
       dbKits: state.dbKits,
       loadedKit: state.loadedKit,
+      kitRegions: state.kitRegions,
       sampleLink: state.sampleLink,
       sampleBlob: state.sampleBlob,
       sampleRegions: state.sampleRegions,
@@ -236,6 +256,7 @@ const SampleState = props => {
       getKits,
       loadKit,
       createKit,
+      createRegion,
       uploadSample,
       loadSample,
       ejectSample,

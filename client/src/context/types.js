@@ -17,6 +17,7 @@ export const SET_LOOPBLOB = 'SET_LOOPBLOB';
 export const GET_KITS = 'GET_KITS';
 export const LOAD_KIT = 'LOAD_KIT';
 export const CREATE_KIT = 'CREATE_KIT';
+export const CREATE_REGION = 'CREATE_REGION';
 export const UPLOAD_SAMPLE = 'UPLOAD_SAMPLE';
 export const LOAD_SAMPLE = 'LOAD_SAMPLE';
 export const EJECT_SAMPLE = 'EJECT_SAMPLE'

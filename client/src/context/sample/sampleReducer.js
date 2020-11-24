@@ -6,6 +6,7 @@ import {
   LOAD_SAMPLE,
   EJECT_SAMPLE,
   CREATE_KIT,
+  CREATE_REGION,
   ADD_REGION,
   SET_REGIONS,
   SET_RECORD,
@@ -57,6 +58,7 @@ export default (state, action) => {
       return {
         ...state,
         loadedKit: action.payload,
+        kitRegions: action.payload.regions,
         sampleLink: null,
         sampleBlob: null,
         sampleRegions: [],
@@ -65,6 +67,12 @@ export default (state, action) => {
         clickedRegion: null,
         waveformColor: 'rgb(255, 255, 255, 100)',
         loopColor: 'rgb(255, 255, 255, 100)'
+      };
+
+    case CREATE_REGION:
+      return {
+        ...state,
+        kitRegions: [...state.kitRegions, action.payload]
       };
 
     case ADD_REGION:

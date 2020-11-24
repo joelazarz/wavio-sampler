@@ -46,7 +46,7 @@ const IconContainer = styled.div`
 const SequenceStatus = styled.div`
   display: grid;
   grid-template-columns: repeat(8, minmax(8px, 1fr));
-  grid-template-rows: repeat(2, minmax(12px, auto));
+  grid-template-rows: repeat(2, minmax(13px, auto));
   grid-gap: 1px;
   background-color: ${({ theme }) => theme.body};
   margin-top: auto;

@@ -48,7 +48,7 @@ const BrowseKitsContainer = styled.div`
   border-radius: 0.25em;
 `
 
-const KitRow = styled.div`
+const DockRow = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 2px 3px;
@@ -74,10 +74,11 @@ const HelpContainer = styled.div`
 
 const Dock = memo(() => {
   const sampleContext = useContext(SampleContext);
-  const { createKit, getKits, dbKits, loadKit, ejectSample } = sampleContext;
+  const { createKit, getKits, dbKits, loadedKit, kitRegions, loadKit, ejectSample } = sampleContext;
 
   useEffect(() => {
     getKits();
+    // eslint-disable-next-line
   }, [createKit]);
 
   const handleLoad = id => {
@@ -90,11 +91,14 @@ const Dock = memo(() => {
       <TitleContainer>Social</TitleContainer>
       <SavedRegionsContainer>
         <Header>Saved Regions</Header>
+        {!loadedKit ? <></> : kitRegions.map(r => 
+          <DockRow key={r.id}>{r.name}<LoadIcon key={r.id} /></DockRow>
+        )}
       </SavedRegionsContainer>
       <BrowseKitsContainer>
         <Header>Kits</Header>
         {!dbKits ? <></> : dbKits.map(kit => 
-          <KitRow key={kit.id}>{kit.name}<LoadIcon onClick={() => handleLoad(kit.id)}/></KitRow>
+          <DockRow key={kit.id}>{kit.name}<LoadIcon key={kit.id} onClick={() => handleLoad(kit.id)}/></DockRow>
         )}
       </BrowseKitsContainer>
       <HelpContainer>
