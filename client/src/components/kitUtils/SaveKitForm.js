@@ -162,6 +162,7 @@ const SaveKitForm = (props) => {
       value={name} 
       onChange={onChange}
       className="text-input"
+      required
       />
       <KitSaveWarning>For security purposes you will need to choose the file again - Thank you.</KitSaveWarning>
       <DropContainer
@@ -170,7 +171,7 @@ const SaveKitForm = (props) => {
         isDragAccept, 
         isDragReject,
         })}>
-        <input {...getInputProps()} />
+        <input {...getInputProps()} required/>
         <DropText>{
         onDropAccepted && sampleLink === null ?
         <span>Loading... </span>

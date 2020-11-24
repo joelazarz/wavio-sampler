@@ -127,7 +127,6 @@ const SampleStation = memo(() => {
 
     if(!sampleBlob || loadedKit) { return; };
 
-
     sampleWave.current.on('region-mouseenter', (e) => {
       setHoveredRegion(e)
     });
@@ -140,7 +139,7 @@ const SampleStation = memo(() => {
       setClickedRegion(e)
     });
     // eslint-disable-next-line
-  }, []);
+  }, [sampleBlob, loadedKit]);
 
   useEffect(() => {
     if (isFirstRender.current) {

@@ -23,7 +23,7 @@ const RowContainer = styled.div`
   }
 `
 
-const DeleteRegionButton = styled.button`
+const RemoveRegionButton = styled.button`
   font-family: inherit;
   max-height: 1rem;
   margin: 0.1rem 6px;
@@ -56,9 +56,9 @@ const RegionClick = () => {
         <CloseIcon id="clear-region" onClick={clearClickedRegion}/>
       </RowContainer>
       <RowContainer>
-        <DeleteRegionButton onClick={() => removeSelectedRegion(clickedRegion.id)}>
-          Delete
-        </DeleteRegionButton>
+        <RemoveRegionButton onClick={() => removeSelectedRegion(clickedRegion.id)}>
+          Remove
+        </RemoveRegionButton>
       </RowContainer>
     </RegionEditContainer>
   )
