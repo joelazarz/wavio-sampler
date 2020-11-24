@@ -74,11 +74,16 @@ const HelpContainer = styled.div`
 
 const Dock = memo(() => {
   const sampleContext = useContext(SampleContext);
-  const { getKits, dbKits, loadKit } = sampleContext;
+  const { createKit, getKits, dbKits, loadKit, ejectSample } = sampleContext;
 
   useEffect(() => {
     getKits();
-  }, [])
+  }, [createKit]);
+
+  const handleLoad = id => {
+    ejectSample();
+    loadKit(id);
+  };
 
   return (
     <DockContainer>
@@ -89,7 +94,7 @@ const Dock = memo(() => {
       <BrowseKitsContainer>
         <Header>Kits</Header>
         {!dbKits ? <></> : dbKits.map(kit => 
-          <KitRow key={kit.id}>{kit.name}<LoadIcon onClick={() => loadKit(kit.id)}/></KitRow>
+          <KitRow key={kit.id}>{kit.name}<LoadIcon onClick={() => handleLoad(kit.id)}/></KitRow>
         )}
       </BrowseKitsContainer>
       <HelpContainer>
