@@ -142,7 +142,7 @@ const SampleState = props => {
   // Add Region to sample waveform - RegionCreator.js
   // sampleRegions: ...regions, region
   const addRegion = (start = 0, end = 4) => {
-    // if(!state.sampleBlob || !state.loadedKit) { return; };
+    if(!state.sampleBlob && !state.loadedKit) { return; };
 
     let arr = state.sampleRegions.map(r => r.id);
 
@@ -248,7 +248,7 @@ const SampleState = props => {
   // Waveform Color - sampleStation.js
   // waveformColor: color
   const setWaveformColor = color => {
-    if(!state.sampleBlob || !state.loadedKit) { return; };
+    if(!state.sampleBlob && !state.loadedKit) { return; };
 
     dispatch({
       type: WAVE_COLOR,

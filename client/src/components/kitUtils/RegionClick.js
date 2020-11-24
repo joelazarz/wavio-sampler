@@ -25,6 +25,7 @@ const RowContainer = styled.div`
 
 const RemoveRegionButton = styled.button`
   font-family: inherit;
+  font-size: 12px;
   max-height: 1rem;
   margin: 0.1rem 6px;
   background-color: slategrey;
