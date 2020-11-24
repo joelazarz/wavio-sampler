@@ -1,5 +1,7 @@
 // import types
 import {
+  GET_KITS,
+  LOAD_KIT,
   UPLOAD_SAMPLE,
   LOAD_SAMPLE,
   EJECT_SAMPLE,
@@ -18,6 +20,12 @@ import {
 // eslint-disable-next-line
 export default (state, action) => {
   switch(action.type){
+    case GET_KITS:
+      return {
+        ...state,
+        dbKits: action.payload
+      };
+
     case UPLOAD_SAMPLE:
       return {
         ...state,
@@ -44,6 +52,7 @@ export default (state, action) => {
         loopColor: 'rgb(255, 255, 255, 100)'
       };
 
+    case LOAD_KIT:
     case CREATE_KIT:
       return {
         ...state,

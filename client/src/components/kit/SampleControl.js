@@ -70,7 +70,7 @@ const SampleControl = () => {
           !loadedKit ?
             <NotUploadedIcon onClick={() => setFormView(!formView)} />
           :
-          <UploadedIcon />
+          <UploadedIcon disabled={loadedKit} />
         }
       </TitleContainer>
       { formView ? 

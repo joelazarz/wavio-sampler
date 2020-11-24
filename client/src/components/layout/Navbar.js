@@ -52,7 +52,6 @@ padding: 0px;
 `
 
 export const Navbar = ({ toggleTheme, theme }) => {
-  console.log('nav re render');
   const authContext = useContext(AuthContext);
 
   const { isAuthenticated, logout, user } = authContext;

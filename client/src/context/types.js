@@ -14,6 +14,8 @@ export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const SET_LOOPBLOB = 'SET_LOOPBLOB';
 
 // Sample Context
+export const GET_KITS = 'GET_KITS';
+export const LOAD_KIT = 'LOAD_KIT';
 export const CREATE_KIT = 'CREATE_KIT';
 export const UPLOAD_SAMPLE = 'UPLOAD_SAMPLE';
 export const LOAD_SAMPLE = 'LOAD_SAMPLE';

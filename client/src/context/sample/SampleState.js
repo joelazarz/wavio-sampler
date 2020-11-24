@@ -4,6 +4,8 @@ import SampleContext from './sampleContext';
 import sampleReducer from './sampleReducer';
 // import types
 import {
+  GET_KITS,
+  LOAD_KIT,
   UPLOAD_SAMPLE,
   LOAD_SAMPLE,
   EJECT_SAMPLE,
@@ -21,6 +23,7 @@ import {
 
 const SampleState = props => {
   const initialState = {
+    dbKits: null,
     loadedKit: null,
     sampleLink: null,
     sampleBlob: null,
@@ -34,8 +37,34 @@ const SampleState = props => {
   const [state, dispatch] = useReducer(sampleReducer, initialState);
 
   // Get kits
+  const getKits = async () => {
+    try {
+      const res = await axios.get('/api/kits');
+
+      dispatch({
+        type: GET_KITS,
+        payload: res.data
+      });
+    } catch (err) {
+      console.log(err)
+    };
+  };
 
   // Get selected kit
+  const loadKit = async id => {
+    if(state.loadedKit && state.loadedKit.id === id) { return; };
+
+    try {
+      const res = await axios.get(`/api/kits/${id}`);
+
+      dispatch({
+        type: LOAD_KIT,
+        payload: res.data
+      });
+    } catch (err) {
+      console.log(err);
+    };
+  };
 
   // Create kit
   // loadedKit: res.data
@@ -84,7 +113,6 @@ const SampleState = props => {
         type: UPLOAD_SAMPLE,
         payload: res.data
       });
-
     } catch (err) {
       console.log(err);
     };
@@ -196,6 +224,7 @@ const SampleState = props => {
   return (
     <SampleContext.Provider
     value={{
+      dbKits: state.dbKits,
       loadedKit: state.loadedKit,
       sampleLink: state.sampleLink,
       sampleBlob: state.sampleBlob,
@@ -204,6 +233,8 @@ const SampleState = props => {
       hoveredRegion: state.hoveredRegion,
       clickedRegion: state.clickedRegion,
       waveformColor: state.waveformColor,
+      getKits,
+      loadKit,
       createKit,
       uploadSample,
       loadSample,

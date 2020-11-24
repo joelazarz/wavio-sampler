@@ -52,7 +52,7 @@ const SampleStation = memo(() => {
   const [chunks, setChunks] = useState([]);
   
   useEffect(() => {
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
 
     sampleWave.current = WaveSurfer.create({
       container: sampleformRef.current,
@@ -102,7 +102,7 @@ const SampleStation = memo(() => {
       isFirstRender.current = false;
       return;
     };
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
 
     sampleWave.current.clearRegions();
     sampleRegions.forEach(reg => {
@@ -112,7 +112,7 @@ const SampleStation = memo(() => {
   }, [sampleRegions]);
   
   useEffect(() => {
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
 
     sampleWave.current.setWaveColor(waveformColor);
     sampleWave.current.setProgressColor(waveformColor);
@@ -125,7 +125,7 @@ const SampleStation = memo(() => {
       return;
     };
 
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
 
     sampleWave.current.on('region-mouseenter', (e) => {
       setHoveredRegion(e)
@@ -146,7 +146,8 @@ const SampleStation = memo(() => {
       isFirstRender.current = false;
       return;
     };
-    if(!sampleBlob || loadedKit) { return; };
+
+    if(!sampleBlob && !loadedKit) { return; };
 
 
     sampleWave.current.on('region-update-end', (e) => {
@@ -160,7 +161,7 @@ const SampleStation = memo(() => {
       isFirstRender.current = false;
       return;
     };
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
 
     window.addEventListener('keydown', handleTrigger);
     return () => window.removeEventListener('keydown', handleTrigger);
@@ -169,39 +170,39 @@ const SampleStation = memo(() => {
 
   // functions 
   const handleTrigger = (e) => {
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
     if (document.activeElement.matches('.text-input')) { return; };
     if (!sampleWave.current.regions.list[e.key]) { return; };
     sampleWave.current.regions.list[e.key].play();
   };
 
   const playSample = () => {
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
     sampleWave.current.play();
   };
 
   const stopSample = () => {
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
     sampleWave.current.stop();
   };
 
   const pauseSample = () => {
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
     sampleWave.current.playPause();
   };
 
   const rateSlider = (val) => {
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
     sampleWave.current.setPlaybackRate(val);
   };
 
   const zoomSlider = (val) => {
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
     sampleWave.current.zoom(val);
   };
 
   const recordInput = () => {
-    if(!sampleBlob || loadedKit) { return; };
+    if(!sampleBlob && !loadedKit) { return; };
     setLoopBlob(null);
 
     if(setRecording) {

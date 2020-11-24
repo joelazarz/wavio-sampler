@@ -1,5 +1,7 @@
-import React, { memo } from 'react';
+import React, { useEffect, useContext, memo } from 'react';
+import SampleContext from '../../context/sample/sampleContext';
 import styled from 'styled-components';
+import {ReactComponent as LoadIcon} from '../../css/icons/load-arrow.svg'
 import { TitleContainer } from '../../css/TitleContainer';
 
 const DockContainer = styled.div`
@@ -46,6 +48,22 @@ const BrowseKitsContainer = styled.div`
   border-radius: 0.25em;
 `
 
+const KitRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 3px;
+  margin: 4px;
+  background-color: ${({ theme }) => theme.nav};
+  font-size: 11px;
+  border-radius: 0.25em;
+  & > svg {
+    margin: 3px 5px;
+    height:0.8rem; 
+    width: 0.8rem;
+    fill: white;
+  }
+`
+
 const HelpContainer = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.nav};
@@ -55,6 +73,12 @@ const HelpContainer = styled.div`
 `
 
 const Dock = memo(() => {
+  const sampleContext = useContext(SampleContext);
+  const { getKits, dbKits, loadKit } = sampleContext;
+
+  useEffect(() => {
+    getKits();
+  }, [])
 
   return (
     <DockContainer>
@@ -64,6 +88,9 @@ const Dock = memo(() => {
       </SavedRegionsContainer>
       <BrowseKitsContainer>
         <Header>Kits</Header>
+        {!dbKits ? <></> : dbKits.map(kit => 
+          <KitRow key={kit.id}>{kit.name}<LoadIcon onClick={() => loadKit(kit.id)}/></KitRow>
+        )}
       </BrowseKitsContainer>
       <HelpContainer>
 
