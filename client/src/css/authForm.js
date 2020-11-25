@@ -12,7 +12,7 @@ display: flex;
 flex-direction: column;
 /* justify-content: center; */
 /* place-items: center; */
-background-color: rgba(255, 255, 255, 0.2);
+background-color: ${({ theme }) => theme.nav};
 border-radius: 0.25rem;
 `
 
@@ -34,7 +34,11 @@ font-size: 13px;
 margin: 0.5rem auto 1rem auto;
 border: none;
 border-radius: 0.25em;
-background-color: rgba(255, 255, 255, 0.6);
+color: ${({ theme }) => theme.text};
+background-color: ${({ theme }) => theme.paneBackground};
+&:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+}
 `
 
 export const AuthFormLabel = styled.label`

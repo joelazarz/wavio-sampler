@@ -1,5 +1,5 @@
 export const lightTheme = {
-  nav: '#b2c0d4',
+  nav: '#9fb1c9',
   body: '#b8c6d9',
   paneBackground: '#d0d5db',
 

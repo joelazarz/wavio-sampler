@@ -63,7 +63,7 @@ const Login = (props) => {
       onChange={handleChange}
       required
       />
-      <AuthFormButton type="submit" value='login'/>
+      <AuthFormButton type="submit" value='Login'/>
     </AuthForm>
     <Preview />
     </>
