@@ -57,6 +57,7 @@ const DockRow = styled.div`
   background-color: ${({ theme }) => theme.nav};
   font-size: 11px;
   border-radius: 0.25em;
+  transition: all 250ms ease 0s;
   & > svg {
     margin: 3px 5px;
     height:0.8rem; 
@@ -81,7 +82,6 @@ const HelpContainer = styled.div`
 
 const Dock = memo(() => {
   const sampleContext = useContext(SampleContext);
-  const helpContext = useContext(HelpContext);
   const { 
     getKits, 
     dbKits, 
@@ -91,6 +91,8 @@ const Dock = memo(() => {
     addRegion, 
     ejectSample 
   } = sampleContext;
+
+  const helpContext = useContext(HelpContext);
   const { msg } = helpContext;
 
   useEffect(() => {

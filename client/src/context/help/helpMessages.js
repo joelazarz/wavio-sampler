@@ -2,6 +2,7 @@ export const helpMessages = {
   "record": "This is record help",
   "eject": "eject help",
   "addRegion": "addRegion help",
+  "saveKit": "saveKit help",
   "saveRegion": "saveRegion help",
   "loadClip": "loadClip help",
   "sequenceClip": "sequenceClip help",

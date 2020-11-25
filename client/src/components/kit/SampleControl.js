@@ -1,5 +1,7 @@
 import { useState, useContext } from 'react';
 import SampleContext from '../../context/sample/sampleContext';
+import HelpContext from '../../context/help/helpContext';
+//
 import styled from 'styled-components';
 import { keyframes } from 'styled-components';
 import { TitleContainer } from '../../css/TitleContainer';
@@ -17,7 +19,7 @@ const SampleControlContainer = styled.div`
   grid-row-end: 3;
   grid-column-start: 14;
   grid-column-end: 17;
-  min-height: 22em;
+  min-height: 285px;
   margin-top: 2rem;
   border-radius: 6px;
   background-color: ${({ theme }) => theme.paneBackground};
@@ -71,6 +73,7 @@ const RemoveAllRegionsButton = styled.button`
   background-color: ${({ theme }) => theme.body};
   border: none;
   border-radius: 0.25em;
+  transition: all 250ms ease 0s;
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
   }
@@ -82,13 +85,20 @@ const SampleControl = () => {
   const sampleContext = useContext(SampleContext);
   const { loadedKit, removeAllRegions } = sampleContext;
 
+  const helpContext = useContext(HelpContext);
+  const { setMsg } = helpContext;
+
   return (
     <SampleControlContainer>
       <TitleContainer>
         <span>Options</span>
         {
           !loadedKit ?
-            <NotUploadedIcon onClick={() => setFormView(!formView)} />
+            <NotUploadedIcon 
+            onClick={() => setFormView(!formView)} 
+            onMouseOver={() => setMsg("saveKit")}
+            onMouseOut={() => setMsg("clear")}
+            />
           :
           <UploadedIcon disabled={loadedKit} />
         }

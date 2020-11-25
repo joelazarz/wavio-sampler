@@ -83,6 +83,10 @@ const DropText = styled.div`
   font-size: 10px;
   border: 1px dotted white;
   border-radius: 0.25em;
+  transition: all 250ms ease 0s;
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 `
 
 const KitSubmit = styled.input`
@@ -93,6 +97,10 @@ const KitSubmit = styled.input`
   border-radius: 0.25em;
   margin: 0.5rem;
   padding: 0.3rem;
+  transition: all 250ms ease 0s;
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 `
 
 const SaveKitForm = (props) => {

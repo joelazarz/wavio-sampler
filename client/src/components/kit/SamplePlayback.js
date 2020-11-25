@@ -59,6 +59,7 @@ const RecordButton = styled.button`
   background-color: ${({ theme }) => theme.nav};
   border: none;
   border-radius: 0.25em;
+  transition: all 250ms ease 0s;
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px dotted white;
@@ -68,8 +69,9 @@ const RecordButton = styled.button`
 
 const SamplePlayback = ({ ...props }) => {
   const sampleContext = useContext(SampleContext);
-  const helpContext = useContext(HelpContext);
   const { setRecord, setRecording, ejectSample } = sampleContext;
+
+  const helpContext = useContext(HelpContext);
   const { setMsg } = helpContext;
 
   const { 

@@ -71,6 +71,7 @@ const AuthButton = styled.button`
   font-size: 11px;
   color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.paneBackground};
+  transition: all 250ms ease 0s;
   &:hover {
   background-color: rgba(255, 255, 255, 0.3);
   }

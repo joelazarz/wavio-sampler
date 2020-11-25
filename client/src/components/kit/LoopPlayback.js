@@ -52,6 +52,7 @@ const UtilButton = styled.button`
   border: none;
   border-radius: 0.25em;
   color: ${({ theme }) => theme.text};
+  transition: all 250ms ease 0s;
   & > a {
     color: ${({ theme }) => theme.text};
     text-decoration: none;

@@ -22,7 +22,7 @@ const DropContainer = styled.div`
   grid-row-end: 3;
   grid-column-start: 4;
   grid-column-end: 14;
-  height: 200px;
+  height: 220px;
   margin: 0 2em;
   padding-right: 2rem;
   padding-left: 2rem;
@@ -43,6 +43,7 @@ const DropText = styled.div`
   padding: 3em;
   border: 1px dotted white;
   border-radius: 0.25em;
+  transition: all 250ms ease 0s;
   &:hover {
   background-color: rgb(255,250,250, 0.1);
   }

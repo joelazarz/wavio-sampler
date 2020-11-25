@@ -11,6 +11,7 @@ const RowContainer = styled.div`
   width: 100%;
   /* place-items: center; */
   justify-content: space-between;
+  transition: all 250ms ease 0s;
   & > svg {
     margin: 0rem;
     margin-right: 20px;
@@ -33,6 +34,7 @@ const RemoveRegionButton = styled.button`
   border-radius: 0.25em;
   width: 90%;
   text-align: center;
+  transition: all 250ms ease 0s;
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);;
   }
@@ -67,6 +69,7 @@ const RegionSubmit = styled.input`
   padding: 0.3rem;
   width: 90%;
   text-align: center;
+  transition: all 250ms ease 0s;
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
   }

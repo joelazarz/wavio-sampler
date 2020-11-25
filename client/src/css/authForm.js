@@ -37,6 +37,7 @@ border: none;
 border-radius: 0.25em;
 color: ${({ theme }) => theme.text};
 background-color: ${({ theme }) => theme.paneBackground};
+transition: all 250ms ease 0s;
 &:hover{
   background-color: rgba(255, 255, 255, 0.2);
 }

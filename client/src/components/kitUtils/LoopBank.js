@@ -35,6 +35,7 @@ const LoopRow = styled.div`
 
 const IconContainer = styled.div`
   margin-right: 5px;
+  transition: all 250ms ease 0s;
   & > svg {
     margin: 1px 4px;
     height:0.7rem; 
@@ -82,6 +83,7 @@ const ClearSequenceButton = styled.button`
   vertical-align:middle;
   border: none;
   border-radius: 0.25em;
+  transition: all 250ms ease 0s;
   &:hover{
     background-color: rgba(255, 255, 255, 0.2);
     color: #ff7895;
