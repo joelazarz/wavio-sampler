@@ -16,6 +16,7 @@ import AuthState from './context/auth/AuthState';
 import KitState from './context/kit/KitState';
 import SampleState from './context/sample/SampleState';
 import LoopState from './context/loop/LoopState';
+import HelpState from './context/help/HelpState';
 // setAuthToken
 import setAuthToken from './utils/setAuthToken';
 
@@ -36,21 +37,23 @@ const App = () => {
       <KitState>
         <SampleState>
           <LoopState>
-            <ThemeProvider theme={themeMode}>
-              <Router>
-                <>
-                <GlobalStyles />
-                  <Navbar theme={theme} toggleTheme={toggleTheme} />
-                  <Container>
-                    <Switch>
-                      <PrivateRoute exact path='/' component={Kit} />
-                      <Route exact path='/login' component={Login} />
-                      <Route exact path='/register' component={Register} />
-                    </Switch>
-                  </Container>
-                </>
-              </Router>
-            </ThemeProvider>
+            <HelpState>
+              <ThemeProvider theme={themeMode}>
+                <Router>
+                  <>
+                  <GlobalStyles />
+                    <Navbar theme={theme} toggleTheme={toggleTheme} />
+                    <Container>
+                      <Switch>
+                        <PrivateRoute exact path='/' component={Kit} />
+                        <Route exact path='/login' component={Login} />
+                        <Route exact path='/register' component={Register} />
+                      </Switch>
+                    </Container>
+                  </>
+                </Router>
+              </ThemeProvider>
+            </HelpState>
           </LoopState>
         </SampleState>
       </KitState>

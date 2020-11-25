@@ -41,18 +41,17 @@ export const CLEAR_SEQUENCE = 'CLEAR_SEQUENCE';
 export const LOOP_COLOR = 'LOOP_COLOR';
 
 // Help Context
-/*
-* record
-* eject
-* add region
-* save region
-* load clip
-* sequence clip
-* remove clip
-* clear sequence
-* edit loop
-* capture loop
-* download
-* load kit
-* load saved region
-*/
+export const RECORD_HELP = 'RECORD_HELP'
+export const EJECT_HELP = 'EJECT_HELP'
+export const ADDREGION_HELP = 'ADDREGION_HELP'
+export const SAVEREGION_HELP = 'SAVEREGION_HELP'
+export const LOADCLIP_HELP = 'LOADCLIP_HELP'
+export const SEQUENCECLIP_HELP = 'SEQUENCECLIP_HELP'
+export const REMOVECLIP_HELP = 'REMOVECLIP_HELP'
+export const CLEARSEQUENCE_HELP = 'CLEARSEQUENCE_HELP'
+export const EDITLOOP_HELP = 'EDITLOOP_HELP'
+export const CAPTURELOOP_HELP = 'CAPTURELOOP_HELP'
+export const DOWNLOAD_HELP = 'DOWNLOAD_HELP'
+export const LOADKIT_HELP = 'LOADKIT_HELP'
+export const LOADREGION_HELP = 'LOADREGION_HELP'
+export const CLEAR_HELP = 'CLEAR_HELP'

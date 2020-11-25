@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import SampleContext from '../../context/sample/sampleContext';
+import HelpContext from '../../context/help/helpContext';
 import styled from 'styled-components';
 import {ReactComponent as PlayIcon} from '../../css/icons/play.svg';
 import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg';
@@ -67,7 +68,9 @@ const RecordButton = styled.button`
 
 const SamplePlayback = ({ ...props }) => {
   const sampleContext = useContext(SampleContext);
+  const helpContext = useContext(HelpContext);
   const { setRecord, setRecording, ejectSample } = sampleContext;
+  const { setMsg } = helpContext;
 
   const { 
     playSample, 
@@ -112,6 +115,8 @@ const SamplePlayback = ({ ...props }) => {
 
         <RecordButton 
         onClick={handleRecord} 
+        onMouseOver={() => setMsg("record")}
+        onMouseOut={() => setMsg("clear")}
         style={{ 'color': setRecording ? 'red' : 'white' }}>
         RECORD
         </RecordButton>

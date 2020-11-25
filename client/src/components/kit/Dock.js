@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, memo } from 'react';
 import SampleContext from '../../context/sample/sampleContext';
+import HelpContext from '../../context/help/helpContext';
 import styled from 'styled-components';
 import {ReactComponent as LoadIcon} from '../../css/icons/load-arrow.svg'
 import { TitleContainer } from '../../css/TitleContainer';
@@ -70,13 +71,17 @@ const DockRow = styled.div`
 const HelpContainer = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.nav};
+  color: ${({ theme }) => theme.text};
   height: 26%;
   margin: 4px;
+  padding: 5px;
+  font-size: 11px;
   border-radius: 0.25em;
 `
 
 const Dock = memo(() => {
   const sampleContext = useContext(SampleContext);
+  const helpContext = useContext(HelpContext);
   const { 
     getKits, 
     dbKits, 
@@ -86,6 +91,7 @@ const Dock = memo(() => {
     addRegion, 
     ejectSample 
   } = sampleContext;
+  const { msg } = helpContext;
 
   useEffect(() => {
     getKits();
@@ -123,7 +129,7 @@ const Dock = memo(() => {
         )}
       </BrowseKitsContainer>
       <HelpContainer>
-
+        <span>{msg}</span>
       </HelpContainer>
     </DockContainer>
   )
