@@ -49,7 +49,7 @@ const SampleState = props => {
         payload: res.data
       });
     } catch (err) {
-      console.log(err)
+      return;
     };
   };
 

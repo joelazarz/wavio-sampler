@@ -42,6 +42,7 @@ min-width: 1.5rem;
 font-size: 11px;
 background-color: rgba(255, 255, 255, 0.2);
 padding: 0px;
+margin-left: 20px;
 & > svg {
   height:12px; 
   width:12px;
@@ -51,43 +52,65 @@ padding: 0px;
 }
 `
 
+const NavSpace = styled.div`
+  display: flex;
+  place-items: center;
+`
+
+const AuthButton = styled.button`
+  height: 20px; 
+  border: none;
+  border-radius: 0.25em;
+  margin: 3px 5px;
+  padding: 3px;
+  padding-bottom: 5px;
+  font-family: inherit;
+  font-size: 11px;
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.paneBackground};
+  &:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  }
+  & a {
+    color: ${({ theme }) => theme.text};
+    text-decoration: none;
+  }
+`
+
 export const Navbar = ({ toggleTheme, theme }) => {
   const authContext = useContext(AuthContext);
 
-  const { isAuthenticated, logout, user } = authContext;
+  const { isAuthenticated, logout } = authContext;
 
   const onLogout = () => {
     logout();
   };
 
   const authLinks = (
-    <>
-    <span>Hello { user && user.username}</span>
-    <a onClick={onLogout} href="#!">
-          <span>Logout</span>
-        </a>
-    </>
+    <AuthButton onClick={onLogout} >
+      <span>Logout</span>
+    </AuthButton>
   );
 
   const guestLinks = (
     <>
-      <Link to='/register'>Register</Link>
-      <Link to='/login'>Login</Link>
+      <AuthButton><Link to='/register'>Register</Link></AuthButton>
+      <AuthButton><Link to='/login'>Login</Link></AuthButton>
     </>
   );
 
   return (
     <Nav>
       <span>Wavio Sampler</span>
-      <div>
-      {isAuthenticated ? authLinks : guestLinks}
-      </div>
-      <ToggleButton onClick={toggleTheme}>
-        {
-          (theme === 'light') ? <MoonIcon style={{'fill': 'midnightblue'}} /> 
-          : <SunIcon style={{'fill': 'yellow'}}/>
-        }
-      </ToggleButton>
+      <NavSpace>
+        {isAuthenticated ? authLinks : guestLinks}
+        <ToggleButton onClick={toggleTheme}>
+          {
+            (theme === 'light') ? <MoonIcon style={{'fill': 'midnightblue'}} /> 
+            : <SunIcon style={{'fill': 'yellow'}}/>
+          }
+        </ToggleButton>
+      </NavSpace>
     </Nav>
   )
 }

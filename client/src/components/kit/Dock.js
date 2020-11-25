@@ -95,13 +95,20 @@ const Dock = memo(() => {
       <SavedRegionsContainer>
         <Header>Saved Regions</Header>
         {!loadedKit ? <></> : kitRegions.map(r => 
-          <DockRow key={r.id} onClick={() => addRegion(`${r.start}`, `${r.end}`)}>{r.name}<LoadIcon key={r.id}/></DockRow>
+          <DockRow 
+          key={r.id} 
+          onClick={() => addRegion(`${r.start}`, `${r.end}`)}>
+            {r.name}
+            <LoadIcon key={r.id}/>
+          </DockRow>
         )}
       </SavedRegionsContainer>
       <BrowseKitsContainer>
         <Header>Kits</Header>
         {!dbKits ? <></> : dbKits.map(kit => 
-          <DockRow key={kit.id} onClick={() => handleLoad(kit.id)}>
+          <DockRow 
+          key={kit.id} 
+          onClick={() => handleLoad(kit.id)}>
             {kit.name}
             <LoadIcon key={kit.id}/>
           </DockRow>

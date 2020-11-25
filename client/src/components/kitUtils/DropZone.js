@@ -40,7 +40,7 @@ const DropContainer = styled.div`
 
 const DropText = styled.div`
   background-color: rgb(255,250,250, 0.1);
-  /* padding: 5em; */
+  padding: 3em;
   border: 1px dotted white;
   border-radius: 0.25em;
 `

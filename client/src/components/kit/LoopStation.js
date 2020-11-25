@@ -103,15 +103,16 @@ const LoopStation = memo(() => {
   };
 
   const resizeLoop = () => {
-    if (!loopBlob) { return; };
-    if(loopWave.current.regions.list['resize']) { 
+    if(loopWave.current.regions.list['resize']) {
       loopWave.current.regions.list['resize'].remove();
     };
+
+    if (!loopBlob) { return; };
 
     const region = {
       id: 'resize',
       start: 0,
-      end: `${loopWave.current.getDuration() - 0.001}`,
+      end: `${loopWave.current.getDuration() - 0.01}`,
       loop: true,
       color: `rgb(246, 155, 155, 0.4)`
     };
