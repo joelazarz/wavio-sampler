@@ -1,5 +1,4 @@
 import { useReducer } from 'react';
-// import axios from 'axios';
 import KitContext from './kitContext';
 import kitReducer from './kitReducer';
 // import types

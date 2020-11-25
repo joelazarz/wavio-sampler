@@ -54,11 +54,26 @@ export default (state, action) => {
       };
 
     case LOAD_KIT:
-    case CREATE_KIT:
       return {
         ...state,
         loadedKit: action.payload,
-        kitRegions: action.payload.regions,
+        kitRegions: [...action.payload.regions],
+        sampleLink: null,
+        sampleBlob: null,
+        sampleRegions: [],
+        setRecording: false,
+        hoveredRegion: null,
+        clickedRegion: null,
+        waveformColor: 'rgb(255, 255, 255, 100)',
+        loopColor: 'rgb(255, 255, 255, 100)'
+      };
+
+    case CREATE_KIT:
+      return {
+        ...state,
+        dbKits: [...state.dbKits, action.payload],
+        loadedKit: action.payload,
+        kitRegions: [],
         sampleLink: null,
         sampleBlob: null,
         sampleRegions: [],

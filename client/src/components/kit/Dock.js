@@ -77,12 +77,20 @@ const HelpContainer = styled.div`
 
 const Dock = memo(() => {
   const sampleContext = useContext(SampleContext);
-  const { createKit, getKits, dbKits, loadedKit, kitRegions, loadKit, addRegion, ejectSample } = sampleContext;
+  const { 
+    getKits, 
+    dbKits, 
+    loadedKit, 
+    kitRegions, 
+    loadKit, 
+    addRegion, 
+    ejectSample 
+  } = sampleContext;
 
   useEffect(() => {
     getKits();
     // eslint-disable-next-line
-  }, [createKit]);
+  }, []);
 
   const handleLoad = id => {
     ejectSample();

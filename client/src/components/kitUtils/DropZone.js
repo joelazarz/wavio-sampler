@@ -39,10 +39,13 @@ const DropContainer = styled.div`
 `;
 
 const DropText = styled.div`
-  background-color: rgb(255,250,250, 0.1);
+  background-color: rgb(255,250,250, 0.3);
   padding: 3em;
   border: 1px dotted white;
   border-radius: 0.25em;
+  &:hover {
+  background-color: rgb(255,250,250, 0.1);
+  }
 `
 
 const DropZone = (props) => {
@@ -79,7 +82,7 @@ const DropZone = (props) => {
         })}>
         <input {...getInputProps()} />
         <DropText>
-          Drag 'n' drop some files here, or click to select files
+          DRAG-N-DROP AN AUDIO FILE OR CLICK TO SELECT (10MB LIMIT)
         </DropText>
       </DropContainer>
   )

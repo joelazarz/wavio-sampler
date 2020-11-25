@@ -72,7 +72,7 @@ const Register = (props) => {
       onChange={handleChange}
       required
       />
-      <AuthFormButton type="submit" value='register'/>
+      <AuthFormButton type="submit" value='Register'>Register</AuthFormButton>
     </AuthForm>
     <Preview />
     </>

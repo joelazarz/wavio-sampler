@@ -27,8 +27,9 @@ font-family: 'Roboto Mono', monospace;
 margin: 0.5rem auto;
 `
 
-export const AuthFormButton = styled.input`
+export const AuthFormButton = styled.button`
 width: 50%;
+height: 30px;
 font-family: 'Roboto Mono', monospace;
 font-size: 13px;
 margin: 0.5rem auto 1rem auto;
