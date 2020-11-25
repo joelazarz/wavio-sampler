@@ -15,9 +15,11 @@ top: 0;
 max-height: 2.5rem;
 width: 100%;
 display: flex;
+place-items: center;
 justify-content: space-between;
 padding: 0.5em;
-`;
+padding-left: 25px;
+`
 
 const ToggleButton = styled.button`
 background: transparent;
@@ -43,6 +45,7 @@ font-size: 11px;
 background-color: rgba(255, 255, 255, 0.2);
 padding: 0px;
 margin-left: 20px;
+margin-right: 12px;
 & > svg {
   height:12px; 
   width:12px;

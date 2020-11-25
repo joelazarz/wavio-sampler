@@ -19,6 +19,7 @@ import {
   CLICK_REGION,
   CLEAR_CLICK,
   REMOVE_REGION,
+  REMOVEALL_REGIONS,
   WAVE_COLOR,
   CLEAR_HOVER
 } from '../types';
@@ -224,6 +225,12 @@ const SampleState = props => {
     });
   };
 
+  // Remove all regions from current waveform
+  // sampleRegions: []
+  const removeAllRegions = () => {
+    dispatch({ type: REMOVEALL_REGIONS })
+  };
+
   // Create region in db
   const createRegion = async formData => {
     const config = {
@@ -284,6 +291,7 @@ const SampleState = props => {
       clearHoveredRegion,
       clearClickedRegion,
       removeSelectedRegion,
+      removeAllRegions,
       setWaveformColor,
     }}
     >

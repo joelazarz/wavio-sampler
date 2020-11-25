@@ -93,12 +93,10 @@ const RegionHover = () => {
   };
 
   return (
-    // <TitleContainer>
-      <RowContainer>
-        <span>{hoveredRegion ? `Region: [${hoveredRegion.id}] ` : '...'}</span>
-        <SquareIcon style={{ 'fill': `${hoveredRegion.color}` }}/>
-      </RowContainer>
-    // </TitleContainer>
+    <RowContainer>
+      <span>{hoveredRegion ? `Region: [${hoveredRegion.id}] ` : '...'}</span>
+      <SquareIcon style={{ 'fill': `${hoveredRegion.color}` }}/>
+    </RowContainer>
   )
 };
 

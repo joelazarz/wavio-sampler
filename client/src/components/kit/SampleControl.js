@@ -56,11 +56,31 @@ const UploadedIcon = styled(UploadIcon)`
   fill: green;
 `
 
+const RemoveAllRegionsButton = styled.button`
+  display: flex;
+  height: 18px;
+  width: 95%;
+  margin: 4px 5px;
+  padding: 2px;
+  padding-bottom: 5px;
+  font-family: inherit;
+  font-size: 11px;
+  place-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.body};
+  border: none;
+  border-radius: 0.25em;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+`
+
 const SampleControl = () => {
   const [formView, setFormView] = useState(false);
 
   const sampleContext = useContext(SampleContext);
-  const { loadedKit } = sampleContext;
+  const { loadedKit, removeAllRegions } = sampleContext;
 
   return (
     <SampleControlContainer>
@@ -79,6 +99,7 @@ const SampleControl = () => {
         <>
         <SampleColorPicker />
         <RegionCreator />
+        <RemoveAllRegionsButton onClick={removeAllRegions}>Remove All Regions</RemoveAllRegionsButton>
         <RegionHover />
         <RegionClick />
         </>

@@ -23,6 +23,7 @@ export const LOAD_SAMPLE = 'LOAD_SAMPLE';
 export const EJECT_SAMPLE = 'EJECT_SAMPLE'
 export const ADD_REGION = 'ADD_REGION';
 export const REMOVE_REGION = 'REMOVE_REGION';
+export const REMOVEALL_REGIONS = 'REMOVEALL_REGIONS';
 export const SET_REGIONS = 'SET_REGIONS'
 export const HOVER_REGION = 'HOVER_REGION';
 export const CLEAR_HOVER = 'CLEAR_HOVER';
@@ -38,3 +39,20 @@ export const CALLUP_LOOP = 'CALLUP_LOOP';
 export const ADDTO_SEQUENCE = 'ADDTO_SEQUENCE';
 export const CLEAR_SEQUENCE = 'CLEAR_SEQUENCE';
 export const LOOP_COLOR = 'LOOP_COLOR';
+
+// Help Context
+/*
+* record
+* eject
+* add region
+* save region
+* load clip
+* sequence clip
+* remove clip
+* clear sequence
+* edit loop
+* capture loop
+* download
+* load kit
+* load saved region
+*/

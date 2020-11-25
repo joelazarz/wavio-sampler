@@ -34,7 +34,7 @@ const RemoveRegionButton = styled.button`
   width: 90%;
   text-align: center;
   &:hover {
-    background-color: silver;
+    background-color: rgba(255, 255, 255, 0.2);;
   }
 `
 
@@ -139,9 +139,6 @@ const RegionClick = () => {
 
       </CreateRegionForm>
       }
-
-
-
     </RegionEditContainer>
   )
 };

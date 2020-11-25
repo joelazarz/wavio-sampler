@@ -15,6 +15,7 @@ import {
   CLICK_REGION,
   CLEAR_CLICK,
   REMOVE_REGION,
+  REMOVEALL_REGIONS,
   WAVE_COLOR 
 } from "../types";
 
@@ -139,6 +140,14 @@ export default (state, action) => {
         sampleRegions: state.sampleRegions.filter(region => region.id !== action.payload),
         clickedRegion: null
       }
+
+    case REMOVEALL_REGIONS:
+      return {
+        ...state,
+        sampleRegions: [],
+        hoveredRegion: null,
+        clickedRegion: null
+      };
 
     case WAVE_COLOR:
       return {
