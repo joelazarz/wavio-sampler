@@ -102,11 +102,6 @@ const LoopStation = memo(() => {
     loopWave.current.playPause();
   };
 
-  const stopLoop = () => {
-    if (!loopBlob) { return; };
-    loopWave.current.stop();
-  };
-
   const resizeLoop = () => {
     if (!loopBlob) { return; };
     if(loopWave.current.regions.list['resize']) { 
@@ -264,7 +259,6 @@ const LoopStation = memo(() => {
     <>
     <LoopPlayback
     playLoop={playLoop}
-    stopLoop={stopLoop}
     pauseLoop={pauseLoop}
     resizeLoop={resizeLoop}
     clipLoop={clipLoop}

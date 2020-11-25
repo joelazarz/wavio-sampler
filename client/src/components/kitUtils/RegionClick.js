@@ -25,8 +25,8 @@ const RowContainer = styled.div`
 
 const RemoveRegionButton = styled.button`
   font-family: inherit;
-  font-size: 12px;
-  max-height: 1rem;
+  font-size: 11px;
+  height: 20px;
   margin: 0.1rem 6px;
   background-color: slategrey;
   border: none;
@@ -39,12 +39,14 @@ const RemoveRegionButton = styled.button`
 `
 
 const CreateRegionForm = styled.form`
-
+  display: flex;
+  place-items: center;
+  flex-direction: column;
 `
 
 const RegionNameInput = styled.input`
   display: flex;
-  margin: 0.5em;
+  margin: 3px auto;
   padding: 5px;
   font-family: inherit;
   background-color: ${({ theme }) => theme.body};
@@ -61,10 +63,13 @@ const RegionSubmit = styled.input`
   background-color: ${({ theme }) => theme.nav};
   border: 1px solid white;
   border-radius: 0.25em;
-  margin: 0.5rem;
+  margin: 2px;
   padding: 0.3rem;
   width: 90%;
   text-align: center;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 `
 
 const RegionClick = () => {
@@ -112,7 +117,7 @@ const RegionClick = () => {
       </RowContainer>
       <RowContainer>
         <RemoveRegionButton onClick={() => removeSelectedRegion(clickedRegion.id)}>
-          Remove
+          <span>Remove</span>
         </RemoveRegionButton>
       </RowContainer>
 

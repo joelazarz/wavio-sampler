@@ -5,13 +5,13 @@ import styled from 'styled-components';
 
 const getColor = (props) => {
   if (props.isDragAccept) {
-      return '#00e676';
+      return '#00ff7b';
   }
   if (props.isDragReject) {
-      return '#ff1744';
+      return '#ff4d67';
   }
   if (props.isDragActive) {
-      return '#2196f3';
+      return '#54b3ff';
   }
   return '#eeeeee';
 }

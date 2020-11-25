@@ -62,6 +62,9 @@ const DockRow = styled.div`
     width: 0.8rem;
     fill: white;
   }
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+  }
 `
 
 const HelpContainer = styled.div`
@@ -92,13 +95,16 @@ const Dock = memo(() => {
       <SavedRegionsContainer>
         <Header>Saved Regions</Header>
         {!loadedKit ? <></> : kitRegions.map(r => 
-          <DockRow key={r.id}>{r.name}<LoadIcon key={r.id} onClick={() => addRegion(`${r.start}`, `${r.end}`)} /></DockRow>
+          <DockRow key={r.id} onClick={() => addRegion(`${r.start}`, `${r.end}`)}>{r.name}<LoadIcon key={r.id}/></DockRow>
         )}
       </SavedRegionsContainer>
       <BrowseKitsContainer>
         <Header>Kits</Header>
         {!dbKits ? <></> : dbKits.map(kit => 
-          <DockRow key={kit.id}>{kit.name}<LoadIcon key={kit.id} onClick={() => handleLoad(kit.id)}/></DockRow>
+          <DockRow key={kit.id} onClick={() => handleLoad(kit.id)}>
+            {kit.name}
+            <LoadIcon key={kit.id}/>
+          </DockRow>
         )}
       </BrowseKitsContainer>
       <HelpContainer>

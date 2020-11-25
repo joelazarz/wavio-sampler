@@ -41,6 +41,15 @@ const IconContainer = styled.div`
     width: 0.7rem;
     fill: white;
   }
+  & #call-loop:hover{
+    fill: #fff899;
+  }
+  & #sequence-loop:hover {
+    fill: #59ffaf;
+  }
+  & #remove-loop:hover {
+    fill: #ff5959;
+  }
 `
 
 const SequenceStatus = styled.div`
@@ -73,6 +82,10 @@ const ClearSequenceButton = styled.button`
   vertical-align:middle;
   border: none;
   border-radius: 0.25em;
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ff7895;
+  }
 `
 
 const LoopBank = () => {
@@ -96,9 +109,9 @@ const LoopBank = () => {
             >
               <span>Clip: {loop.id}</span> 
               <IconContainer>
-                <CallUpIcon onClick={() => callUpLoop(loop.id)} />
-                <SequenceIcon onClick={() => setToSequence(loop.id)} />
-                <XIcon onClick={() => removeFromLoopBank(loop.id)}/>
+                <CallUpIcon id="call-loop" onClick={() => callUpLoop(loop.id)} />
+                <SequenceIcon id="sequence-loop" onClick={() => setToSequence(loop.id)} />
+                <XIcon id="remove-loop" onClick={() => removeFromLoopBank(loop.id)}/>
               </IconContainer>
             </LoopRow>
           )}

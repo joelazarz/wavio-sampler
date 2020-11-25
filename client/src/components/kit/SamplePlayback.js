@@ -1,10 +1,9 @@
 import { useContext } from 'react';
 import SampleContext from '../../context/sample/sampleContext';
 import styled from 'styled-components';
-import {ReactComponent as PlayIcon} from '../../css/icons/play.svg'
-import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg'
-import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
-import {ReactComponent as EjectIcon} from '../../css/icons/eject.svg'
+import {ReactComponent as PlayIcon} from '../../css/icons/play.svg';
+import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg';
+import {ReactComponent as EjectIcon} from '../../css/icons/eject.svg';
 import '../../css/slider.css';
 
 const SamplePlaybackCotrols = styled.div`
@@ -13,7 +12,7 @@ const SamplePlaybackCotrols = styled.div`
   grid-column-start: 4;
   grid-column-end: 14;
   height: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: ${({ theme }) => theme.paneBackground};
   border-radius: 0.25em;
   margin: 2rem 1rem 0rem 1rem;
   display: flex;
@@ -23,6 +22,20 @@ const SamplePlaybackCotrols = styled.div`
     margin: 0rem 0.5rem;
     height:0.8rem; 
     width: 0.8rem;
+  }
+  & > #sample-play {
+    fill: #36d941;
+  }
+  & > #sample-play :hover {
+    fill: #7fe381;
+  }
+  & > #sample-pause {
+    fill: #54b8ff;
+    margin-right: 20px;
+  }
+  & > #sample-eject {
+    margin-left: 25px;
+    fill: #ff9138;
   }
 `
 
@@ -45,6 +58,11 @@ const RecordButton = styled.button`
   background-color: ${({ theme }) => theme.nav};
   border: none;
   border-radius: 0.25em;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px dotted white;
+  }
+
 `
 
 const SamplePlayback = ({ ...props }) => {
@@ -53,7 +71,6 @@ const SamplePlayback = ({ ...props }) => {
 
   const { 
     playSample, 
-    stopSample, 
     pauseSample,
     rateSlider,
     zoomSlider,
@@ -71,18 +88,13 @@ const SamplePlayback = ({ ...props }) => {
   return (
     <SamplePlaybackCotrols>
       <PlayIcon 
+      id="sample-play"
       onClick={playSample} 
-      style={{fill: 'lightgreen'}}
       />
 
-      <PauseIcon 
+      <PauseIcon
+      id="sample-pause" 
       onClick={pauseSample} 
-      style={{fill: 'lightblue'}}
-      />
-
-      <StopIcon 
-      onClick={stopSample} 
-      style={{fill: 'red'}}
       />
 
       <SliderControl>
@@ -118,8 +130,8 @@ const SamplePlayback = ({ ...props }) => {
       </SliderControl>
 
       <EjectIcon 
+      id="sample-eject"
       onClick={handleEject}
-      style={{fill: 'snow', marginLeft: '2em'}}
       />
 
     </SamplePlaybackCotrols>

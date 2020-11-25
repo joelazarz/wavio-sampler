@@ -15,6 +15,9 @@ const RegionAddContainer = styled.div`
     width: 0.8rem;
     fill: white;
   }
+  & > svg:hover {
+    fill: lightgreen;
+  }
 `
 
 const RegionCreator = () => {

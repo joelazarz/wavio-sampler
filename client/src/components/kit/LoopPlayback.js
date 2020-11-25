@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import {ReactComponent as PlayIcon} from '../../css/icons/play.svg'
-import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg'
-import {ReactComponent as StopIcon} from '../../css/icons/stop.svg'
-import {ReactComponent as ResizeIcon} from '../../css/icons/resize.svg'
-import {ReactComponent as CaptureIcon} from '../../css/icons/capture.svg'
-import {ReactComponent as DownloadIcon} from '../../css/icons/download.svg'
+import {ReactComponent as PlayIcon} from '../../css/icons/play.svg';
+import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg';
+import {ReactComponent as ResizeIcon} from '../../css/icons/resize.svg';
+import {ReactComponent as CaptureIcon} from '../../css/icons/capture.svg';
+import {ReactComponent as DownloadIcon} from '../../css/icons/download.svg';
 
 const LoopPlaybackCotrols = styled.div`
   grid-row-start: 4;
@@ -12,7 +11,7 @@ const LoopPlaybackCotrols = styled.div`
   grid-column-start: 4;
   grid-column-end: 14;
   height: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: ${({ theme }) => theme.paneBackground};
   border-radius: 0.25em;
   margin: 2rem 1rem 0rem 1rem;
   display: flex;
@@ -28,13 +27,65 @@ const LoopPlaybackCotrols = styled.div`
     height:0.8rem; 
     width: 0.8rem;
   }
+  & > #loop-play {
+    fill: #36d941;
+  }
+  & > #loop-pause {
+    fill: #54b8ff;
+    margin-right: 20px;
+  }
+  & > #loop-play :hover {
+    fill: #7fe381;
+  }
+`
+
+const UtilButton = styled.button`
+  display: flex;
+  height: 18px;
+  margin: 2px 6px;
+  padding: 3px 6px;
+  padding-bottom: 4px;
+  font-family: inherit;
+  font-size: 11px;
+  place-items: center; 
+  background-color: ${({ theme }) => theme.nav};
+  border: none;
+  border-radius: 0.25em;
+  color: ${({ theme }) => theme.text};
+  & > a {
+    color: ${({ theme }) => theme.text};
+    text-decoration: none;
+  }
+  & > svg {
+    fill: white;
+    margin: 0rem 0.5rem;
+    height:0.7rem; 
+    width: 0.7rem;
+  }
+  & > a > svg {
+    fill: white;
+    margin: 0rem 0.5rem;
+    height:0.7rem; 
+    width: 0.7rem;
+  }
+  &:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  &:hover > #resize-loop {
+    fill: #ff96f1;
+  }
+  &:hover > #capture-loop {
+    fill: #ff9100;
+  }
+  &:hover > a > #download-loop {
+    fill: #59ffaf;
+  }
 `
 
 const LoopPlayback = ({ ...props }) => {
 
   const { 
     playLoop, 
-    stopLoop, 
     pauseLoop,
     resizeLoop,
     clipLoop,
@@ -43,31 +94,34 @@ const LoopPlayback = ({ ...props }) => {
 
   return (
     <LoopPlaybackCotrols>
+
       <PlayIcon 
+      id="loop-play"
       onClick={playLoop} 
-      style={{fill: 'lightgreen'}}
       />
+
       <PauseIcon 
-      onClick={pauseLoop} 
-      style={{fill: 'lightblue'}}
+      id="loop-pause"
+      onClick={pauseLoop}
       />
-      <StopIcon 
-      onClick={stopLoop} 
-      style={{fill: 'red'}}
-      />
-      <ResizeIcon 
-      onClick={resizeLoop} 
-      style={{fill: 'white'}}
-      />
-      <CaptureIcon 
-      onClick={clipLoop}
-      style={{fill: 'white'}}
-      />
-      <a 
-      href={loopBlob} 
-      download>
-        <DownloadIcon style={{fill: 'white'}} />
+
+      <UtilButton onClick={resizeLoop}>
+      <span>Edit</span>
+      <ResizeIcon id="resize-loop"/>
+      </UtilButton>
+
+      <UtilButton onClick={clipLoop}>
+      <span>Capture</span>
+      <CaptureIcon id="capture-loop"/>
+      </UtilButton>
+
+      <UtilButton>
+      <a href={loopBlob} download>
+      <span>Download</span>
+      <DownloadIcon id="download-loop"/>
       </a>
+      </UtilButton>
+
     </LoopPlaybackCotrols>
   )
 };
