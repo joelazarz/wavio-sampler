@@ -3,22 +3,7 @@ import { helpMessages } from './helpMessages';
 import HelpContext from './helpContext';
 import helpReducer from './helpReducer';
 // import types
-import {
-  RECORD_HELP, 
-  EJECT_HELP,
-  ADDREGION_HELP, 
-  SAVEREGION_HELP, 
-  LOADCLIP_HELP,
-  SEQUENCECLIP_HELP, 
-  REMOVECLIP_HELP,
-  CLEARSEQUENCE_HELP, 
-  EDITLOOP_HELP, 
-  CAPTURELOOP_HELP, 
-  DOWNLOAD_HELP, 
-  LOADKIT_HELP,
-  LOADREGION_HELP, 
-  CLEAR_HELP
-} from '../types';
+import { HELP_MESSAGE } from '../types';
 
 const HelpState = props => {
   const initialState = {
@@ -29,14 +14,10 @@ const HelpState = props => {
 
   // actions
   const setMsg = msg => {
-    switch(msg) {
-      case "record":
-        return dispatch({ type: RECORD_HELP, payload: helpMessages.record });
-      case "clear":
-        return dispatch({ type: RECORD_HELP, payload: null });
-      default:
-        return;
-    };
+    dispatch({ 
+      type: HELP_MESSAGE, 
+      payload: helpMessages[`${msg}`] 
+    });
   };
 
   return (

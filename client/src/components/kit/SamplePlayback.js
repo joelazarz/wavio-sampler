@@ -137,6 +137,8 @@ const SamplePlayback = ({ ...props }) => {
       <EjectIcon 
       id="sample-eject"
       onClick={handleEject}
+      onMouseOver={() => setMsg("eject")}
+      onMouseOut={() => setMsg("clear")}
       />
 
     </SamplePlaybackCotrols>
