@@ -62,10 +62,11 @@ const DropContainer = styled.div`
   margin: 0.5em;
   max-width: 96%;
   min-width: 96%;
-  height: 4em;
+  height: 8em;
   font-family: inherit;
   flex-direction: column;
   place-items: center;
+  justify-content: center;
   border-width: 1px;
   border-radius: 1em;
   border-color: ${props => getColor(props)};
@@ -78,7 +79,7 @@ const DropContainer = styled.div`
 
 const DropText = styled.div`
   background-color: rgb(255,250,250, 0.1);
-  padding: 4px;
+  padding: 15px 10px;
   margin: 10px;
   font-size: 10px;
   border: 1px dotted white;

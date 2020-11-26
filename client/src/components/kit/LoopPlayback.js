@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import HelpContext from '../../context/help/helpContext';
+
 import styled from 'styled-components';
 import {ReactComponent as PlayIcon} from '../../css/icons/play.svg';
 import {ReactComponent as PauseIcon} from '../../css/icons/pause.svg';
@@ -84,6 +87,8 @@ const UtilButton = styled.button`
 `
 
 const LoopPlayback = ({ ...props }) => {
+  const helpContext = useContext(HelpContext)
+  const { setMsg } = helpContext;
 
   const { 
     playLoop, 
@@ -106,17 +111,28 @@ const LoopPlayback = ({ ...props }) => {
       onClick={pauseLoop}
       />
 
-      <UtilButton onClick={resizeLoop}>
+      <UtilButton 
+      onClick={resizeLoop}
+      onMouseOver={() => setMsg("editLoop")}
+      onMouseOut={() => setMsg("clear")}
+      >
       <span>Edit</span>
       <ResizeIcon id="resize-loop"/>
       </UtilButton>
 
-      <UtilButton onClick={clipLoop}>
+      <UtilButton 
+      onClick={clipLoop}
+      onMouseOver={() => setMsg("captureLoop")}
+      onMouseOut={() => setMsg("clear")}
+      >
       <span>Capture</span>
       <CaptureIcon id="capture-loop"/>
       </UtilButton>
 
-      <UtilButton>
+      <UtilButton
+      onMouseOver={() => setMsg("downloadLoop")}
+      onMouseOut={() => setMsg("clear")}
+      >
       <a href={loopBlob} download>
       <span>Download</span>
       <DownloadIcon id="download-loop"/>

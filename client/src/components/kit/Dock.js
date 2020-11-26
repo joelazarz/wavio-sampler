@@ -93,7 +93,7 @@ const Dock = memo(() => {
   } = sampleContext;
 
   const helpContext = useContext(HelpContext);
-  const { msg } = helpContext;
+  const { msg, setMsg } = helpContext;
 
   useEffect(() => {
     getKits();
@@ -113,7 +113,10 @@ const Dock = memo(() => {
         {!loadedKit ? <></> : kitRegions.map(r => 
           <DockRow 
           key={r.id} 
-          onClick={() => addRegion(`${r.start}`, `${r.end}`)}>
+          onClick={() => addRegion(`${r.start}`, `${r.end}`)}
+          onMouseOver={() => setMsg("loadRegion")}
+          onMouseOut={() => setMsg("clear")}
+          >
             {r.name}
             <LoadIcon key={r.id}/>
           </DockRow>
@@ -124,7 +127,10 @@ const Dock = memo(() => {
         {!dbKits ? <></> : dbKits.map(kit => 
           <DockRow 
           key={kit.id} 
-          onClick={() => handleLoad(kit.id)}>
+          onClick={() => handleLoad(kit.id)}
+          onMouseOver={() => setMsg("loadKit")}
+          onMouseOut={() => setMsg("clear")}
+          >
             {kit.name}
             <LoadIcon key={kit.id}/>
           </DockRow>

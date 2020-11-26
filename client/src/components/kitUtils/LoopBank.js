@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import LoopContext from '../../context/loop/loopContext';
+import HelpContext from '../../context/help/helpContext';
 
 import {ReactComponent as CallUpIcon} from '../../css/icons/leftarrow.svg'
 import {ReactComponent as SequenceIcon} from '../../css/icons/plus-sign.svg'
@@ -101,6 +102,9 @@ const LoopBank = () => {
     clearSequence 
   } = loopContext;
 
+  const helpContext = useContext(HelpContext);
+  const { setMsg } = helpContext;
+
   return (
     <>
       <LoopBankContainer>
@@ -111,9 +115,24 @@ const LoopBank = () => {
             >
               <span>Clip: {loop.id}</span> 
               <IconContainer>
-                <CallUpIcon id="call-loop" onClick={() => callUpLoop(loop.id)} />
-                <SequenceIcon id="sequence-loop" onClick={() => setToSequence(loop.id)} />
-                <XIcon id="remove-loop" onClick={() => removeFromLoopBank(loop.id)}/>
+                <CallUpIcon 
+                id="call-loop" 
+                onClick={() => callUpLoop(loop.id)} 
+                onMouseOver={() => setMsg("loadClip")}
+                onMouseOut={() => setMsg("clear")}
+                />
+                <SequenceIcon 
+                id="sequence-loop" 
+                onClick={() => setToSequence(loop.id)}
+                onMouseOver={() => setMsg("sequenceClip")}
+                onMouseOut={() => setMsg("clear")} 
+                />
+                <XIcon 
+                id="remove-loop" 
+                onClick={() => removeFromLoopBank(loop.id)}
+                onMouseOver={() => setMsg("removeClip")}
+                onMouseOut={() => setMsg("clear")}
+                />
               </IconContainer>
             </LoopRow>
           )}
@@ -124,7 +143,13 @@ const LoopBank = () => {
           )}
         </SequenceStatus>
       </LoopBankContainer>
-    <ClearSequenceButton onClick={clearSequence}><span>Clear Sequence</span></ClearSequenceButton>
+    <ClearSequenceButton 
+    onClick={clearSequence}
+    onMouseOver={() => setMsg("clearSequence")}
+    onMouseOut={() => setMsg("clear")}
+    >
+      <span>Clear Sequence</span>
+    </ClearSequenceButton>
     </>
   );
 };

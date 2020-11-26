@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import SampleContext from '../../context/sample/sampleContext';
+import HelpContext from '../../context/help/helpContext';
 
 import styled from 'styled-components';
 import {ReactComponent as SquareIcon} from '../../css/icons/square.svg'
@@ -58,6 +59,9 @@ const RegionHover = () => {
   const sampleContext = useContext(SampleContext);
   const { hoveredRegion, sampleRegions } = sampleContext;
 
+  const helpContext = useContext(HelpContext);
+  const { setMsg } = helpContext;
+
   let regionArr = [];
 
   const regionSpaceDisplay = (sampleRegions) => {
@@ -76,7 +80,10 @@ const RegionHover = () => {
   if(!hoveredRegion) {
     regionSpaceDisplay(sampleRegions);
     return (
-        <StatusContainer>
+        <StatusContainer
+        onMouseOver={() => setMsg("regionHover")}
+        onMouseOut={() => setMsg("clear")}
+        >
           {regionArr.map((r) => {
             if(r === 'x') {
               return null;

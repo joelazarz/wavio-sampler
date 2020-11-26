@@ -14,7 +14,7 @@ const RowContainer = styled.div`
   transition: all 250ms ease 0s;
   & > svg {
     margin: 0rem;
-    margin-right: 20px;
+    margin-right: 10px;
     height:0.8rem; 
     width: 0.8rem;
     fill: white;
@@ -48,7 +48,7 @@ const CreateRegionForm = styled.form`
 
 const RegionNameInput = styled.input`
   display: flex;
-  margin: 3px auto;
+  margin: 3px;
   padding: 5px;
   font-family: inherit;
   background-color: ${({ theme }) => theme.body};
