@@ -72,6 +72,13 @@ const SampleStation = memo(() => {
       ]
     });
 
+    if (sampleBlob) {
+      sampleWave.current.load(sampleBlob);
+    } else if (loadedKit) {
+      sampleWave.current.load(loadedKit.sample);
+      sampleWave.current.setWaveColor(waveformColor);
+    }
+
     sampleWave.current.on('region-update-end', (e) => {
       updateSampleWaveRegions([e])
     });
@@ -82,15 +89,6 @@ const SampleStation = memo(() => {
     mediaRecorder.current = new MediaRecorder(dest.current.stream);
     gain.current.connect(dest.current);
     // eslint-disable-next-line
-  }, [sampleBlob, loadedKit]);
-
-  useEffect(() => {
-    if (sampleBlob) {
-      sampleWave.current.load(sampleBlob);
-    } else if (loadedKit) {
-      sampleWave.current.load(loadedKit.sample);
-      sampleWave.current.setWaveColor(waveformColor);
-    }
   }, [sampleBlob, loadedKit]);
 
   useEffect(() => {

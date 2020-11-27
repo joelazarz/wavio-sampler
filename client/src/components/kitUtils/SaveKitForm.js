@@ -90,7 +90,7 @@ const DropText = styled.div`
   }
 `
 
-const KitSubmit = styled.input`
+const KitSubmit = styled.button`
   font-family: inherit;
   color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.nav};
@@ -123,6 +123,7 @@ const SaveKitForm = (props) => {
   const sampleContext = useContext(SampleContext);
   const { uploadSample, sampleLink, createKit } = sampleContext;
 
+  const [loading, setLoading] = useState(false);
   const [kit, setKit] = useState({
     name: '',
     sample: ''
@@ -133,6 +134,7 @@ const SaveKitForm = (props) => {
   const onChange = e => setKit({...kit, [e.target.name]: e.target.value});
 
   useEffect(() => {
+    setLoading(true);
     if (acceptedFiles.length === 0) { return; };
     let formData = new FormData();
     setKit({name: acceptedFiles[0].name});
@@ -142,6 +144,7 @@ const SaveKitForm = (props) => {
   },[acceptedFiles])
 
   useEffect(() => {
+    setLoading(false);
     setKit({
       name: kit.name,
       sample: sampleLink
@@ -163,7 +166,7 @@ const SaveKitForm = (props) => {
       setKit({
         name: '',
         sample: ''
-      })
+      });
     };
   };
   
@@ -193,10 +196,9 @@ const SaveKitForm = (props) => {
         <span>Drag file or click to choose</span>
         }</DropText>
       </DropContainer>
-      <KitSubmit 
-      type="submit" 
-      value="Save Kit" 
-      />
+      <KitSubmit type="submit" disabled={loading}>
+        {loading ? "Loading..." : "Save Kit"}
+      </KitSubmit> 
     </FormContainer>
   )
 }

@@ -114,6 +114,8 @@ const SampleState = props => {
     try {
       const res = await axios.post('/api/upload', formData, config);
 
+      ejectSample();
+
       dispatch({
         type: UPLOAD_SAMPLE,
         payload: res.data
