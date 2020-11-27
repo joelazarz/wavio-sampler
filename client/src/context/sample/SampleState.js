@@ -84,6 +84,7 @@ const SampleState = props => {
     };
 
     try {
+      console.log(formData)
       const res = await axios.post('/api/kits', formData, config);
 
       dispatch({

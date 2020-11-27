@@ -151,14 +151,19 @@ const SaveKitForm = (props) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (name === '' || sample === '') {
+    if (name === '' || sampleLink === '') {
       // set alert
-      console.log('set alert for failed register');
+      console.log('set alert for failed');
     } else {
       createKit({
         name,
         sample
       });
+      
+      setKit({
+        name: '',
+        sample: ''
+      })
     };
   };
   
