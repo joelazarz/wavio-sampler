@@ -87,6 +87,7 @@ const SamplePlayback = ({ ...props }) => {
 
   const handleEject = () => {
     if(setRecording) { return };
+    pauseSample();
     ejectSample();
   };
 
