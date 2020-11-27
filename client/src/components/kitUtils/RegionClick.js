@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import SampleContext from '../../context/sample/sampleContext';
+import HelpContext from '../../context/help/helpContext';
 
 import styled from 'styled-components';
 import { RegionEditContainer } from '../../css/RegionEditContainer';
@@ -84,7 +85,10 @@ const RegionClick = () => {
     removeSelectedRegion,
     createRegion
   } = sampleContext;
-
+  
+  const helpContext = useContext(HelpContext);
+  const { setMsg } = helpContext
+  
   const [region, setRegion] = useState({ name: '' });
 
   const { name } = region;
@@ -138,6 +142,8 @@ const RegionClick = () => {
       <RegionSubmit 
       type="submit" 
       value="Save Region" 
+      onMouseOver={() => setMsg("saveRegion")}
+      onMouseOut={() => setMsg("clear")}
       />
 
       </CreateRegionForm>

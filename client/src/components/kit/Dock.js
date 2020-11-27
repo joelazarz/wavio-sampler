@@ -38,6 +38,7 @@ const SavedRegionsContainer = styled.div`
   height: 33%;
   margin: 4px;
   border-radius: 0.25em;
+  overflow: scroll;
 `
 
 const BrowseKitsContainer = styled.div`
@@ -47,6 +48,7 @@ const BrowseKitsContainer = styled.div`
   height: 33%;
   margin: 4px;
   border-radius: 0.25em;
+  overflow: scroll;
 `
 
 const DockRow = styled.div`
