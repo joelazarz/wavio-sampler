@@ -175,6 +175,11 @@ const SampleStation = memo(() => {
     sampleWave.current.playPause();
   };
 
+  const stopSample = () => {
+    if(!sampleBlob && !loadedKit) { return; };
+    sampleWave.current.stop();
+  };
+
   const rateSlider = (val) => {
     if(!sampleBlob && !loadedKit) { return; };
     sampleWave.current.setPlaybackRate(val);
@@ -215,6 +220,7 @@ const SampleStation = memo(() => {
     <SamplePlayback 
     playSample={playSample}
     pauseSample={pauseSample}
+    stopSample={stopSample}
     rateSlider={rateSlider}
     zoomSlider={zoomSlider}
     />

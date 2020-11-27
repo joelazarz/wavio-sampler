@@ -77,6 +77,7 @@ const SamplePlayback = ({ ...props }) => {
   const { 
     playSample, 
     pauseSample,
+    stopSample,
     rateSlider,
     zoomSlider,
   } = props;
@@ -87,7 +88,7 @@ const SamplePlayback = ({ ...props }) => {
 
   const handleEject = () => {
     if(setRecording) { return };
-    pauseSample();
+    stopSample();
     ejectSample();
   };
 
