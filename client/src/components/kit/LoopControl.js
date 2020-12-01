@@ -12,7 +12,7 @@ const LoopControlContainer = styled.div`
   min-height: 285px;
   margin-top: 2rem;
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.paneBackground};
+  background-color: ${({ theme }) => theme.secondary};
 `
 
 const LoopControl = () => {

@@ -14,7 +14,7 @@ const LoopPlaybackCotrols = styled.div`
   grid-column-start: 4;
   grid-column-end: 14;
   height: 1.5rem;
-  background-color: ${({ theme }) => theme.paneBackground};
+  background-color: ${({ theme }) => theme.secondary};
   border-radius: 0.25em;
   margin: 2rem 1rem 0rem 1rem;
   display: flex;

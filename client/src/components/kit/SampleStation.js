@@ -23,8 +23,6 @@ const SampleContainer = styled.div`
 
 const SampleStation = memo(() => {
   const sampleContext = useContext(SampleContext);
-  const kitContext = useContext(KitContext);
-
   const {
     loadedKit,
     sampleBlob,
@@ -36,11 +34,15 @@ const SampleStation = memo(() => {
     clearHoveredRegion,
     setClickedRegion,
   } = sampleContext;
-
+  
+  const kitContext = useContext(KitContext);
   const { setLoopBlob } = kitContext;
 
+  // refs for wavesurfer
   const sampleformRef = useRef();
   const sampleWave = useRef();
+
+  // isFirstRender ref
   const isFirstRender = useRef(true);
 
   // refs for recording 
@@ -213,7 +215,6 @@ const SampleStation = memo(() => {
       setChunks([]);
     };
   };
-  
 
   return (
     <>

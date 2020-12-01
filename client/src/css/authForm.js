@@ -36,7 +36,7 @@ margin: 0.5rem auto 1rem auto;
 border: none;
 border-radius: 0.25em;
 color: ${({ theme }) => theme.text};
-background-color: ${({ theme }) => theme.paneBackground};
+background-color: ${({ theme }) => theme.secondary};
 transition: all 250ms ease 0s;
 &:hover{
   background-color: rgba(255, 255, 255, 0.2);

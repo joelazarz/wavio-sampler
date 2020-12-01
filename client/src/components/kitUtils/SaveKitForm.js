@@ -1,5 +1,5 @@
-import SampleContext from '../../context/sample/sampleContext';
 import { useState, useEffect, useContext } from 'react'; 
+import SampleContext from '../../context/sample/sampleContext';
 
 import { useDropzone } from 'react-dropzone';
 import styled from 'styled-components';
@@ -19,19 +19,16 @@ const getColor = (props) => {
 
 const FormContainer = styled.form`
   display: flex; 
-  /* margin: 4px 10px; */
   flex-direction: column;
   margin: 0.5em;
   max-width: 96%;
   min-width: 96%;
   min-height: 80%;
-  /* background-color: ${({ theme }) => theme.nav}; */
   border-radius: 0.25em;
 `
 
 const KitNameInput = styled.input`
   display: flex;
-  /* width: 100%; */
   margin: 0.5em;
   padding: 5px;
   font-family: inherit;
@@ -44,7 +41,6 @@ const KitNameInput = styled.input`
 
 const KitSaveWarning = styled.div`
   display: flex;
-  /* width: 100%; */
   align-self: flex-start;
   max-width: 96%;
   min-width: 96%;

@@ -22,7 +22,7 @@ const SampleControlContainer = styled.div`
   min-height: 285px;
   margin-top: 2rem;
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.paneBackground};
+  background-color: ${({ theme }) => theme.secondary};
 `
 
 const blink = keyframes`
@@ -46,7 +46,7 @@ const blink = keyframes`
     height: 0.8rem; 
     width: 0.8rem;
   }
-`;
+`
 
 const NotUploadedIcon = styled(UploadIcon)`
   animation: ${blink} 1s ease infinite;
@@ -94,11 +94,11 @@ const SampleControl = () => {
         <span>Options</span>
         {
           !loadedKit ?
-            <NotUploadedIcon 
-            onClick={() => setFormView(!formView)} 
-            onMouseOver={() => setMsg("saveKit")}
-            onMouseOut={() => setMsg("clear")}
-            />
+          <NotUploadedIcon 
+          onClick={() => setFormView(!formView)} 
+          onMouseOver={() => setMsg("saveKit")}
+          onMouseOut={() => setMsg("clear")}
+          />
           :
           <UploadedIcon disabled={loadedKit} />
         }

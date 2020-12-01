@@ -21,14 +21,14 @@ const LoopContainer = styled.div`
 
 const LoopStation = memo(() => {
   const kitContext = useContext(KitContext);
-  const loopContext = useContext(LoopContext);
-  
   const { loopBlob, setLoopBlob } = kitContext;
+
+  const loopContext = useContext(LoopContext);
   const { loopColor, addToLoopBank, calledUpLoop, sequenceBank } = loopContext;
 
   const loopformRef = useRef(null);
   const loopWave = useRef(null);
-  
+
   useEffect(() => {
     if (loopBlob === null) { return };
 
@@ -96,7 +96,7 @@ const LoopStation = memo(() => {
     };
     loopWave.current.play();
   };
-  
+
   const pauseLoop = () => {
     if (!loopBlob) { return; };
     loopWave.current.playPause();
@@ -178,15 +178,15 @@ const LoopStation = memo(() => {
   const clipLoop = () => {
     if (!loopBlob) { return; };
     loopWave.current.stop();
-    
+
     const region = loopWave.current.regions.list['resize'];
     const loopWaveBuffer = loopWave.current.backend.buffer;
-    
+
     if (!region) { return; };
-    
+
     const regionStart = region.start;
     const regionEnd = region.end;
-    
+
     let writableSegment = loopWave.current.backend.ac.createBuffer(
       loopWaveBuffer.numberOfChannels,
       ((regionEnd - regionStart) * loopWaveBuffer.sampleRate),
@@ -246,9 +246,9 @@ const LoopStation = memo(() => {
           dataIndex += newChannelData.length;               // position to store the next buffer values
         } else {
           try {
-              channel.set(newChannelData, dataIndex - 1);
+            channel.set(newChannelData, dataIndex - 1);
           } catch {
-              return;
+            return;
           };
         };
       };

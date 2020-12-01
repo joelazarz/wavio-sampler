@@ -13,7 +13,7 @@ const SamplePlaybackCotrols = styled.div`
   grid-column-start: 4;
   grid-column-end: 14;
   height: 1.5rem;
-  background-color: ${({ theme }) => theme.paneBackground};
+  background-color: ${({ theme }) => theme.secondary};
   border-radius: 0.25em;
   margin: 2rem 1rem 0rem 1rem;
   display: flex;
@@ -45,7 +45,7 @@ const SliderControl = styled.div`
   place-items: center;
   justify-content: space-between;
   width: 100%;
-  `
+`
 
 const SlideContainer = styled.div`
   display: flex;
@@ -64,7 +64,6 @@ const RecordButton = styled.button`
     background-color: rgba(255, 255, 255, 0.2);
     border: 1px dotted white;
   }
-
 `
 
 const SamplePlayback = ({ ...props }) => {

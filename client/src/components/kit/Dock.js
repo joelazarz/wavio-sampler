@@ -11,7 +11,7 @@ const DockContainer = styled.div`
   grid-column-start: 1;
   grid-column-end: 4;
   min-height: 95%;
-  background-color: ${({ theme }) => theme.paneBackground};
+  background-color: ${({ theme }) => theme.secondary};
   margin-top: 2rem;
   border-radius: 6px;
 `
