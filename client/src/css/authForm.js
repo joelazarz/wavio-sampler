@@ -1,19 +1,38 @@
 import styled from 'styled-components';
 
+export const ContainerLeft = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 1;
+  grid-column-end: 9;
+  grid-row-start: 1;
+  grid-row-end: 17;
+  height: 90vh;
+  align-items: center;
+`
+
+export const ContainerRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 9;
+  grid-column-end: 17;
+  grid-row-start: 1;
+  grid-row-end: 17;
+  height: 90vh;
+  text-align: center;
+`
+
 export const AuthForm = styled.form`
-grid-row-start: 2;
-grid-row-end: 6;
-/* height: 30vh; */
-min-width: 12rem;
+display: flex;
+width: 65%;
+height: 50%;
 grid-column-start: 2;
 grid-column-end: 9;
-margin: 1rem 5rem;
-display: flex;
+margin: 1rem;
 flex-direction: column;
-/* justify-content: center; */
-/* place-items: center; */
 background-color: ${({ theme }) => theme.nav};
 border-radius: 0.25rem;
+justify-content: center;
 `
 
 export const AuthFormInput = styled.input`
@@ -48,9 +67,8 @@ margin: 0.2rem auto 0rem 2rem;
 `
 
 export const AuthFormTitle = styled.div`
-background-color: rgba(255, 255, 255, 0.2);
-border-radius: 0.25em;
 padding: 0 4rem;
 margin: 0.5rem auto;
-font-size: 15px;
+font-size: 20px;
+text-decoration: underline;
 `

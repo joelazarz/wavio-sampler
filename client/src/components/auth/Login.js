@@ -1,14 +1,18 @@
 import { useForm } from '../../hooks/useForm';
 import { useContext, useEffect } from 'react';
 import AuthContext from '../../context/auth/authContext';
-import { AuthForm,
+import { 
+  ContainerLeft,
+  ContainerRight,
+  AuthForm,
   AuthFormInput, 
   AuthFormLabel, 
   AuthFormButton, 
-  AuthFormTitle } from '../../css/authForm';
+  AuthFormTitle 
+} from '../../css/authForm';
 import Preview from './Preview';
 
-const Login = (props) => {
+const Login = ({theme, ...props}) => {
   const authContext = useContext(AuthContext);
 
   const { login, error, clearErrors, isAuthenticated } = authContext;
@@ -45,27 +49,32 @@ const Login = (props) => {
 
   return (
     <>
-    <AuthForm onSubmit={onSubmit}>
-      <AuthFormTitle>Login</AuthFormTitle>
-      <AuthFormLabel htmlFor='email'>Email Address</AuthFormLabel>
-      <AuthFormInput
-      name="email" 
-      type="email" 
-      value={values.email}
-      onChange={handleChange}
-      required
-      />
-      <AuthFormLabel htmlFor='email'>Password</AuthFormLabel>
-      <AuthFormInput
-      name="password"
-      type="password" 
-      value={values.password}
-      onChange={handleChange}
-      required
-      />
-      <AuthFormButton type="submit" value='Login'>Login</AuthFormButton>
-    </AuthForm>
-    <Preview />
+      <ContainerLeft>
+        <AuthForm onSubmit={onSubmit}>
+          <AuthFormTitle>Login</AuthFormTitle>
+          <AuthFormLabel htmlFor='email'>Email Address</AuthFormLabel>
+          <AuthFormInput
+          name="email" 
+          type="email" 
+          value={values.email}
+          onChange={handleChange}
+          required
+          />
+          <AuthFormLabel htmlFor='email'>Password</AuthFormLabel>
+          <AuthFormInput
+          name="password"
+          type="password" 
+          value={values.password}
+          onChange={handleChange}
+          required
+          />
+          <AuthFormButton type="submit" value='Login'>Login</AuthFormButton>
+        </AuthForm>
+      </ContainerLeft>
+
+      <ContainerRight>
+        <Preview theme={theme}/>
+      </ContainerRight>
     </>
   );
 };
