@@ -20,6 +20,13 @@ place-items: center;
   }
 `
 
+const FeaturesBlock = styled.div`
+  background: ${({ theme }) => theme.nav};
+  border-radius: 0.25em;
+  width: 90%;
+  margin: 2em 0;
+`
+
 const Preview = ({ theme }) => {
   return (
     <>
@@ -33,6 +40,9 @@ const Preview = ({ theme }) => {
       <img src={lightScreenshot} alt="screenshot" />
       }
     </ScreenshotBlock>
+    <FeaturesBlock>
+      <h3>Wavio Sampler is a browser-based social DAW</h3>
+    </FeaturesBlock>
     </>
   )
 }

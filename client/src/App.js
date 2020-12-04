@@ -46,8 +46,8 @@ const App = () => {
                     <Container>
                       <Switch>
                         <PrivateRoute exact path='/' component={Kit} />
-                        <Route exact path='/login' render={() => (<Login theme={theme} />)}/>
-                        <Route exact path='/register' render={() => (<Register theme={theme} />)} />
+                        <Route exact path='/login' render={(props) => (<Login {...props} theme={theme} />)} />
+                        <Route exact path='/register' render={(props) => (<Register {...props} theme={theme} />)} />
                       </Switch>
                     </Container>
                   </>

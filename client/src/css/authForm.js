@@ -9,6 +9,12 @@ export const ContainerLeft = styled.div`
   grid-row-end: 17;
   height: 90vh;
   align-items: center;
+  @media only screen and (max-width: 768px) {
+    grid-column-start: 1;
+    grid-column-end: 17;
+    grid-row-start: 1;
+    grid-row-end: 9;
+  }
 `
 
 export const ContainerRight = styled.div`
@@ -19,16 +25,25 @@ export const ContainerRight = styled.div`
   grid-row-start: 1;
   grid-row-end: 17;
   height: 90vh;
-  text-align: center;
+  text-align: center; 
+  align-items: center;
+  @media only screen and (max-width: 768px) {
+    grid-column-start: 1;
+    grid-column-end: 17;
+    grid-row-start: 9;
+    grid-row-end: 17;
+  }
 `
 
 export const AuthForm = styled.form`
 display: flex;
 width: 65%;
-height: 50%;
+min-width: 30em;
+height: 60%;
+min-height: 30em;
 grid-column-start: 2;
 grid-column-end: 9;
-margin: 1rem;
+margin: 5rem;
 flex-direction: column;
 background-color: ${({ theme }) => theme.nav};
 border-radius: 0.25rem;
@@ -51,7 +66,7 @@ width: 50%;
 height: 30px;
 font-family: 'Roboto Mono', monospace;
 font-size: 13px;
-margin: 0.5rem auto 1rem auto;
+margin: 1.5rem auto 1rem auto;
 border: none;
 border-radius: 0.25em;
 color: ${({ theme }) => theme.text};
@@ -69,6 +84,6 @@ margin: 0.2rem auto 0rem 2rem;
 export const AuthFormTitle = styled.div`
 padding: 0 4rem;
 margin: 0.5rem auto;
-font-size: 20px;
+font-size: 25px;
 text-decoration: underline;
 `
