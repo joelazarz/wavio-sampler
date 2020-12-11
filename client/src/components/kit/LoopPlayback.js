@@ -86,6 +86,14 @@ const UtilButton = styled.button`
   }
 `
 
+const SlideContainer = styled.div`
+  display: flex;
+  margin-left: auto;
+  place-items: center;
+`
+
+const ZoomSlider = styled.input``
+
 const LoopPlayback = ({ ...props }) => {
   const helpContext = useContext(HelpContext)
   const { setMsg } = helpContext;
@@ -93,6 +101,7 @@ const LoopPlayback = ({ ...props }) => {
   const { 
     playLoop, 
     pauseLoop,
+    zoomSlider,
     resizeLoop,
     clipLoop,
     loopBlob
@@ -138,6 +147,18 @@ const LoopPlayback = ({ ...props }) => {
       <DownloadIcon id="download-loop"/>
       </a>
       </UtilButton>
+
+      <SlideContainer>
+        <span>Zoom:</span> 
+        <ZoomSlider
+        className="slider"
+        type="range"
+        min="0"
+        max="500"
+        step="0.5"
+        onChange={(e) => zoomSlider(e.target.value)}
+        />
+      </SlideContainer>
 
     </LoopPlaybackCotrols>
   )

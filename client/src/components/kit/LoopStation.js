@@ -57,7 +57,7 @@ const LoopStation = memo(() => {
       loopWave.current.load('https://raw.githubusercontent.com/anars/blank-audio/master/250-milliseconds-of-silence.mp3');
     };
 
-    loopWave.current.zoom(1);
+    // loopWave.current.zoom(1);
     // eslint-disable-next-line
   }, [loopBlob]);
 
@@ -100,6 +100,11 @@ const LoopStation = memo(() => {
   const pauseLoop = () => {
     if (!loopBlob) { return; };
     loopWave.current.playPause();
+  };
+
+  const zoomSlider = (val) => {
+    if(!loopBlob) { return; };
+    loopWave.current.zoom(val);
   };
 
   const resizeLoop = () => {
@@ -263,6 +268,7 @@ const LoopStation = memo(() => {
     pauseLoop={pauseLoop}
     resizeLoop={resizeLoop}
     clipLoop={clipLoop}
+    zoomSlider={zoomSlider}
     loopBlob={loopBlob}
     />
     { loopBlob ? <LoopContainer ref={loopformRef} /> : <></> }
