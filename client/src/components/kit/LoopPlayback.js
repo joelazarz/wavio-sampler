@@ -148,7 +148,7 @@ const LoopPlayback = ({ ...props }) => {
       </a>
       </UtilButton>
 
-      <SlideContainer>
+      {/* <SlideContainer>
         <span>Zoom:</span> 
         <ZoomSlider
         className="slider"
@@ -158,7 +158,7 @@ const LoopPlayback = ({ ...props }) => {
         step="0.5"
         onChange={(e) => zoomSlider(e.target.value)}
         />
-      </SlideContainer>
+      </SlideContainer> */}
 
     </LoopPlaybackCotrols>
   )
