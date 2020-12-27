@@ -107,6 +107,26 @@ const LoopPlayback = ({ ...props }) => {
     loopBlob
   } = props;
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if(!loopBlob) { return };
+      if (document.activeElement.matches('.text-input')) { return; };
+      if (e.key === 'e') {
+        resizeLoop();
+      };
+      if(e.key === 'c') {
+        clipLoop();
+      };
+      if (e.key === 'a') {
+        pauseLoop();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+    // eslint-disable-next-line
+  }, [loopBlob]);
+
   return (
     <LoopPlaybackCotrols>
 

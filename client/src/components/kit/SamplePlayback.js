@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import SampleContext from '../../context/sample/sampleContext';
 import HelpContext from '../../context/help/helpContext';
 import styled from 'styled-components';
@@ -80,6 +80,23 @@ const SamplePlayback = ({ ...props }) => {
     rateSlider,
     zoomSlider,
   } = props;
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if(!sampleBlob) { return };
+      if (document.activeElement.matches('.text-input')) { return; };
+      if (e.key === 'r') {
+        handleRecord();
+      };
+      if (e.code === 'Space') {
+        pauseSample();
+      };
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+    // eslint-disable-next-line
+  }, [setRecord])
 
   const handleRecord = () => {
     setRecord(!setRecording);

@@ -88,6 +88,18 @@ const SampleControl = () => {
   const helpContext = useContext(HelpContext);
   const { setMsg } = helpContext;
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (document.activeElement.matches('.text-input')) { return; };
+      if (e.shiftKey && e.key === 'Backspace') {
+        removeAllRegions();
+      };
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  });
+
   return (
     <SampleControlContainer>
       <TitleContainer>
